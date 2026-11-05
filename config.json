@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-11-05T13:25:02.551Z",
+  "updatedAt": "2026-11-05T13:25:44.385Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -84,6 +84,16 @@
       "x": 1763,
       "y": 1373,
       "size": 36
+    },
+    {
+      "id": 1793885142368.4028,
+      "shortId": 9,
+      "typeId": "emoji_zombie",
+      "name": "Zombie",
+      "label": "Zombie #9",
+      "x": 1571,
+      "y": 771,
+      "size": 50
     }
   ]
 }
