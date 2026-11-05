@@ -1,6 +1,6 @@
 {
   "version": 6,
-  "updatedAt": "2026-11-05T13:45:46.476Z",
+  "updatedAt": "2026-11-05T13:45:51.592Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -173,19 +173,6 @@
       "bgEnabled": true,
       "bgColor": "#4b9f1a",
       "bgOpacity": 0.48
-    },
-    {
-      "id": 1793886344459.9421,
-      "shortId": 14,
-      "typeId": "pumpkin_classic",
-      "name": "Zucca Classica",
-      "label": "Zucca Classica #14",
-      "x": 2200,
-      "y": 1703,
-      "size": 50,
-      "bgEnabled": true,
-      "bgColor": "#000000",
-      "bgOpacity": 0.55
     }
   ]
 }
