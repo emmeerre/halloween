@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-11-05T13:24:17.133Z",
+  "updatedAt": "2026-11-05T13:24:20.567Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -63,7 +63,7 @@
       "label": "Strega Emoji #6",
       "x": 2520,
       "y": 1374,
-      "size": 35
+      "size": 29
     }
   ]
 }
