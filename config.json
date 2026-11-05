@@ -1,6 +1,6 @@
 {
   "version": 6,
-  "updatedAt": "2026-11-05T13:52:04.166Z",
+  "updatedAt": "2026-11-05T13:52:09.400Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -225,19 +225,6 @@
       "bgEnabled": true,
       "bgColor": "#000000",
       "bgOpacity": 0.3
-    },
-    {
-      "id": 1793886722133.8516,
-      "shortId": 23,
-      "typeId": "tombstone",
-      "name": "Lapide RIP",
-      "label": "Lapide RIP #23",
-      "x": 768,
-      "y": 1419,
-      "size": 50,
-      "bgEnabled": true,
-      "bgColor": "#000000",
-      "bgOpacity": 0.55
     }
   ]
 }
