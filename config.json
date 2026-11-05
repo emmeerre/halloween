@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "updatedAt": "2026-11-05T17:27:01.141Z",
+  "updatedAt": "2026-11-05T17:27:04.374Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -409,7 +409,7 @@
       "label": "Prova di Coraggio",
       "x": 1468,
       "y": 1281,
-      "size": 50,
+      "size": 250,
       "showIcon": true,
       "showLabel": true,
       "bgEnabled": true,
