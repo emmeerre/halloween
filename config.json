@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-11-05T13:22:56.715Z",
+  "updatedAt": "2026-11-05T13:23:05.515Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -43,6 +43,16 @@
       "label": "Calzola",
       "x": 2672,
       "y": 1350,
+      "size": 50
+    },
+    {
+      "id": 1793884983515.3967,
+      "shortId": 5,
+      "typeId": "black_cat",
+      "name": "Gatto Nero",
+      "label": "Gatto Nero #5",
+      "x": 2687,
+      "y": 1423,
       "size": 50
     }
   ]
