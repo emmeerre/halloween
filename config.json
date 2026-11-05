@@ -1,20 +1,10 @@
 {
   "version": 5,
-  "updatedAt": "2026-11-05T13:23:52.916Z",
+  "updatedAt": "2026-11-05T13:23:58.883Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
   "markers": [
-    {
-      "id": 1793884657175.5295,
-      "shortId": 1,
-      "typeId": "pumpkin_classic",
-      "name": "Zucca Classica",
-      "label": "Piancini",
-      "x": 1690,
-      "y": 1013,
-      "size": 50
-    },
     {
       "id": 1793884678926.1533,
       "shortId": 3,
@@ -51,8 +41,18 @@
       "typeId": "pumpkin_classic",
       "name": "Zucca Classica",
       "label": "",
-      "x": 1645,
+      "x": 1646,
       "y": 961,
+      "size": 41
+    },
+    {
+      "id": 1793884657175.5295,
+      "shortId": 1,
+      "typeId": "pumpkin_classic",
+      "name": "Zucca Classica",
+      "label": "Piancini",
+      "x": 1702,
+      "y": 1006,
       "size": 41
     }
   ]
