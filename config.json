@@ -1,6 +1,6 @@
 {
-  "version": 6,
-  "updatedAt": "2026-11-05T13:53:56.635Z",
+  "version": 7,
+  "updatedAt": "2026-11-05T16:43:37.239Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -16,7 +16,14 @@
       "size": 50,
       "bgEnabled": false,
       "bgColor": "#000000",
-      "bgOpacity": 0.55
+      "bgOpacity": 0.55,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 14,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBgOpacity": 0.88,
+      "labelBorderColor": "#ff6600"
     },
     {
       "id": 1793884943197.7808,
@@ -29,7 +36,14 @@
       "size": 50,
       "bgEnabled": false,
       "bgColor": "#000000",
-      "bgOpacity": 0.55
+      "bgOpacity": 0.55,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 14,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBgOpacity": 0.88,
+      "labelBorderColor": "#ff6600"
     },
     {
       "id": 1793884983515.3967,
@@ -42,7 +56,14 @@
       "size": 50,
       "bgEnabled": false,
       "bgColor": "#000000",
-      "bgOpacity": 0.55
+      "bgOpacity": 0.55,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 14,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBgOpacity": 0.88,
+      "labelBorderColor": "#ff6600"
     },
     {
       "id": 1793884659642.0273,
@@ -55,7 +76,14 @@
       "size": 41,
       "bgEnabled": false,
       "bgColor": "#000000",
-      "bgOpacity": 0.55
+      "bgOpacity": 0.55,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 14,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBgOpacity": 0.88,
+      "labelBorderColor": "#ff6600"
     },
     {
       "id": 1793884657175.5295,
@@ -68,7 +96,14 @@
       "size": 41,
       "bgEnabled": false,
       "bgColor": "#000000",
-      "bgOpacity": 0.55
+      "bgOpacity": 0.55,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 14,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBgOpacity": 0.88,
+      "labelBorderColor": "#ff6600"
     },
     {
       "id": 1793885076883.0203,
@@ -81,7 +116,14 @@
       "size": 34,
       "bgEnabled": false,
       "bgColor": "#000000",
-      "bgOpacity": 0.55
+      "bgOpacity": 0.55,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 14,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBgOpacity": 0.88,
+      "labelBorderColor": "#ff6600"
     },
     {
       "id": 1793885091917.627,
@@ -94,7 +136,14 @@
       "size": 36,
       "bgEnabled": false,
       "bgColor": "#000000",
-      "bgOpacity": 0.55
+      "bgOpacity": 0.55,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 14,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBgOpacity": 0.88,
+      "labelBorderColor": "#ff6600"
     },
     {
       "id": 1793885051966.979,
@@ -107,7 +156,14 @@
       "size": 29,
       "bgEnabled": false,
       "bgColor": "#000000",
-      "bgOpacity": 0.55
+      "bgOpacity": 0.55,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 14,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBgOpacity": 0.88,
+      "labelBorderColor": "#ff6600"
     },
     {
       "id": 1793885299538.9116,
@@ -120,7 +176,14 @@
       "size": 50,
       "bgEnabled": false,
       "bgColor": "#000000",
-      "bgOpacity": 0.55
+      "bgOpacity": 0.55,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 14,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBgOpacity": 0.88,
+      "labelBorderColor": "#ff6600"
     },
     {
       "id": 1793885169052.8513,
@@ -133,7 +196,14 @@
       "size": 50,
       "bgEnabled": false,
       "bgColor": "#000000",
-      "bgOpacity": 0.55
+      "bgOpacity": 0.55,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 14,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBgOpacity": 0.88,
+      "labelBorderColor": "#ff6600"
     },
     {
       "id": 1793885156735.6023,
@@ -146,7 +216,14 @@
       "size": 50,
       "bgEnabled": true,
       "bgColor": "#f72655",
-      "bgOpacity": 0.72
+      "bgOpacity": 0.72,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 14,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBgOpacity": 0.88,
+      "labelBorderColor": "#ff6600"
     },
     {
       "id": 1793885142368.4028,
@@ -159,7 +236,14 @@
       "size": 50,
       "bgEnabled": true,
       "bgColor": "#11f411",
-      "bgOpacity": 0.88
+      "bgOpacity": 0.88,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 14,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBgOpacity": 0.88,
+      "labelBorderColor": "#ff6600"
     },
     {
       "id": 1793886598747.8774,
@@ -172,7 +256,14 @@
       "size": 50,
       "bgEnabled": true,
       "bgColor": "#000000",
-      "bgOpacity": 0.55
+      "bgOpacity": 0.55,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 14,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBgOpacity": 0.88,
+      "labelBorderColor": "#ff6600"
     },
     {
       "id": 1793885215503.865,
@@ -185,7 +276,14 @@
       "size": 40,
       "bgEnabled": true,
       "bgColor": "#4b9f1a",
-      "bgOpacity": 0.48
+      "bgOpacity": 0.48,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 14,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBgOpacity": 0.88,
+      "labelBorderColor": "#ff6600"
     },
     {
       "id": 1793886513279.1152,
@@ -198,7 +296,14 @@
       "size": 250,
       "bgEnabled": true,
       "bgColor": "#000000",
-      "bgOpacity": 0.55
+      "bgOpacity": 0.55,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 14,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBgOpacity": 0.88,
+      "labelBorderColor": "#ff6600"
     },
     {
       "id": 1793886502729.3748,
@@ -211,7 +316,14 @@
       "size": 250,
       "bgEnabled": true,
       "bgColor": "#000000",
-      "bgOpacity": 0.55
+      "bgOpacity": 0.55,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 14,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBgOpacity": 0.88,
+      "labelBorderColor": "#ff6600"
     },
     {
       "id": 1793886711750.4727,
@@ -224,7 +336,14 @@
       "size": 250,
       "bgEnabled": true,
       "bgColor": "#000000",
-      "bgOpacity": 0.3
+      "bgOpacity": 0.3,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 14,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBgOpacity": 0.88,
+      "labelBorderColor": "#ff6600"
     },
     {
       "id": 1793886769834.543,
@@ -237,7 +356,14 @@
       "size": 50,
       "bgEnabled": false,
       "bgColor": "#000000",
-      "bgOpacity": 0.55
+      "bgOpacity": 0.55,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 14,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBgOpacity": 0.88,
+      "labelBorderColor": "#ff6600"
     },
     {
       "id": 1793886825885.0464,
@@ -250,7 +376,14 @@
       "size": 50,
       "bgEnabled": true,
       "bgColor": "#000000",
-      "bgOpacity": 0.55
+      "bgOpacity": 0.55,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 17,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBgOpacity": 0.88,
+      "labelBorderColor": "#ff6600"
     }
   ]
 }
