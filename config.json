@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "updatedAt": "2026-11-05T18:03:34.202Z",
+  "updatedAt": "2026-11-05T18:03:45.952Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -450,7 +450,7 @@
       "shortId": 27,
       "typeId": "text_only",
       "name": "Solo Testo",
-      "label": "Racconti dell'orrore\nDalle 18:00 comincia: Dolcetto o scherzetto\nCena alle 20:00",
+      "label": "17:30 Racconti dell'orrore\nDalle 18:00 comincia: Dolcetto o scherzetto\nCena alle 20:00",
       "x": 2756,
       "y": 682,
       "size": 363,
