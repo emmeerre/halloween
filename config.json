@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "updatedAt": "2026-11-05T18:09:00.141Z",
+  "updatedAt": "2026-11-05T18:09:19.558Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -466,6 +466,28 @@
       "labelBgColor": "#120a1c",
       "labelBgOpacity": 0.88,
       "labelBorderColor": "#ff6600"
+    },
+    {
+      "id": 1793902157508.4885,
+      "shortId": 31,
+      "typeId": "text_only",
+      "name": "Solo Testo",
+      "label": "Testo #31",
+      "x": 1865,
+      "y": 1618,
+      "size": 50,
+      "showIcon": false,
+      "showLabel": true,
+      "bgEnabled": true,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 23,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBorderColor": "#ff6600",
+      "labelBgOpacity": 0.88
     }
   ]
 }
