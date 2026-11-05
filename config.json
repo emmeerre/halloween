@@ -1,6 +1,6 @@
 {
   "version": 6,
-  "updatedAt": "2026-11-05T13:51:32.116Z",
+  "updatedAt": "2026-11-05T13:51:35.283Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -205,7 +205,7 @@
       "shortId": 18,
       "typeId": "ghost_classic",
       "name": "Fantasma Classico",
-      "label": "Fantasma Classico #18",
+      "label": "",
       "x": 2105,
       "y": 753,
       "size": 250,
