@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-11-05T13:25:48.935Z",
+  "updatedAt": "2026-11-05T13:25:58.768Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -93,6 +93,16 @@
       "label": "Baiocco",
       "x": 1571,
       "y": 771,
+      "size": 50
+    },
+    {
+      "id": 1793885156735.6023,
+      "shortId": 10,
+      "typeId": "emoji_vampire",
+      "name": "Vampiro",
+      "label": "Vampiro #10",
+      "x": 2127,
+      "y": 1647,
       "size": 50
     }
   ]
