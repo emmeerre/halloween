@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-11-05T13:19:53.044Z",
+  "updatedAt": "2026-11-05T13:22:25.198Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -33,6 +33,16 @@
       "label": "Calderone Magico #3",
       "x": 2730,
       "y": 1379,
+      "size": 50
+    },
+    {
+      "id": 1793884943197.7808,
+      "shortId": 4,
+      "typeId": "bat_vampire",
+      "name": "Pipistrello Viola",
+      "label": "Pipistrello Viola #4",
+      "x": 2672,
+      "y": 1350,
       "size": 50
     }
   ]
