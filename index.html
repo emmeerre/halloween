@@ -1,0 +1,1868 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halloween Map 🎃</title>
+    <style>
+        :root {
+            --bg-dark: #0f0a14;
+            --panel-bg: #1b1324;
+            --panel-header: #120c18;
+            --accent: #ff6600;
+            --accent-hover: #e65c00;
+            --green-neon: #39ff14;
+            --purple: #7a22b5;
+            --text: #f2eaf7;
+            --border: #38284a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            user-select: none;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text);
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* In modalità sola visualizzazione nasconde le barre di editing */
+        body.view-only .sidebar-left,
+        body.view-only .sidebar-right,
+        body.view-only .edit-only-ui {
+            display: none !important;
+        }
+
+        /* Sidebars (Left & Right) */
+        .sidebar-left {
+            width: 340px;
+            background-color: var(--panel-bg);
+            border-right: 2px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            z-index: 20;
+            flex-shrink: 0;
+        }
+
+        .sidebar-right {
+            width: 360px;
+            background-color: var(--panel-bg);
+            border-left: 2px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            z-index: 20;
+            flex-shrink: 0;
+        }
+
+        .sidebar-header {
+            padding: 12px 15px;
+            background-color: var(--panel-header);
+            border-bottom: 2px solid var(--accent);
+            text-align: center;
+        }
+
+        .sidebar-header h1 {
+            font-size: 1.1rem;
+            color: var(--accent);
+            letter-spacing: 0.5px;
+        }
+
+        .sidebar-content {
+            padding: 12px;
+            overflow-y: auto;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .section {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 11px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .section h3 {
+            font-size: 0.82rem;
+            color: var(--accent);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Form Elements */
+        label {
+            display: block;
+            font-size: 0.75rem;
+            margin-bottom: 3px;
+            color: #cbbbe0;
+        }
+
+        input[type="text"], input[type="password"], input[type="number"], select {
+            width: 100%;
+            padding: 6px 8px;
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            color: var(--text);
+            border-radius: 4px;
+            margin-bottom: 7px;
+            font-size: 0.82rem;
+            user-select: text;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        input[type="range"] {
+            width: 100%;
+            margin-bottom: 6px;
+            accent-color: var(--accent);
+            cursor: pointer;
+        }
+
+        .row-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 7px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 8px;
+            background-color: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            transition: background 0.2s, transform 0.1s;
+            margin-bottom: 6px;
+            font-size: 0.82rem;
+        }
+
+        .btn:hover { background-color: var(--accent-hover); }
+        .btn:active { transform: scale(0.98); }
+        .btn-purple { background-color: var(--purple); }
+        .btn-purple:hover { background-color: #5e188c; }
+        .btn-danger { background-color: #c92a2a; }
+        .btn-danger:hover { background-color: #a61e1e; }
+        .btn-green { background-color: #2b8a3e; }
+        .btn-green:hover { background-color: #237032; }
+
+        .file-upload-btn {
+            position: relative;
+            overflow: hidden;
+        }
+        .file-upload-btn input[type="file"] {
+            position: absolute;
+            top: 0; right: 0; min-width: 100%; min-height: 100%;
+            font-size: 100px; opacity: 0; cursor: pointer;
+        }
+
+        /* Status Box per Auto-Save GitHub */
+        .status-badge {
+            font-size: 0.74rem;
+            padding: 6px 8px;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            color: #ccc;
+            margin-bottom: 8px;
+            line-height: 1.35;
+        }
+        .status-badge.ok { border-color: #2b8a3e; color: #8ce99a; background: rgba(43, 138, 62, 0.18); }
+        .status-badge.warn { border-color: #e67700; color: #ffd43b; background: rgba(230, 119, 0, 0.18); }
+        .status-badge.saving { border-color: #3bc9db; color: #99e9f2; background: rgba(59, 201, 219, 0.18); }
+        .status-badge.err { border-color: #e03131; color: #ffa8a8; background: rgba(224, 49, 49, 0.18); }
+
+        /* Marker Grid (24 icone) */
+        .marker-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+            max-height: 200px;
+            overflow-y: auto;
+            padding-right: 4px;
+            margin-bottom: 8px;
+        }
+
+        .marker-option {
+            background: var(--bg-dark);
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            padding: 4px 2px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s;
+            height: 58px;
+        }
+
+        .marker-option img, .marker-option span.emoji-icon {
+            width: 26px;
+            height: 26px;
+            font-size: 22px;
+            line-height: 26px;
+            text-align: center;
+            display: block;
+            margin-bottom: 3px;
+            pointer-events: none;
+        }
+
+        .marker-option small {
+            font-size: 0.58rem;
+            color: #aaa;
+            text-align: center;
+            line-height: 1;
+            pointer-events: none;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 95%;
+        }
+
+        .marker-option:hover { border-color: #888; }
+        .marker-option.active {
+            border-color: var(--accent);
+            background: rgba(255, 102, 0, 0.18);
+            box-shadow: 0 0 8px rgba(255, 102, 0, 0.4);
+        }
+
+        /* Center Viewport & Zoom/Pan Toolbar */
+        .main-area {
+            flex: 1;
+            position: relative;
+            background: radial-gradient(circle, #221830 0%, #09060c 100%);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .zoom-toolbar {
+            position: absolute;
+            top: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(22, 15, 30, 0.92);
+            border: 1px solid var(--border);
+            padding: 6px 10px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            z-index: 15;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.7);
+            backdrop-filter: blur(6px);
+        }
+
+        .tool-btn {
+            background: #2a1f38;
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 6px 11px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.15s;
+        }
+
+        .tool-btn:hover {
+            background: #3b2c4f;
+            border-color: #6b518c;
+        }
+
+        .tool-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+            box-shadow: 0 0 10px rgba(255, 102, 0, 0.4);
+        }
+
+        .toolbar-divider {
+            width: 1px;
+            height: 22px;
+            background: var(--border);
+            margin: 0 4px;
+        }
+
+        .zoom-badge {
+            min-width: 58px;
+            text-align: center;
+            font-size: 0.82rem;
+            font-weight: bold;
+            color: var(--accent);
+            background: rgba(0,0,0,0.4);
+            padding: 5px 8px;
+            border-radius: 5px;
+            border: 1px solid var(--border);
+        }
+
+        /* Floating Live Sync Indicator on Top Right of Map */
+        .cloud-indicator {
+            position: absolute;
+            top: 14px;
+            right: 16px;
+            background: rgba(22, 15, 30, 0.9);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.76rem;
+            font-weight: bold;
+            z-index: 15;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+        }
+
+        canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+            cursor: grab;
+        }
+
+        .instructions-overlay {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(15, 10, 20, 0.9);
+            border: 1px solid var(--border);
+            padding: 7px 15px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: #ccc;
+            pointer-events: none;
+            white-space: nowrap;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+            z-index: 15;
+        }
+
+        .instructions-overlay span {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Right Sidebar: Editor & Marker List */
+        .editor-box {
+            border: 1px solid var(--accent);
+            background: rgba(255, 102, 0, 0.06);
+        }
+
+        .editor-empty {
+            color: #887a99;
+            font-size: 0.8rem;
+            text-align: center;
+            padding: 12px 5px;
+            font-style: italic;
+        }
+
+        .marker-list-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 200px;
+        }
+
+        .marker-list {
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding-right: 4px;
+            max-height: 380px;
+        }
+
+        .marker-card {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 6px 8px;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .marker-card:hover {
+            border-color: #775b94;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .marker-card.selected {
+            border-color: var(--green-neon);
+            background: rgba(57, 255, 20, 0.08);
+            box-shadow: inset 0 0 8px rgba(57, 255, 20, 0.2);
+        }
+
+        .marker-card-icon {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+            background: rgba(0,0,0,0.4);
+            border-radius: 6px;
+            padding: 3px;
+        }
+
+        .marker-card-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .marker-card-info {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .marker-card-title {
+            font-size: 0.83rem;
+            font-weight: bold;
+            color: #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .marker-card-sub {
+            font-size: 0.7rem;
+            color: #aaa;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .marker-card-actions {
+            display: flex;
+            gap: 4px;
+        }
+
+        .icon-btn {
+            background: rgba(255,255,255,0.08);
+            border: none;
+            color: #ddd;
+            width: 25px;
+            height: 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.78rem;
+        }
+
+        .icon-btn:hover { background: rgba(255,255,255,0.22); }
+        .icon-btn.del:hover { background: #c92a2a; color: #fff; }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            font-size: 0.78rem;
+            color: var(--text);
+            margin-top: 3px;
+        }
+        .checkbox-label input { width: auto; margin: 0; }
+    </style>
+</head>
+<body class="view-only">
+
+    <!-- SIDEBAR SINISTRA: VISIBILE SOLO IN MODALITÀ ?edit=true -->
+    <div class="sidebar-left">
+        <div class="sidebar-header">
+            <h1>🎃 Halloween Editor</h1>
+        </div>
+        
+        <div class="sidebar-content">
+            <!-- 1. Connessione GitHub Auto-Save & Link Magico -->
+            <div class="section">
+                <h3>1. Auto-Save GitHub & Amici</h3>
+                <div id="githubStatus" class="status-badge">
+                    ⏳ Verifica configurazione...
+                </div>
+
+                <label for="ghRepoInput">Repository (username/nome-repo):</label>
+                <input type="text" id="ghRepoInput" placeholder="es. mariorossi/mappa-halloween">
+
+                <div class="row-2col">
+                    <div>
+                        <label for="ghBranchInput">Branch:</label>
+                        <input type="text" id="ghBranchInput" value="main">
+                    </div>
+                    <div>
+                        <label for="ghTokenInput">Token Temporaneo:</label>
+                        <input type="password" id="ghTokenInput" placeholder="github_pat_...">
+                    </div>
+                </div>
+
+                <div class="row-2col">
+                    <button class="btn btn-green" id="forceSaveGithubBtn" style="margin-bottom:4px; padding:7px;">☁️ Salva Ora</button>
+                    <button class="btn btn-purple" id="copyMagicLinkBtn" style="margin-bottom:4px; padding:7px;" title="Copia il link con chiave inclusa da mandare agli amici">🔗 Link Amici</button>
+                </div>
+
+                <label class="checkbox-label">
+                    <input type="checkbox" id="autoSaveCheck" checked> Salvataggio automatico attivo (dopo 2s)
+                </label>
+            </div>
+
+            <!-- 2. Pennello Nuovo Marker -->
+            <div class="section">
+                <h3>2. Aggiungi Nuovo Marker</h3>
+                <label>Scegli Disegno (24 disponibili):</label>
+                <div class="marker-grid" id="markerGrid"></div>
+
+                <label for="defaultLabelInput">Etichetta per il prossimo marker:</label>
+                <input type="text" id="defaultLabelInput" value="" placeholder="Lascia vuoto per nome automatico...">
+
+                <label for="defaultSizeSlider">Dimensione: <span id="defaultSizeVal">50</span>px</label>
+                <input type="range" id="defaultSizeSlider" min="15" max="250" value="50">
+            </div>
+
+            <!-- 3. Immagine Mappa & Backup Manuale -->
+            <div class="section">
+                <h3>3. Sfondo & Backup</h3>
+                <label for="bgUrlInput">Nome File o URL Mappa nel Repo:</label>
+                <input type="text" id="bgUrlInput" placeholder="Es. mappa.jpg">
+
+                <div class="btn file-upload-btn" style="padding:6px; font-size:0.78rem;">
+                    📁 Prova Immagine Locale dal PC
+                    <input type="file" id="bgImageInput" accept="image/*">
+                </div>
+
+                <div class="row-2col" style="margin-top:4px;">
+                    <button class="btn btn-purple" id="exportJsonBtn" style="margin-bottom:0; padding:6px; font-size:0.76rem;">💾 Scarica JSON</button>
+                    <div class="btn btn-purple file-upload-btn" style="margin-bottom:0; padding:6px; font-size:0.76rem;">
+                        📂 Carica JSON
+                        <input type="file" id="importJsonInput" accept=".json">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AREA CENTRALE: VIEWPORT CON ZOOM E PAN (SEMPRE VISIBILE) -->
+    <div class="main-area" id="viewportArea">
+        
+        <div class="zoom-toolbar">
+            <button class="tool-btn active edit-only-ui" id="modeMarkerBtn" title="Clic Sinistro: Piazza o Sposta Marker">
+                📍 Piazza / Modifica
+            </button>
+            <button class="tool-btn edit-only-ui" id="modePanBtn" title="Clic Sinistro: Trascina la Mappa">
+                ✋ Muovi Mappa
+            </button>
+
+            <div class="toolbar-divider edit-only-ui"></div>
+
+            <button class="tool-btn" id="zoomOutBtn" title="Zoom Indietro">➖</button>
+            <div class="zoom-badge" id="zoomLevelText">100%</div>
+            <button class="tool-btn" id="zoomInBtn" title="Zoom Avanti">➕</button>
+
+            <div class="toolbar-divider"></div>
+
+            <button class="tool-btn" id="zoomFitBtn" title="Adatta l'immagine allo schermo">🗖 Adatta</button>
+            <button class="tool-btn" id="zoom100Btn" title="Zoom reale 100%">1:1</button>
+
+            <div class="toolbar-divider"></div>
+
+            <button class="tool-btn" id="toggleLabelsBtn" title="Mostra/Nascondi Etichette">🏷️ Etichette</button>
+            <button class="tool-btn" id="exportImageBtn" title="Scarica la mappa completa come immagine PNG" style="background:var(--accent); border-color:var(--accent); color:#fff;">🖼️ Scarica PNG</button>
+        </div>
+
+        <!-- Indicatore stato salvataggio in alto a destra (solo in Edit Mode) -->
+        <div class="cloud-indicator edit-only-ui" id="cloudIndicator">
+            🔓 Modalità Modifica Attiva
+        </div>
+
+        <canvas id="mapCanvas"></canvas>
+
+        <div class="instructions-overlay" id="instructionsOverlay">
+            <!-- Popolato in base alla modalità -->
+        </div>
+    </div>
+
+    <!-- SIDEBAR DESTRA: VISIBILE SOLO IN MODALITÀ ?edit=true -->
+    <div class="sidebar-right">
+        <div class="sidebar-header">
+            <h1>🛠️ Gestione & Modifica Marker</h1>
+        </div>
+
+        <div class="sidebar-content">
+            <!-- Box Modifica Marker Selezionato -->
+            <div class="section editor-box" id="editorSection">
+                <h3>
+                    <span>✏️ Modifica Selezionato</span>
+                    <small id="selectedIdBadge" style="color:#aaa; font-size:0.7rem;"></small>
+                </h3>
+                
+                <div id="editorEmptyState" class="editor-empty">
+                    Clicca su un marker sulla mappa o nella lista qui sotto per modificarne etichetta, posizione, disegno e dimensione.
+                </div>
+
+                <div id="editorControls" style="display: none;">
+                    <label for="editLabel">Etichetta Univoca del Marker:</label>
+                    <input type="text" id="editLabel" placeholder="Es. Zucca Grande Ingresso">
+
+                    <label for="editType">Cambia Disegno:</label>
+                    <select id="editType"></select>
+
+                    <div class="row-2col">
+                        <div>
+                            <label for="editX">Posizione X (px):</label>
+                            <input type="number" id="editX">
+                        </div>
+                        <div>
+                            <label for="editY">Posizione Y (px):</label>
+                            <input type="number" id="editY">
+                        </div>
+                    </div>
+
+                    <label for="editSize">Zoom / Dimensione Marker: <span id="editSizeVal" style="color:var(--accent); font-weight:bold;">50</span>px</label>
+                    <input type="range" id="editSize" min="15" max="250" value="50">
+
+                    <div class="row-2col" style="margin-top: 6px;">
+                        <button class="btn btn-purple" id="duplicateMarkerBtn" style="margin-bottom:0; padding:7px;">📑 Duplica</button>
+                        <button class="btn btn-danger" id="deleteSelectedBtn" style="margin-bottom:0; padding:7px;">🗑️ Elimina</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lista di tutti i Marker -->
+            <div class="section marker-list-container">
+                <h3>
+                    <span>📋 Lista Tutti i Marker (<span id="markerCount">0</span>)</span>
+                    <button id="clearAllBtn" style="background:none; border:none; color:#ff5555; cursor:pointer; font-size:0.72rem; text-transform:none;">Svuota tutto</button>
+                </h3>
+                
+                <input type="text" id="searchFilterInput" placeholder="🔍 Filtra per etichetta o tipo..." style="margin-bottom: 8px;">
+
+                <div class="marker-list" id="markerList"></div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    const CONFIG_FILE_PATH = 'config.json';
+
+    // --- 24 DISEGNI DI HALLOWEEN (16 SVG Custom + 8 Emoji) ---
+    const DECORATIONS = [
+        {
+            id: 'pumpkin_classic', name: 'Zucca Classica', type: 'svg',
+            svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <path d="M45,22 C45,10 55,8 58,15" stroke="#2d5a27" stroke-width="7" fill="none" stroke-linecap="round"/>
+                <ellipse cx="50" cy="58" rx="42" ry="32" fill="#ff6600"/><ellipse cx="50" cy="58" rx="28" ry="33" fill="#ff7700"/><ellipse cx="50" cy="58" rx="14" ry="34" fill="#ff8800"/>
+                <polygon points="32,48 42,38 45,52" fill="#2b0900"/><polygon points="68,48 58,38 55,52" fill="#2b0900"/><polygon points="50,50 45,58 55,58" fill="#2b0900"/>
+                <path d="M28,66 L36,74 L43,68 L50,75 L57,68 L64,74 L72,66 L64,80 L50,83 L36,80 Z" fill="#2b0900"/>
+            </svg>`
+        },
+        {
+            id: 'pumpkin_evil', name: 'Zucca Maligna', type: 'svg',
+            svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <path d="M48,22 L52,10" stroke="#1e3d1a" stroke-width="6" fill="none" stroke-linecap="round"/>
+                <ellipse cx="50" cy="58" rx="42" ry="32" fill="#d94600"/><ellipse cx="50" cy="58" rx="26" ry="33" fill="#e65000"/>
+                <polygon points="25,42 45,52 32,56" fill="#ffea00"/><polygon points="75,42 55,52 68,56" fill="#ffea00"/>
+                <path d="M25,68 L35,62 L42,72 L50,62 L58,72 L65,62 L75,68 L66,82 L58,73 L50,83 L42,73 L34,82 Z" fill="#ffea00"/>
+            </svg>`
+        },
+        {
+            id: 'pumpkin_purple', name: 'Zucca Stregata', type: 'svg',
+            svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <path d="M48,22 C42,12 55,10 55,10" stroke="#4a2545" stroke-width="6" fill="none" stroke-linecap="round"/>
+                <ellipse cx="50" cy="58" rx="40" ry="31" fill="#701c8c"/><ellipse cx="50" cy="58" rx="24" ry="32" fill="#8425a3"/>
+                <circle cx="36" cy="50" r="7" fill="#39ff14"/><circle cx="64" cy="50" r="7" fill="#39ff14"/>
+                <path d="M32,68 Q50,85 68,68 Q50,74 32,68 Z" fill="#39ff14"/>
+            </svg>`
+        },
+        {
+            id: 'pumpkin_pirate', name: 'Zucca Pirata', type: 'svg',
+            svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <path d="M48,22 L50,12" stroke="#2d5a27" stroke-width="6" fill="none" stroke-linecap="round"/>
+                <ellipse cx="50" cy="58" rx="42" ry="32" fill="#ff5500"/><ellipse cx="50" cy="58" rx="25" ry="33" fill="#ff6d00"/>
+                <path d="M12,42 L88,52" stroke="#111" stroke-width="4"/>
+                <circle cx="36" cy="48" r="9" fill="#111"/>
+                <polygon points="64,40 56,52 72,52" fill="#ffea00"/>
+                <path d="M32,70 L68,70 L62,80 L38,80 Z" fill="#2b0900"/>
+                <rect x="42" y="70" width="6" height="5" fill="#ff6d00"/>
+            </svg>`
+        },
+        {
+            id: 'pumpkin_cyclops', name: 'Zucca Ciclope', type: 'svg',
+            svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <path d="M48,20 Q55,10 60,15" stroke="#2d5a27" stroke-width="6" fill="none" stroke-linecap="round"/>
+                <ellipse cx="50" cy="58" rx="40" ry="32" fill="#2b8a3e"/><ellipse cx="50" cy="58" rx="22" ry="33" fill="#37b24d"/>
+                <circle cx="50" cy="46" r="13" fill="#ffea00"/><circle cx="50" cy="46" r="5" fill="#d90429"/>
+                <path d="M30,72 Q50,62 70,72 Q50,86 30,72 Z" fill="#111"/>
+            </svg>`
+        },
+        {
+            id: 'ghost_classic', name: 'Fantasma Classico', type: 'svg',
+            svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <path d="M22,88 L22,45 C22,18 78,18 78,45 L78,88 L66,76 L55,88 L45,76 L34,88 Z" fill="#f2f7fa" stroke="#b8d0de" stroke-width="3"/>
+                <ellipse cx="40" cy="45" rx="5" ry="8" fill="#111"/><ellipse cx="60" cy="45" rx="5" ry="8" fill="#111"/>
+                <ellipse cx="50" cy="60" rx="6" ry="9" fill="#111"/>
+            </svg>`
+        },
+        {
+            id: 'ghost_scream', name: 'Fantasma Urlante', type: 'svg',
+            svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <path d="M25,90 Q20,45 30,25 Q50,10 70,25 Q80,45 75,90 L62,78 L50,90 L38,78 Z" fill="#e5d4ff" stroke="#9b72cf" stroke-width="3"/>
+                <ellipse cx="39" cy="42" rx="6" ry="10" fill="#1a0033"/><ellipse cx="61" cy="42" rx="6" ry="10" fill="#1a0033"/>
+                <ellipse cx="50" cy="66" rx="9" ry="15" fill="#1a0033"/>
+            </svg>`
+        },
+        {
+            id: 'ghost_king', name: 'Re Fantasma', type: 'svg',
+            svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <path d="M24,90 L24,48 C24,24 76,24 76,48 L76,90 L64,78 L50,90 L36,78 Z" fill="#ffffff" stroke="#ccc" stroke-width="2"/>
+                <polygon points="30,30 34,14 44,24 50,10 56,24 66,14 70,30" fill="#ffd700" stroke="#b8860b" stroke-width="2"/>
+                <circle cx="40" cy="48" r="5" fill="#ff0033"/><circle cx="60" cy="48" r="5" fill="#ff0033"/>
+                <path d="M38,64 L44,60 L50,64 L56,60 L62,64" stroke="#111" stroke-width="3" fill="none"/>
+            </svg>`
+        },
+        {
+            id: 'bat_dark', name: 'Pipistrello Nero', type: 'svg',
+            svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <path d="M50,42 L43,26 L38,40 C20,30 5,40 5,55 C18,50 26,58 30,66 C36,58 43,64 50,74 C57,64 64,58 70,66 C74,58 82,50 95,55 C95,40 80,30 62,40 L57,26 Z" fill="#221c29" stroke="#ff6600" stroke-width="2"/>
+                <circle cx="45" cy="46" r="2.5" fill="#ff0033"/><circle cx="55" cy="46" r="2.5" fill="#ff0033"/>
+            </svg>`
+        },
+        {
+            id: 'bat_vampire', name: 'Pipistrello Viola', type: 'svg',
+            svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <path d="M50,38 L42,20 L35,36 C12,22 2,42 6,62 C18,52 28,60 32,70 C40,58 45,64 50,76 C55,64 60,58 68,70 C72,60 82,52 94,62 C98,42 88,22 65,36 L58,20 Z" fill="#4a154b" stroke="#ffbe0b" stroke-width="2"/>
+                <circle cx="44" cy="45" r="3" fill="#39ff14"/><circle cx="56" cy="45" r="3" fill="#39ff14"/>
+                <polygon points="46,52 48,57 50,52" fill="#fff"/><polygon points="50,52 52,57 54,52" fill="#fff"/>
+            </svg>`
+        },
+        {
+            id: 'witch_hat', name: 'Cappello Strega', type: 'svg',
+            svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <ellipse cx="50" cy="78" rx="44" ry="12" fill="#2b1b38" stroke="#120a1a" stroke-width="2"/>
+                <path d="M26,75 L46,18 L66,12 L56,28 L74,75 Z" fill="#3c264f" stroke="#120a1a" stroke-width="2"/>
+                <path d="M27,68 Q50,76 73,68 L74,75 Q50,83 26,75 Z" fill="#8019a8"/>
+                <rect x="44" y="66" width="12" height="11" fill="#ffd700" rx="2"/><rect x="47" y="69" width="6" height="5" fill="#120a1a"/>
+            </svg>`
+        },
+        {
+            id: 'witch_broom', name: 'Strega in Volo', type: 'svg',
+            svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="42" fill="#ffd60a" opacity="0.9"/>
+                <line x1="12" y1="68" x2="85" y2="38" stroke="#111" stroke-width="4"/>
+                <polygon points="10,68 24,58 28,74" fill="#111"/>
+                <polygon points="42,54 58,46 50,24" fill="#111"/>
+                <polygon points="36,30 62,22 48,14" fill="#111"/>
+                <circle cx="52" cy="30" r="5" fill="#111"/>
+            </svg>`
+        },
+        {
+            id: 'cauldron', name: 'Calderone Magico', type: 'svg',
+            svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <ellipse cx="50" cy="62" rx="36" ry="26" fill="#222" stroke="#444" stroke-width="2"/>
+                <rect x="20" y="36" width="60" height="8" rx="4" fill="#333"/>
+                <ellipse cx="50" cy="36" rx="26" ry="6" fill="#39ff14"/>
+                <circle cx="42" cy="26" r="5" fill="#39ff14"/><circle cx="56" cy="20" r="7" fill="#39ff14"/><circle cx="48" cy="12" r="4" fill="#39ff14"/>
+            </svg>`
+        },
+        {
+            id: 'tombstone', name: 'Lapide RIP', type: 'svg',
+            svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <path d="M24,86 L24,42 C24,16 76,16 76,42 L76,86 Z" fill="#7f8c8d" stroke="#2c3e50" stroke-width="3"/>
+                <rect x="16" y="82" width="68" height="10" rx="3" fill="#576574"/>
+                <text x="50" y="54" font-family="serif" font-size="18" font-weight="bold" fill="#2c3e50" text-anchor="middle">R.I.P.</text>
+                <line x1="36" y1="66" x2="64" y2="66" stroke="#2c3e50" stroke-width="2"/>
+            </svg>`
+        },
+        {
+            id: 'black_cat', name: 'Gatto Nero', type: 'svg',
+            svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <path d="M35,88 L35,58 C35,45 65,45 65,58 L65,88 Z" fill="#111"/>
+                <circle cx="50" cy="40" r="18" fill="#111"/>
+                <polygon points="34,30 36,12 46,24" fill="#111"/><polygon points="66,30 64,12 54,24" fill="#111"/>
+                <ellipse cx="43" cy="38" rx="4" ry="6" fill="#ffea00"/><ellipse cx="57" cy="38" rx="4" ry="6" fill="#ffea00"/>
+                <path d="M64,82 Q85,75 82,52" stroke="#111" stroke-width="6" fill="none" stroke-linecap="round"/>
+            </svg>`
+        },
+        {
+            id: 'spooky_candle', name: 'Candela Accesa', type: 'svg',
+            svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <rect x="36" y="42" width="28" height="46" rx="3" fill="#fff3b0" stroke="#e09f3e" stroke-width="2"/>
+                <path d="M36,44 Q42,58 45,50 Q50,64 55,48 Q60,56 64,44" fill="#fff" stroke="#e09f3e" stroke-width="1"/>
+                <path d="M50,12 C40,26 44,38 50,38 C56,38 60,26 50,12 Z" fill="#ff9f1c"/>
+                <path d="M50,20 C46,28 47,36 50,36 C53,36 54,28 50,20 Z" fill="#ffbf69"/>
+            </svg>`
+        },
+        { id: 'emoji_witch', name: 'Strega Emoji', type: 'emoji', char: '🧙‍♀️' },
+        { id: 'emoji_skull', name: 'Teschio', type: 'emoji', char: '💀' },
+        { id: 'emoji_spider', name: 'Ragno', type: 'emoji', char: '🕷️' },
+        { id: 'emoji_web', name: 'Ragnatela', type: 'emoji', char: '🕸️' },
+        { id: 'emoji_zombie', name: 'Zombie', type: 'emoji', char: '🧟' },
+        { id: 'emoji_vampire', name: 'Vampiro', type: 'emoji', char: '🧛' },
+        { id: 'emoji_eye', name: 'Occhio', type: 'emoji', char: '👁️' },
+        { id: 'emoji_candy', name: 'Caramella', type: 'emoji', char: '🍬' }
+    ];
+
+    // --- STATO DELL'APPLICAZIONE ---
+    const viewportArea = document.getElementById('viewportArea');
+    const canvas = document.getElementById('mapCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    let isEditMode = false;
+    let mapWidth = 1000;
+    let mapHeight = 680;
+    let backgroundImg = null;
+    let backgroundImageUrl = '';
+
+    // Stato Camera (Zoom & Pan)
+    let viewZoom = 1;
+    let viewPanX = 0;
+    let viewPanY = 0;
+    const MIN_ZOOM = 0.15;
+    const MAX_ZOOM = 6.0;
+
+    let interactionMode = 'pan'; // 'pan' di default per visitatori, 'marker' per editor
+    let isSpacePressed = false;
+    let isPanning = false;
+    let panStartX = 0;
+    let panStartY = 0;
+
+    // Stato Marker
+    let markers = [];
+    let selectedDecoration = DECORATIONS[0];
+    let selectedMarkerId = null;
+    let markerCounter = 1;
+    let showLabels = true;
+
+    // Drag & Drop Marker
+    let isDraggingMarker = false;
+    let draggedMarker = null;
+    let dragOffsetX = 0;
+    let dragOffsetY = 0;
+
+    // Auto-Save Timer
+    let autoSaveTimer = null;
+    let isSavingToGitHub = false;
+
+    // Pre-caricamento immagini SVG
+    const loadedSvgImages = {};
+    DECORATIONS.forEach(dec => {
+        if (dec.type === 'svg') {
+            const img = new Image();
+            img.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(dec.svg);
+            img.onload = () => drawCanvas();
+            loadedSvgImages[dec.id] = img;
+        }
+    });
+
+    // --- CONTROLLO PARAMETRI URL E MODALITÀ EDIT / VIEW ---
+    function checkUrlParamsAndSetupMode() {
+        const params = new URLSearchParams(window.location.search);
+        const editParam = params.get('edit');
+        const keyParam = params.get('key');
+        const repoParam = params.get('repo');
+        const branchParam = params.get('branch');
+
+        // Se nel link c'è una chiave (?key=...), salvala nel browser dell'amico e pulisci l'URL!
+        if (keyParam) {
+            localStorage.setItem('hw_gh_token', keyParam.trim());
+        }
+        if (repoParam) {
+            localStorage.setItem('hw_gh_repo', repoParam.trim());
+        }
+        if (branchParam) {
+            localStorage.setItem('hw_gh_branch', branchParam.trim());
+        }
+
+        if (editParam !== null || keyParam !== null) {
+            isEditMode = true;
+            document.body.classList.remove('view-only');
+            interactionMode = 'marker';
+
+            // Se c'era la chiave in chiaro nell'URL, la nascondiamo subito dalla barra degli indirizzi
+            if (keyParam) {
+                const cleanUrl = window.location.pathname + '?edit=true';
+                window.history.replaceState({}, document.title, cleanUrl);
+            }
+        } else {
+            isEditMode = false;
+            document.body.classList.add('view-only');
+            interactionMode = 'pan';
+        }
+
+        // Rileva automaticamente username/repo se siamo su github.io
+        let savedRepo = localStorage.getItem('hw_gh_repo') || '';
+        if (!savedRepo && window.location.hostname.endsWith('.github.io')) {
+            const owner = window.location.hostname.split('.')[0];
+            const pathParts = window.location.pathname.split('/').filter(Boolean);
+            if (owner && pathParts.length > 0) {
+                savedRepo = `${owner}/${pathParts[0]}`;
+                localStorage.setItem('hw_gh_repo', savedRepo);
+            }
+        }
+
+        document.getElementById('ghRepoInput').value = savedRepo;
+        document.getElementById('ghBranchInput').value = localStorage.getItem('hw_gh_branch') || 'main';
+        document.getElementById('ghTokenInput').value = localStorage.getItem('hw_gh_token') || '';
+
+        const instr = document.getElementById('instructionsOverlay');
+        if (isEditMode) {
+            instr.innerHTML = `<span>Clic Sinistro:</span> Piazza / Sposta Marker &nbsp;|&nbsp; <span>Rotellina:</span> Zoom Mappa &nbsp;|&nbsp; <span>Spazio + Trascina:</span> Muovi Mappa &nbsp;|&nbsp; <span>Clic Destro:</span> Elimina`;
+        } else {
+            instr.innerHTML = `<span>Trascina con il Mouse:</span> Muovi la Mappa &nbsp;|&nbsp; <span>Rotellina:</span> Zoom Avanti / Indietro`;
+        }
+    }
+
+    // --- GITHUB API: LETTURA E AUTO-SAVE ---
+    function setStatus(type, htmlText, indicatorText) {
+        const statusEl = document.getElementById('githubStatus');
+        if (statusEl) {
+            statusEl.className = 'status-badge ' + type;
+            statusEl.innerHTML = htmlText;
+        }
+        const indEl = document.getElementById('cloudIndicator');
+        if (indEl && indicatorText) {
+            indEl.innerHTML = indicatorText;
+        }
+    }
+
+    // Codifica/Decodifica Base64 compatibile con Emoji e caratteri UTF-8 per GitHub API
+    function utf8ToBase64(str) {
+        return btoa(unescape(encodeURIComponent(str)));
+    }
+    function base64ToUtf8(b64) {
+        return decodeURIComponent(escape(atob(b64.replace(/\s/g, ''))));
+    }
+
+    async function loadInitialConfig() {
+        const repo = document.getElementById('ghRepoInput').value.trim();
+        const branch = document.getElementById('ghBranchInput').value.trim() || 'main';
+        const token = document.getElementById('ghTokenInput').value.trim();
+
+        // 1. Se siamo in Edit Mode e abbiamo Repo + Token, leggiamo direttamente dall'API GitHub (zero ritardo cache!)
+        if (isEditMode && repo && token) {
+            try {
+                setStatus('saving', '⏳ Lettura in tempo reale da GitHub API...', '⏳ Caricamento...');
+                const apiUrl = `https://api.github.com/repos/${repo}/contents/${CONFIG_FILE_PATH}?ref=${encodeURIComponent(branch)}`;
+                const res = await fetch(apiUrl, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    },
+                    cache: 'no-store'
+                });
+                if (res.ok) {
+                    const fileObj = await res.json();
+                    const jsonStr = base64ToUtf8(fileObj.content);
+                    const data = JSON.parse(jsonStr);
+                    applyConfigurationData(data);
+                    setStatus('ok', `✅ Connesso a <b>${repo}</b>! Auto-Save attivo.`, '✅ Pronto (Auto-Save ON)');
+                    return;
+                }
+            } catch (e) {
+                console.warn('Fallback su fetch statico:', e);
+            }
+        }
+
+        // 2. Lettura standard pubblica da ./config.json (per tutti i visitatori normali)
+        try {
+            const response = await fetch(`./${CONFIG_FILE_PATH}?t=${Date.now()}`, { cache: 'no-store' });
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            const data = await response.json();
+            applyConfigurationData(data);
+            if (isEditMode) {
+                if (token && repo) {
+                    setStatus('ok', `✅ Mappa caricata. Pronto a salvare su <b>${repo}</b>.`, '✅ Auto-Save Pronto');
+                } else {
+                    setStatus('warn', `⚠️ Inserisci <b>Repository</b> e <b>Token</b> qui sotto per attivare il salvataggio automatico.`, '⚠️ Token Mancante');
+                }
+            }
+        } catch (err) {
+            if (isEditMode) {
+                setStatus('warn', `ℹ️ Nessun <b>config.json</b> trovato. Piazza il primo marker e clicca "Salva Ora" per crearlo automaticamente!`, 'ℹ️ Nuovo Config');
+            }
+        }
+    }
+
+    // Pianifica il salvataggio automatico (attende 2 secondi dall'ultima modifica)
+    function scheduleAutoSave() {
+        if (!isEditMode) return;
+        if (!document.getElementById('autoSaveCheck').checked) return;
+
+        const repo = document.getElementById('ghRepoInput').value.trim();
+        const token = document.getElementById('ghTokenInput').value.trim();
+        if (!repo || !token) {
+            setStatus('warn', '⚠️ Modifica effettuata, ma mancano Repo o Token per salvare in automatico.', '⚠️ Non salvato (Manca Token)');
+            return;
+        }
+
+        setStatus('saving', '⏳ Modifica rilevata, salvataggio tra 2 secondi...', '✍️ Modificato...');
+        if (autoSaveTimer) clearTimeout(autoSaveTimer);
+        autoSaveTimer = setTimeout(() => {
+            saveConfigToGitHub();
+        }, 2000);
+    }
+
+    async function saveConfigToGitHub() {
+        if (isSavingToGitHub) return;
+        const repo = document.getElementById('ghRepoInput').value.trim();
+        const branch = document.getElementById('ghBranchInput').value.trim() || 'main';
+        const token = document.getElementById('ghTokenInput').value.trim();
+
+        if (!repo || !token) {
+            alert('Inserisci sia il nome del Repository (es. tuonome/mappa) sia il Token di GitHub!');
+            return;
+        }
+
+        isSavingToGitHub = true;
+        setStatus('saving', `☁️ Salvataggio su GitHub (<b>${repo}</b>) in corso...`, '☁️ Salvataggio in corso...');
+
+        const exportData = {
+            version: 5,
+            updatedAt: new Date().toISOString(),
+            backgroundImage: document.getElementById('bgUrlInput').value.trim() || "",
+            mapWidth: mapWidth,
+            mapHeight: mapHeight,
+            markers: markers
+        };
+
+        const contentBase64 = utf8ToBase64(JSON.stringify(exportData, null, 2));
+        const apiUrl = `https://api.github.com/repos/${repo}/contents/${CONFIG_FILE_PATH}`;
+
+        try {
+            // 1. Recupera lo SHA attuale del file config.json (richiesto da GitHub per sovrascrivere)
+            let currentSha = null;
+            const getRes = await fetch(`${apiUrl}?ref=${encodeURIComponent(branch)}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Accept': 'application/vnd.github.v3+json'
+                },
+                cache: 'no-store'
+            });
+
+            if (getRes.ok) {
+                const fileData = await getRes.json();
+                currentSha = fileData.sha;
+            } else if (getRes.status !== 404) {
+                const errJson = await getRes.json().catch(() => ({}));
+                throw new Error(errJson.message || `Errore lettura SHA (${getRes.status})`);
+            }
+
+            // 2. Invia il nuovo config.json tramite PUT
+            const bodyPayload = {
+                message: `🎃 Aggiornamento mappa (${markers.length} marker)`,
+                content: contentBase64,
+                branch: branch
+            };
+            if (currentSha) bodyPayload.sha = currentSha;
+
+            const putRes = await fetch(apiUrl, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Accept': 'application/vnd.github.v3+json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(bodyPayload)
+            });
+
+            if (!putRes.ok) {
+                const errJson = await putRes.json().catch(() => ({}));
+                throw new Error(errJson.message || `Errore HTTP ${putRes.status}`);
+            }
+
+            const timeStr = new Date().toLocaleTimeString('it-IT');
+            setStatus('ok', `✅ Salvato automaticamente su GitHub alle <b>${timeStr}</b>!`, `✅ Salvato (${timeStr})`);
+        } catch (err) {
+            console.error(err);
+            setStatus('err', `❌ Errore salvataggio: ${escapeHtml(err.message)}`, '❌ Errore Salvataggio');
+        } finally {
+            isSavingToGitHub = false;
+        }
+    }
+
+    function applyConfigurationData(data) {
+        if (!data || !Array.isArray(data.markers)) return;
+
+        if (data.mapWidth || data.canvasWidth) mapWidth = data.mapWidth || data.canvasWidth;
+        if (data.mapHeight || data.canvasHeight) mapHeight = data.mapHeight || data.canvasHeight;
+
+        markers = data.markers.map((m, idx) => ({
+            id: m.id || (Date.now() + Math.random()),
+            shortId: m.shortId || (idx + 1),
+            typeId: m.typeId || 'pumpkin_classic',
+            name: m.name || 'Marker',
+            label: m.label !== undefined ? m.label : (m.name || `Marker #${idx + 1}`),
+            x: Number(m.x) || 0,
+            y: Number(m.y) || 0,
+            size: Number(m.size) || 50
+        }));
+
+        const maxShortId = markers.reduce((max, m) => Math.max(max, m.shortId || 0), 0);
+        markerCounter = maxShortId + 1;
+
+        if (data.backgroundImage) {
+            backgroundImageUrl = data.backgroundImage;
+            document.getElementById('bgUrlInput').value = backgroundImageUrl;
+            loadBackgroundFromUrl(backgroundImageUrl);
+        } else {
+            fitMapToScreen();
+        }
+
+        selectMarker(null);
+    }
+
+    function loadBackgroundFromUrl(url) {
+        if (!url) {
+            backgroundImg = null;
+            drawCanvas();
+            return;
+        }
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+        img.onload = () => {
+            backgroundImg = img;
+            mapWidth = img.width;
+            mapHeight = img.height;
+            fitMapToScreen();
+        };
+        img.onerror = () => {
+            console.warn('Impossibile caricare l\'immagine di sfondo:', url);
+            fitMapToScreen();
+        };
+        img.src = url;
+    }
+
+    // --- GESTIONE VIEWPORT, ZOOM E PAN ---
+    function resizeViewport() {
+        canvas.width = viewportArea.clientWidth;
+        canvas.height = viewportArea.clientHeight;
+        drawCanvas();
+    }
+
+    window.addEventListener('resize', resizeViewport);
+
+    function fitMapToScreen() {
+        const pad = 70;
+        const availW = Math.max(100, canvas.width - pad * 2);
+        const availH = Math.max(100, canvas.height - pad * 2);
+        viewZoom = Math.min(availW / mapWidth, availH / mapHeight, 1.5);
+        viewPanX = (canvas.width - mapWidth * viewZoom) / 2;
+        viewPanY = (canvas.height - mapHeight * viewZoom) / 2;
+        updateZoomUI();
+        drawCanvas();
+    }
+
+    function setZoom100() {
+        viewZoom = 1;
+        viewPanX = (canvas.width - mapWidth) / 2;
+        viewPanY = (canvas.height - mapHeight) / 2;
+        updateZoomUI();
+        drawCanvas();
+    }
+
+    function zoomAtPoint(factor, screenX, screenY) {
+        const newZoom = Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, viewZoom * factor));
+        const worldX = (screenX - viewPanX) / viewZoom;
+        const worldY = (screenY - viewPanY) / viewZoom;
+
+        viewZoom = newZoom;
+        viewPanX = screenX - worldX * viewZoom;
+        viewPanY = screenY - worldY * viewZoom;
+
+        updateZoomUI();
+        drawCanvas();
+    }
+
+    function centerOnMarker(m) {
+        if (!m) return;
+        if (viewZoom < 0.8) viewZoom = 1;
+        viewPanX = (canvas.width / 2) - (m.x * viewZoom);
+        viewPanY = (canvas.height / 2) - (m.y * viewZoom);
+        updateZoomUI();
+        drawCanvas();
+    }
+
+    function updateZoomUI() {
+        document.getElementById('zoomLevelText').textContent = `${Math.round(viewZoom * 100)}%`;
+    }
+
+    function setInteractionMode(mode) {
+        interactionMode = mode;
+        document.getElementById('modeMarkerBtn').classList.toggle('active', mode === 'marker');
+        document.getElementById('modePanBtn').classList.toggle('active', mode === 'pan');
+        updateCursor();
+    }
+
+    function updateCursor(hoveringMarker = false) {
+        if (isPanning) {
+            canvas.style.cursor = 'grabbing';
+        } else if (!isEditMode || interactionMode === 'pan' || isSpacePressed) {
+            canvas.style.cursor = 'grab';
+        } else if (hoveringMarker) {
+            canvas.style.cursor = 'move';
+        } else {
+            canvas.style.cursor = 'crosshair';
+        }
+    }
+
+    function getScreenPos(evt) {
+        const rect = canvas.getBoundingClientRect();
+        return {
+            x: evt.clientX - rect.left,
+            y: evt.clientY - rect.top
+        };
+    }
+
+    function screenToWorld(sx, sy) {
+        return {
+            x: (sx - viewPanX) / viewZoom,
+            y: (sy - viewPanY) / viewZoom
+        };
+    }
+
+    // --- INIZIALIZZAZIONE UI ---
+    function initUI() {
+        checkUrlParamsAndSetupMode();
+
+        const grid = document.getElementById('markerGrid');
+        const editTypeSelect = document.getElementById('editType');
+
+        DECORATIONS.forEach((dec, index) => {
+            const div = document.createElement('div');
+            div.className = 'marker-option' + (index === 0 ? ' active' : '');
+            div.onclick = () => {
+                selectedDecoration = dec;
+                document.querySelectorAll('.marker-option').forEach(el => el.classList.remove('active'));
+                div.classList.add('active');
+            };
+
+            if (dec.type === 'svg') {
+                const img = document.createElement('img');
+                img.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(dec.svg);
+                div.appendChild(img);
+            } else {
+                const span = document.createElement('span');
+                span.className = 'emoji-icon';
+                span.textContent = dec.char;
+                div.appendChild(span);
+            }
+
+            const label = document.createElement('small');
+            label.textContent = dec.name;
+            div.appendChild(label);
+            grid.appendChild(div);
+
+            const opt = document.createElement('option');
+            opt.value = dec.id;
+            opt.textContent = dec.name;
+            editTypeSelect.appendChild(opt);
+        });
+
+        resizeViewport();
+        fitMapToScreen();
+        updateMarkerListUI();
+        loadInitialConfig();
+    }
+
+    // --- RENDERING DELLA SCENA ---
+    function renderSceneToContext(targetCtx, isExport = false) {
+        if (backgroundImg) {
+            targetCtx.drawImage(backgroundImg, 0, 0, mapWidth, mapHeight);
+        } else {
+            const grad = targetCtx.createLinearGradient(0, 0, 0, mapHeight);
+            grad.addColorStop(0, '#180c29');
+            grad.addColorStop(1, '#361a57');
+            targetCtx.fillStyle = grad;
+            targetCtx.fillRect(0, 0, mapWidth, mapHeight);
+
+            targetCtx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+            targetCtx.lineWidth = 1;
+            for(let x=0; x<mapWidth; x+=40) { targetCtx.beginPath(); targetCtx.moveTo(x,0); targetCtx.lineTo(x,mapHeight); targetCtx.stroke(); }
+            for(let y=0; y<mapHeight; y+=40) { targetCtx.beginPath(); targetCtx.moveTo(0,y); targetCtx.lineTo(mapWidth,y); targetCtx.stroke(); }
+
+            if (!isExport && markers.length === 0) {
+                targetCtx.fillStyle = 'rgba(255, 102, 0, 0.6)';
+                targetCtx.font = 'bold 24px sans-serif';
+                targetCtx.textAlign = 'center';
+                targetCtx.fillText(isEditMode ? 'Clicca qui per piazzare il primo marker!' : 'Mappa di Halloween in caricamento...', mapWidth / 2, mapHeight / 2);
+            }
+        }
+
+        if (!isExport) {
+            targetCtx.strokeStyle = '#ff6600';
+            targetCtx.lineWidth = 2 / viewZoom;
+            targetCtx.strokeRect(0, 0, mapWidth, mapHeight);
+        }
+
+        markers.forEach(m => {
+            const dec = DECORATIONS.find(d => d.id === m.typeId) || DECORATIONS[0];
+            const half = m.size / 2;
+
+            if (!isExport && isEditMode && m.id === selectedMarkerId) {
+                targetCtx.save();
+                targetCtx.beginPath();
+                targetCtx.arc(m.x, m.y, half + 8, 0, Math.PI * 2);
+                targetCtx.strokeStyle = '#39ff14';
+                targetCtx.lineWidth = 2.5;
+                targetCtx.setLineDash([6, 4]);
+                targetCtx.stroke();
+                targetCtx.fillStyle = 'rgba(57, 255, 20, 0.14)';
+                targetCtx.fill();
+                targetCtx.restore();
+            }
+
+            targetCtx.save();
+            targetCtx.shadowColor = 'rgba(0, 0, 0, 0.8)';
+            targetCtx.shadowBlur = 8;
+            targetCtx.shadowOffsetX = 2;
+            targetCtx.shadowOffsetY = 3;
+
+            if (dec.type === 'svg') {
+                const img = loadedSvgImages[dec.id];
+                if (img && img.complete) {
+                    targetCtx.drawImage(img, m.x - half, m.y - half, m.size, m.size);
+                }
+            } else if (dec.type === 'emoji') {
+                targetCtx.font = `${m.size * 0.85}px sans-serif`;
+                targetCtx.textAlign = 'center';
+                targetCtx.textBaseline = 'middle';
+                targetCtx.fillText(dec.char, m.x, m.y);
+            }
+            targetCtx.restore();
+
+            if (showLabels && m.label) {
+                targetCtx.save();
+                targetCtx.font = 'bold 12px sans-serif';
+                const textWidth = targetCtx.measureText(m.label).width;
+                const padX = 7;
+                const boxWidth = textWidth + padX * 2;
+                const boxHeight = 20;
+                const boxX = m.x - boxWidth / 2;
+                const boxY = m.y + half + 5;
+
+                const isSelected = (!isExport && isEditMode && m.id === selectedMarkerId);
+
+                targetCtx.fillStyle = 'rgba(18, 10, 28, 0.88)';
+                targetCtx.strokeStyle = isSelected ? '#39ff14' : '#ff6600';
+                targetCtx.lineWidth = isSelected ? 2 : 1.5;
+                targetCtx.beginPath();
+                targetCtx.roundRect(boxX, boxY, boxWidth, boxHeight, 5);
+                targetCtx.fill();
+                targetCtx.stroke();
+
+                targetCtx.fillStyle = '#ffffff';
+                targetCtx.textAlign = 'center';
+                targetCtx.textBaseline = 'middle';
+                targetCtx.fillText(m.label, m.x, boxY + boxHeight / 2);
+                targetCtx.restore();
+            }
+        });
+    }
+
+    function drawCanvas() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.save();
+        ctx.translate(viewPanX, viewPanY);
+        ctx.scale(viewZoom, viewZoom);
+
+        ctx.save();
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.85)';
+        ctx.shadowBlur = 30 / viewZoom;
+        ctx.fillStyle = '#000';
+        ctx.fillRect(0, 0, mapWidth, mapHeight);
+        ctx.restore();
+
+        renderSceneToContext(ctx, false);
+        ctx.restore();
+    }
+
+    // --- GESTIONE SELEZIONE E EDITOR DESTRO ---
+    function selectMarker(id) {
+        selectedMarkerId = id;
+        const m = markers.find(item => item.id === id);
+
+        const emptyState = document.getElementById('editorEmptyState');
+        const controls = document.getElementById('editorControls');
+        const badge = document.getElementById('selectedIdBadge');
+
+        if (!m) {
+            emptyState.style.display = 'block';
+            controls.style.display = 'none';
+            badge.textContent = '';
+        } else {
+            emptyState.style.display = 'none';
+            controls.style.display = 'block';
+            badge.textContent = `ID #${m.shortId || ''}`;
+
+            document.getElementById('editLabel').value = m.label || '';
+            document.getElementById('editType').value = m.typeId;
+            document.getElementById('editX').value = Math.round(m.x);
+            document.getElementById('editY').value = Math.round(m.y);
+            document.getElementById('editSize').value = m.size;
+            document.getElementById('editSizeVal').textContent = m.size;
+        }
+
+        updateMarkerListUI();
+        drawCanvas();
+    }
+
+    document.getElementById('editLabel').addEventListener('input', (e) => {
+        const m = markers.find(x => x.id === selectedMarkerId);
+        if (m) { m.label = e.target.value; updateMarkerListUI(); drawCanvas(); scheduleAutoSave(); }
+    });
+
+    document.getElementById('editType').addEventListener('change', (e) => {
+        const m = markers.find(x => x.id === selectedMarkerId);
+        const dec = DECORATIONS.find(d => d.id === e.target.value);
+        if (m && dec) {
+            m.typeId = dec.id;
+            m.name = dec.name;
+            updateMarkerListUI();
+            drawCanvas();
+            scheduleAutoSave();
+        }
+    });
+
+    document.getElementById('editX').addEventListener('input', (e) => {
+        const m = markers.find(x => x.id === selectedMarkerId);
+        if (m) { m.x = parseInt(e.target.value, 10) || 0; updateMarkerListUI(); drawCanvas(); scheduleAutoSave(); }
+    });
+
+    document.getElementById('editY').addEventListener('input', (e) => {
+        const m = markers.find(x => x.id === selectedMarkerId);
+        if (m) { m.y = parseInt(e.target.value, 10) || 0; updateMarkerListUI(); drawCanvas(); scheduleAutoSave(); }
+    });
+
+    document.getElementById('editSize').addEventListener('input', (e) => {
+        const m = markers.find(x => x.id === selectedMarkerId);
+        if (m) {
+            m.size = parseInt(e.target.value, 10) || 45;
+            document.getElementById('editSizeVal').textContent = m.size;
+            updateMarkerListUI();
+            drawCanvas();
+            scheduleAutoSave();
+        }
+    });
+
+    document.getElementById('duplicateMarkerBtn').addEventListener('click', () => {
+        const m = markers.find(x => x.id === selectedMarkerId);
+        if (!m) return;
+        const copy = {
+            ...m,
+            id: Date.now() + Math.random(),
+            shortId: markerCounter++,
+            label: m.label + ' (Copia)',
+            x: Math.min(mapWidth - 10, m.x + 25),
+            y: Math.min(mapHeight - 10, m.y + 25)
+        };
+        markers.push(copy);
+        selectMarker(copy.id);
+        scheduleAutoSave();
+    });
+
+    document.getElementById('deleteSelectedBtn').addEventListener('click', () => {
+        if (!selectedMarkerId) return;
+        markers = markers.filter(x => x.id !== selectedMarkerId);
+        selectMarker(null);
+        scheduleAutoSave();
+    });
+
+    // --- INTERAZIONE MOUSE E TASTIERA SULLA MAPPA ---
+    function findMarkerAt(worldX, worldY) {
+        for (let i = markers.length - 1; i >= 0; i--) {
+            const m = markers[i];
+            if (Math.hypot(m.x - worldX, m.y - worldY) <= m.size / 2) {
+                return { marker: m, index: i };
+            }
+        }
+        return null;
+    }
+
+    window.addEventListener('keydown', (e) => {
+        if (e.code === 'Space' && !['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) {
+            e.preventDefault();
+            if (!isSpacePressed) {
+                isSpacePressed = true;
+                updateCursor();
+            }
+        }
+    });
+
+    window.addEventListener('keyup', (e) => {
+        if (e.code === 'Space') {
+            isSpacePressed = false;
+            updateCursor();
+        }
+    });
+
+    canvas.addEventListener('mousedown', (e) => {
+        const screenPos = getScreenPos(e);
+        const worldPos = screenToWorld(screenPos.x, screenPos.y);
+
+        // In modalità sola visualizzazione (oppure Pan / Spazio / Tasto centrale) il mouse muove sempre la mappa
+        if (!isEditMode || e.button === 1 || (e.button === 0 && (interactionMode === 'pan' || isSpacePressed))) {
+            e.preventDefault();
+            isPanning = true;
+            panStartX = screenPos.x - viewPanX;
+            panStartY = screenPos.y - viewPanY;
+            updateCursor();
+            return;
+        }
+
+        const found = findMarkerAt(worldPos.x, worldPos.y);
+
+        // Clic Destro in Edit Mode -> Elimina
+        if (e.button === 2) {
+            if (found) {
+                const delId = found.marker.id;
+                markers.splice(found.index, 1);
+                if (selectedMarkerId === delId) selectMarker(null);
+                else { updateMarkerListUI(); drawCanvas(); }
+                scheduleAutoSave();
+            }
+            return;
+        }
+
+        // Clic Sinistro in Edit Mode -> Sposta o Crea
+        if (e.button === 0 && interactionMode === 'marker') {
+            if (found) {
+                isDraggingMarker = true;
+                draggedMarker = found.marker;
+                dragOffsetX = worldPos.x - draggedMarker.x;
+                dragOffsetY = worldPos.y - draggedMarker.y;
+                markers.splice(found.index, 1);
+                markers.push(draggedMarker);
+                selectMarker(draggedMarker.id);
+            } else {
+                const customLabel = document.getElementById('defaultLabelInput').value.trim();
+                const autoLabel = `${selectedDecoration.name} #${markerCounter}`;
+                const size = parseInt(document.getElementById('defaultSizeSlider').value, 10) || 50;
+
+                const newMarker = {
+                    id: Date.now() + Math.random(),
+                    shortId: markerCounter++,
+                    typeId: selectedDecoration.id,
+                    name: selectedDecoration.name,
+                    label: customLabel || autoLabel,
+                    x: Math.round(worldPos.x),
+                    y: Math.round(worldPos.y),
+                    size: size
+                };
+
+                markers.push(newMarker);
+                selectMarker(newMarker.id);
+                scheduleAutoSave();
+            }
+        }
+    });
+
+    canvas.addEventListener('mousemove', (e) => {
+        const screenPos = getScreenPos(e);
+
+        if (isPanning) {
+            viewPanX = screenPos.x - panStartX;
+            viewPanY = screenPos.y - panStartY;
+            drawCanvas();
+            return;
+        }
+
+        if (!isEditMode) return;
+
+        const worldPos = screenToWorld(screenPos.x, screenPos.y);
+
+        if (isDraggingMarker && draggedMarker) {
+            draggedMarker.x = Math.round(worldPos.x - dragOffsetX);
+            draggedMarker.y = Math.round(worldPos.y - dragOffsetY);
+            if (selectedMarkerId === draggedMarker.id) {
+                document.getElementById('editX').value = draggedMarker.x;
+                document.getElementById('editY').value = draggedMarker.y;
+            }
+            drawCanvas();
+        } else {
+            const found = findMarkerAt(worldPos.x, worldPos.y);
+            updateCursor(!!found);
+        }
+    });
+
+    window.addEventListener('mouseup', () => {
+        if (isPanning) {
+            isPanning = false;
+            updateCursor();
+        }
+        if (isDraggingMarker) {
+            isDraggingMarker = false;
+            draggedMarker = null;
+            updateMarkerListUI();
+            scheduleAutoSave();
+        }
+    });
+
+    canvas.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const screenPos = getScreenPos(e);
+        const worldPos = screenToWorld(screenPos.x, screenPos.y);
+
+        if (isEditMode && e.shiftKey) {
+            const found = findMarkerAt(worldPos.x, worldPos.y);
+            if (found) {
+                const delta = e.deltaY < 0 ? 5 : -5;
+                found.marker.size = Math.min(250, Math.max(15, found.marker.size + delta));
+                selectMarker(found.marker.id);
+                scheduleAutoSave();
+                return;
+            }
+        }
+
+        const zoomFactor = e.deltaY < 0 ? 1.14 : (1 / 1.14);
+        zoomAtPoint(zoomFactor, screenPos.x, screenPos.y);
+    }, { passive: false });
+
+    canvas.addEventListener('contextmenu', e => e.preventDefault());
+
+    // Pulsanti Barra Strumenti Zoom & Pan
+    document.getElementById('modeMarkerBtn').addEventListener('click', () => setInteractionMode('marker'));
+    document.getElementById('modePanBtn').addEventListener('click', () => setInteractionMode('pan'));
+    document.getElementById('zoomInBtn').addEventListener('click', () => zoomAtPoint(1.25, canvas.width / 2, canvas.height / 2));
+    document.getElementById('zoomOutBtn').addEventListener('click', () => zoomAtPoint(0.8, canvas.width / 2, canvas.height / 2));
+    document.getElementById('zoomFitBtn').addEventListener('click', fitMapToScreen);
+    document.getElementById('zoom100Btn').addEventListener('click', setZoom100);
+    document.getElementById('toggleLabelsBtn').addEventListener('click', () => {
+        showLabels = !showLabels;
+        drawCanvas();
+    });
+
+    // --- LISTA MARKER NELLA SIDEBAR DESTRA ---
+    function updateMarkerListUI() {
+        if (!isEditMode) return;
+        const listEl = document.getElementById('markerList');
+        const countEl = document.getElementById('markerCount');
+        const filterText = document.getElementById('searchFilterInput').value.toLowerCase().trim();
+
+        countEl.textContent = markers.length;
+
+        const filtered = markers.filter(m => {
+            if (!filterText) return true;
+            return (m.label && m.label.toLowerCase().includes(filterText)) ||
+                   (m.name && m.name.toLowerCase().includes(filterText));
+        });
+
+        if (filtered.length === 0) {
+            listEl.innerHTML = `<p style="color:#777; text-align:center; padding: 20px 0; font-size:0.82rem;">Nessun marker trovato.</p>`;
+            return;
+        }
+
+        listEl.innerHTML = '';
+        [...filtered].reverse().forEach(m => {
+            const dec = DECORATIONS.find(d => d.id === m.typeId) || DECORATIONS[0];
+            const card = document.createElement('div');
+            card.className = 'marker-card' + (m.id === selectedMarkerId ? ' selected' : '');
+            card.onclick = () => selectMarker(m.id);
+
+            let iconHtml = '';
+            if (dec.type === 'svg') {
+                const src = 'data:image/svg+xml;utf8,' + encodeURIComponent(dec.svg);
+                iconHtml = `<img src="${src}" alt="${dec.name}">`;
+            } else {
+                iconHtml = `<span>${dec.char}</span>`;
+            }
+
+            card.innerHTML = `
+                <div class="marker-card-icon">${iconHtml}</div>
+                <div class="marker-card-info">
+                    <div class="marker-card-title">${escapeHtml(m.label || m.name)}</div>
+                    <div class="marker-card-sub">
+                        ${escapeHtml(dec.name)} • X:${m.x} Y:${m.y} • Dim:${m.size}px
+                    </div>
+                </div>
+                <div class="marker-card-actions">
+                    <button class="icon-btn focus-btn" title="Centra Mappa su questo Marker">🎯</button>
+                    <button class="icon-btn del" title="Elimina Marker">✖</button>
+                </div>
+            `;
+
+            card.querySelector('.focus-btn').onclick = (ev) => {
+                ev.stopPropagation();
+                selectMarker(m.id);
+                centerOnMarker(m);
+            };
+
+            card.querySelector('.del').onclick = (ev) => {
+                ev.stopPropagation();
+                markers = markers.filter(item => item.id !== m.id);
+                if (selectedMarkerId === m.id) selectMarker(null);
+                else { updateMarkerListUI(); drawCanvas(); }
+                scheduleAutoSave();
+            };
+
+            listEl.appendChild(card);
+        });
+    }
+
+    function escapeHtml(str) {
+        return String(str).replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]));
+    }
+
+    document.getElementById('searchFilterInput').addEventListener('input', updateMarkerListUI);
+
+    // --- CONTROLLI SIDEBAR SINISTRA & SALVATAGGIO CREDENZIALI ---
+    document.getElementById('ghRepoInput').addEventListener('change', (e) => {
+        localStorage.setItem('hw_gh_repo', e.target.value.trim());
+    });
+    document.getElementById('ghBranchInput').addEventListener('change', (e) => {
+        localStorage.setItem('hw_gh_branch', e.target.value.trim() || 'main');
+    });
+    document.getElementById('ghTokenInput').addEventListener('change', (e) => {
+        localStorage.setItem('hw_gh_token', e.target.value.trim());
+        setStatus('ok', '🔑 Token memorizzato nel tuo browser!', '🔑 Token Salvato');
+    });
+
+    document.getElementById('forceSaveGithubBtn').addEventListener('click', () => {
+        if (autoSaveTimer) clearTimeout(autoSaveTimer);
+        saveConfigToGitHub();
+    });
+
+    // Genera e copia il Link Magico per gli amici
+    document.getElementById('copyMagicLinkBtn').addEventListener('click', () => {
+        const repo = document.getElementById('ghRepoInput').value.trim();
+        const branch = document.getElementById('ghBranchInput').value.trim() || 'main';
+        const token = document.getElementById('ghTokenInput').value.trim();
+
+        if (!repo || !token) {
+            alert('Inserisci prima il Repository e il Token Temporaneo per poter generare il Link Magico per i tuoi amici!');
+            return;
+        }
+
+        const baseUrl = window.location.origin + window.location.pathname;
+        const magicUrl = `${baseUrl}?edit=true&repo=${encodeURIComponent(repo)}&branch=${encodeURIComponent(branch)}&key=${encodeURIComponent(token)}`;
+
+        navigator.clipboard.writeText(magicUrl).then(() => {
+            alert('🔗 Link Magico copiato negli appunti!\n\nMandalo in privato su WhatsApp/Telegram ai tuoi amici: appena ci cliccheranno entreranno in modalità modifica con il salvataggio automatico già attivo!');
+        }).catch(() => {
+            prompt('Copia questo Link Magico e mandalo ai tuoi amici:', magicUrl);
+        });
+    });
+
+    document.getElementById('bgImageInput').addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        document.getElementById('bgUrlInput').value = file.name;
+        backgroundImageUrl = file.name;
+
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            const img = new Image();
+            img.onload = () => {
+                backgroundImg = img;
+                mapWidth = img.width;
+                mapHeight = img.height;
+                fitMapToScreen();
+                scheduleAutoSave();
+            };
+            img.src = event.target.result;
+        };
+        reader.readAsDataURL(file);
+    });
+
+    document.getElementById('bgUrlInput').addEventListener('change', (e) => {
+        backgroundImageUrl = e.target.value.trim();
+        loadBackgroundFromUrl(backgroundImageUrl);
+        scheduleAutoSave();
+    });
+
+    document.getElementById('defaultSizeSlider').addEventListener('input', (e) => {
+        document.getElementById('defaultSizeVal').textContent = e.target.value;
+    });
+
+    document.getElementById('clearAllBtn').addEventListener('click', () => {
+        if (markers.length > 0 && confirm('Vuoi davvero eliminare tutti i marker dalla mappa?')) {
+            markers = [];
+            selectMarker(null);
+            scheduleAutoSave();
+        }
+    });
+
+    // Esporta PNG alla risoluzione originale intera della mappa
+    document.getElementById('exportImageBtn').addEventListener('click', () => {
+        const exportCanvas = document.createElement('canvas');
+        exportCanvas.width = mapWidth;
+        exportCanvas.height = mapHeight;
+        const exportCtx = exportCanvas.getContext('2d');
+
+        renderSceneToContext(exportCtx, true);
+
+        const dataUrl = exportCanvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.download = 'mappa_halloween_completa.png';
+        link.href = dataUrl;
+        link.click();
+    });
+
+    // Scarica config.json di backup
+    document.getElementById('exportJsonBtn').addEventListener('click', () => {
+        const exportData = {
+            version: 5,
+            backgroundImage: document.getElementById('bgUrlInput').value.trim() || "",
+            mapWidth: mapWidth,
+            mapHeight: mapHeight,
+            markers: markers
+        };
+        const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.download = 'config.json';
+        link.href = url;
+        link.click();
+        URL.revokeObjectURL(url);
+    });
+
+    // Carica JSON manualmente
+    document.getElementById('importJsonInput').addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            try {
+                const data = JSON.parse(event.target.result);
+                applyConfigurationData(data);
+                scheduleAutoSave();
+            } catch (err) {
+                alert('Errore nella lettura del file JSON!');
+            }
+        };
+        reader.readAsText(file);
+        e.target.value = '';
+    });
+
+    window.onload = initUI;
+</script>
+</body>
+</html>
