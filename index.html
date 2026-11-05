@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Halloween Map 🎃 - emmeerre</title>
+    <!-- Font Horror & Halloween da Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Butcherman&family=Creepster&family=Eater&family=Mystery+Quest&family=Nosifer&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-dark: #0f0a14;
@@ -49,7 +53,7 @@
 
         /* Sidebars (Left & Right) su Desktop */
         .sidebar-left {
-            width: 340px;
+            width: 350px;
             background-color: var(--panel-bg);
             border-right: 2px solid var(--border);
             display: flex;
@@ -61,7 +65,7 @@
         }
 
         .sidebar-right {
-            width: 360px;
+            width: 370px;
             background-color: var(--panel-bg);
             border-left: 2px solid var(--border);
             display: flex;
@@ -132,33 +136,33 @@
         /* Form Elements */
         label {
             display: block;
-            font-size: 0.75rem;
+            font-size: 0.74rem;
             margin-bottom: 3px;
             color: #cbbbe0;
         }
 
         input[type="text"], input[type="password"], input[type="number"], select {
             width: 100%;
-            padding: 7px 9px;
+            padding: 6px 8px;
             background: var(--bg-dark);
             border: 1px solid var(--border);
             color: var(--text);
             border-radius: 4px;
-            margin-bottom: 7px;
-            font-size: 0.85rem;
+            margin-bottom: 6px;
+            font-size: 0.83rem;
             user-select: text;
             -webkit-user-select: text;
         }
 
         input[type="color"] {
             width: 100%;
-            height: 32px;
+            height: 30px;
             padding: 2px;
             background: var(--bg-dark);
             border: 1px solid var(--border);
             border-radius: 4px;
             cursor: pointer;
-            margin-bottom: 6px;
+            margin-bottom: 5px;
         }
 
         input:focus, select:focus {
@@ -168,7 +172,7 @@
 
         input[type="range"] {
             width: 100%;
-            margin-bottom: 6px;
+            margin-bottom: 5px;
             accent-color: var(--accent);
             cursor: pointer;
         }
@@ -179,13 +183,29 @@
             gap: 7px;
         }
 
+        .row-3col {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 6px;
+        }
+
         .sub-box {
             background: rgba(255, 255, 255, 0.03);
             border: 1px dashed var(--border);
             padding: 8px;
             border-radius: 6px;
-            margin-top: 4px;
+            margin-top: 5px;
             margin-bottom: 6px;
+        }
+
+        .sub-box-title {
+            font-size: 0.76rem;
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         /* Buttons */
@@ -242,12 +262,12 @@
         .status-badge.saving { border-color: #3bc9db; color: #99e9f2; background: rgba(59, 201, 219, 0.18); }
         .status-badge.err { border-color: #e03131; color: #ffa8a8; background: rgba(224, 49, 49, 0.18); }
 
-        /* Marker Grid (24 icone) */
+        /* Marker Grid (25 opzioni inclusa Solo Testo) */
         .marker-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 5px;
-            max-height: 185px;
+            max-height: 175px;
             overflow-y: auto;
             padding-right: 4px;
             margin-bottom: 8px;
@@ -264,14 +284,14 @@
             align-items: center;
             justify-content: center;
             transition: all 0.15s;
-            height: 56px;
+            height: 55px;
         }
 
         .marker-option img, .marker-option span.emoji-icon {
-            width: 26px;
-            height: 26px;
-            font-size: 22px;
-            line-height: 26px;
+            width: 25px;
+            height: 25px;
+            font-size: 21px;
+            line-height: 25px;
             text-align: center;
             display: block;
             margin-bottom: 3px;
@@ -467,7 +487,7 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            min-height: 200px;
+            min-height: 180px;
         }
 
         .marker-list {
@@ -477,7 +497,7 @@
             flex-direction: column;
             gap: 6px;
             padding-right: 4px;
-            max-height: 360px;
+            max-height: 320px;
         }
 
         .marker-card {
@@ -572,7 +592,7 @@
             align-items: center;
             gap: 6px;
             cursor: pointer;
-            font-size: 0.78rem;
+            font-size: 0.76rem;
             color: var(--text);
             margin-top: 2px;
             margin-bottom: 4px;
@@ -589,7 +609,7 @@
                 bottom: 0;
                 top: auto;
                 width: 100%;
-                height: 80dvh;
+                height: 82dvh;
                 border: none;
                 border-top: 2px solid var(--accent);
                 border-radius: 18px 18px 0 0;
@@ -676,26 +696,26 @@
                 </label>
             </div>
 
-            <!-- 2. Pennello Nuovo Marker + Fondino Predefinito -->
+            <!-- 2. Pennello Nuovo Marker + Fondino + Stile Testo -->
             <div class="section">
-                <h3>2. Aggiungi Nuovo Marker</h3>
-                <label>Scegli Disegno (24 disponibili):</label>
+                <h3>2. Aggiungi Nuovo Marker / Testo</h3>
+                <label>Scegli Disegno (oppure "Solo Testo"):</label>
                 <div class="marker-grid" id="markerGrid"></div>
 
-                <label for="defaultLabelInput">Etichetta per il prossimo marker:</label>
-                <input type="text" id="defaultLabelInput" value="" placeholder="Lascia vuoto per nome automatico...">
+                <label for="defaultLabelInput">Testo / Etichetta:</label>
+                <input type="text" id="defaultLabelInput" value="" placeholder="Scrivi testo (o lascia vuoto per auto)...">
 
-                <label for="defaultSizeSlider">Dimensione: <span id="defaultSizeVal">50</span>px</label>
+                <label for="defaultSizeSlider">Dimensione Icona: <span id="defaultSizeVal">50</span>px</label>
                 <input type="range" id="defaultSizeSlider" min="15" max="250" value="50">
 
-                <!-- Impostazioni Fondino Rotondo per i prossimi marker -->
+                <!-- Impostazioni Fondino Rotondo Icona -->
                 <div class="sub-box">
                     <label class="checkbox-label" style="font-weight:bold; color:var(--accent);">
-                        <input type="checkbox" id="defaultBgEnabled" checked> ⭕ Metti fondino rotondo sotto
+                        <input type="checkbox" id="defaultBgEnabled" checked> ⭕ Fondino rotondo sotto l'icona
                     </label>
                     <div class="row-2col" style="margin-top:4px; align-items:center;">
                         <div>
-                            <label for="defaultBgColor">Colore Fondino:</label>
+                            <label for="defaultBgColor">Colore Cerchio:</label>
                             <input type="color" id="defaultBgColor" value="#000000" style="margin-bottom:0;">
                         </div>
                         <div>
@@ -704,11 +724,53 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Impostazioni Stile Testo & Background Etichetta -->
+                <div class="sub-box">
+                    <div class="sub-box-title">
+                        <span>🔤 Stile Testo & Sfondo Etichetta</span>
+                    </div>
+                    <div class="row-2col">
+                        <div>
+                            <label for="defaultFontFamily">Font:</label>
+                            <select id="defaultFontFamily" style="margin-bottom:4px;"></select>
+                        </div>
+                        <div>
+                            <label for="defaultFontSize">Dim. Testo: <span id="defaultFontSizeVal">14</span>px</label>
+                            <input type="range" id="defaultFontSize" min="8" max="72" value="14" style="margin-top:5px;">
+                        </div>
+                    </div>
+
+                    <div class="row-3col" style="margin-top:2px;">
+                        <div>
+                            <label for="defaultTextColor">Colore Testo:</label>
+                            <input type="color" id="defaultTextColor" value="#ffffff" style="margin-bottom:0;">
+                        </div>
+                        <div>
+                            <label for="defaultLabelBgColor">Sfondo Box:</label>
+                            <input type="color" id="defaultLabelBgColor" value="#120a1c" style="margin-bottom:0;">
+                        </div>
+                        <div>
+                            <label for="defaultLabelBorderColor">Bordo Box:</label>
+                            <input type="color" id="defaultLabelBorderColor" value="#ff6600" style="margin-bottom:0;">
+                        </div>
+                    </div>
+
+                    <div class="row-2col" style="margin-top:6px; align-items:center;">
+                        <label class="checkbox-label" style="margin:0;">
+                            <input type="checkbox" id="defaultLabelBgEnabled" checked> Mostra Sfondo Box
+                        </label>
+                        <div>
+                            <label for="defaultLabelBgOpacity">Opacità Box: <span id="defaultLabelBgOpacityVal">88</span>%</label>
+                            <input type="range" id="defaultLabelBgOpacity" min="0" max="100" value="88" style="margin-bottom:0;">
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- 3. Immagine Mappa & Backup Manuale -->
             <div class="section">
-                <h3>3. Sfondo & Backup</h3>
+                <h3>3. Sfondo Mappa & Backup</h3>
                 <label for="bgUrlInput">Nome File o URL Mappa nel Repo:</label>
                 <input type="text" id="bgUrlInput" placeholder="Es. mappa.jpg">
 
@@ -767,7 +829,7 @@
 
         <!-- Barra inferiore su Smartphone per aprire i pannelli in modalità Edit -->
         <div class="mobile-edit-nav">
-            <button class="mobile-nav-btn" onclick="toggleMobileDrawer('left')">🎃 Pennello & GitHub</button>
+            <button class="mobile-nav-btn" onclick="toggleMobileDrawer('left')">🎃 Aggiungi & Stile</button>
             <button class="mobile-nav-btn" onclick="toggleMobileDrawer('right')">🛠️ Modifica & Lista (<span id="mobileMarkerCount">0</span>)</button>
         </div>
     </div>
@@ -788,15 +850,23 @@
                 </h3>
                 
                 <div id="editorEmptyState" class="editor-empty">
-                    Tocca o clicca su un marker sulla mappa o nella lista qui sotto per modificarne etichetta, fondino rotondo, posizione e dimensione.
+                    Tocca o clicca su un marker sulla mappa o nella lista qui sotto per modificarne testo, font, colori, fondino e dimensione.
                 </div>
 
                 <div id="editorControls" style="display: none;">
-                    <label for="editLabel">Etichetta Univoca del Marker:</label>
-                    <input type="text" id="editLabel" placeholder="Es. Zucca Grande Ingresso">
+                    <label for="editLabel">Testo / Etichetta del Marker:</label>
+                    <input type="text" id="editLabel" placeholder="Es. Casa Stregata">
 
-                    <label for="editType">Cambia Disegno:</label>
-                    <select id="editType"></select>
+                    <div class="row-2col">
+                        <div>
+                            <label for="editType">Tipo / Disegno:</label>
+                            <select id="editType"></select>
+                        </div>
+                        <div>
+                            <label for="editSize">Dim. Icona: <span id="editSizeVal" style="color:var(--accent); font-weight:bold;">50</span>px</label>
+                            <input type="range" id="editSize" min="15" max="250" value="50" style="margin-top:6px;">
+                        </div>
+                    </div>
 
                     <div class="row-2col">
                         <div>
@@ -809,17 +879,60 @@
                         </div>
                     </div>
 
-                    <label for="editSize">Zoom / Dimensione Marker: <span id="editSizeVal" style="color:var(--accent); font-weight:bold;">50</span>px</label>
-                    <input type="range" id="editSize" min="15" max="250" value="50">
+                    <!-- Controlli Stile Testo e Background Etichetta del Marker Selezionato -->
+                    <div class="sub-box">
+                        <div class="sub-box-title">
+                            <span>🔤 Stile Testo & Sfondo Etichetta</span>
+                        </div>
+                        <div class="row-2col">
+                            <div>
+                                <label for="editFontFamily">Font Testo:</label>
+                                <select id="editFontFamily" style="margin-bottom:4px;"></select>
+                            </div>
+                            <div>
+                                <label for="editFontSize">Dim. Testo: <span id="editFontSizeVal" style="color:var(--accent); font-weight:bold;">14</span>px</label>
+                                <input type="range" id="editFontSize" min="8" max="72" value="14" style="margin-top:5px;">
+                            </div>
+                        </div>
 
-                    <!-- Controlli Fondino Rotondo del Marker Selezionato -->
+                        <div class="row-3col" style="margin-top:2px;">
+                            <div>
+                                <label for="editTextColor">Colore Testo:</label>
+                                <input type="color" id="editTextColor" value="#ffffff" style="margin-bottom:0;">
+                            </div>
+                            <div>
+                                <label for="editLabelBgColor">Sfondo Box:</label>
+                                <input type="color" id="editLabelBgColor" value="#120a1c" style="margin-bottom:0;">
+                            </div>
+                            <div>
+                                <label for="editLabelBorderColor">Bordo Box:</label>
+                                <input type="color" id="editLabelBorderColor" value="#ff6600" style="margin-bottom:0;">
+                            </div>
+                        </div>
+
+                        <div class="row-2col" style="margin-top:6px; align-items:center;">
+                            <label class="checkbox-label" style="margin:0;">
+                                <input type="checkbox" id="editLabelBgEnabled" checked> Sfondo Box
+                            </label>
+                            <div>
+                                <label for="editLabelBgOpacity">Opacità Box: <span id="editLabelBgOpacityVal">88</span>%</label>
+                                <input type="range" id="editLabelBgOpacity" min="0" max="100" value="88" style="margin-bottom:0;">
+                            </div>
+                        </div>
+
+                        <button class="btn btn-dark" id="applyTextStyleToAllBtn" style="margin-top:7px; margin-bottom:0; padding:5px; font-size:0.72rem;">
+                            🔤 Applica questo stile testo a TUTTI i marker
+                        </button>
+                    </div>
+
+                    <!-- Controlli Fondino Rotondo Icona del Marker Selezionato -->
                     <div class="sub-box">
                         <label class="checkbox-label" style="font-weight:bold; color:var(--accent);">
-                            <input type="checkbox" id="editBgEnabled"> ⭕ Fondino rotondo sotto il marker
+                            <input type="checkbox" id="editBgEnabled"> ⭕ Fondino rotondo sotto l'icona
                         </label>
                         <div class="row-2col" style="margin-top:4px; align-items:center;">
                             <div>
-                                <label for="editBgColor">Colore Fondino:</label>
+                                <label for="editBgColor">Colore Cerchio:</label>
                                 <input type="color" id="editBgColor" value="#000000" style="margin-bottom:0;">
                             </div>
                             <div>
@@ -827,8 +940,8 @@
                                 <input type="range" id="editBgOpacity" min="5" max="100" value="55" style="margin-bottom:0;">
                             </div>
                         </div>
-                        <button class="btn btn-dark" id="applyBgToAllBtn" style="margin-top:7px; margin-bottom:0; padding:5px; font-size:0.73rem;">
-                            🎨 Applica questo fondino a TUTTI i marker
+                        <button class="btn btn-dark" id="applyBgToAllBtn" style="margin-top:7px; margin-bottom:0; padding:5px; font-size:0.72rem;">
+                            🎨 Applica questo fondino rotondo a TUTTI
                         </button>
                     </div>
 
@@ -858,8 +971,24 @@
     const DEFAULT_GITHUB_BRANCH = 'main';
     const CONFIG_FILE_PATH = 'config.json';
 
-    // --- 24 DISEGNI DI HALLOWEEN (16 SVG Custom + 8 Emoji) ---
+    // --- FONT DISPONIBILI (INCLUSI GOOGLE FONTS HORROR) ---
+    const FONT_OPTIONS = [
+        { id: "'Segoe UI', sans-serif", name: "Classico (Sans-Serif)" },
+        { id: "'Creepster', cursive", name: "🎃 Creepster (Halloween)" },
+        { id: "'Nosifer', cursive", name: "🩸 Nosifer (Gocciolante)" },
+        { id: "'Butcherman', cursive", name: "🧟 Butcherman (Zombie)" },
+        { id: "'Eater', cursive", name: "👻 Eater (Mostruoso)" },
+        { id: "'Mystery Quest', cursive", name: "🔮 Mystery Quest (Magico)" },
+        { id: "Georgia, serif", name: "Elegante (Serif)" },
+        { id: "'Courier New', monospace", name: "Macchina da Scrivere" },
+        { id: "Impact, sans-serif", name: "Impact (Grassetto Forte)" }
+    ];
+
+    // --- 25 OPZIONI MARKER (1 "Solo Testo" + 16 SVG Custom + 8 Emoji) ---
     const DECORATIONS = [
+        {
+            id: 'text_only', name: 'Solo Testo', type: 'text_only', char: '🔤'
+        },
         {
             id: 'pumpkin_classic', name: 'Zucca Classica', type: 'svg',
             svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
@@ -1045,7 +1174,7 @@
 
     // Stato Marker
     let markers = [];
-    let selectedDecoration = DECORATIONS[0];
+    let selectedDecoration = DECORATIONS[1]; // Parte con Zucca Classica selezionata
     let selectedMarkerId = null;
     let markerCounter = 1;
     let showLabels = true;
@@ -1071,7 +1200,11 @@
         }
     });
 
-    // Helper: converte colore HEX (#rrggbb) + opacità (0-1) in stringa rgba()
+    // Ridisegna quando i Google Fonts sono pronti
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => drawCanvas());
+    }
+
     function hexToRgba(hex, alpha) {
         let c = (hex || '#000000').replace('#', '');
         if (c.length === 3) c = c[0]+c[0]+c[1]+c[1]+c[2]+c[2];
@@ -1246,7 +1379,7 @@
         setStatus('saving', `☁️ Salvataggio su <b>${repo}</b> in corso...`, '☁️ Salvataggio...');
 
         const exportData = {
-            version: 6,
+            version: 7,
             updatedAt: new Date().toISOString(),
             backgroundImage: document.getElementById('bgUrlInput').value.trim() || "",
             mapWidth: mapWidth,
@@ -1324,7 +1457,14 @@
             size: Number(m.size) || 50,
             bgEnabled: m.bgEnabled !== undefined ? Boolean(m.bgEnabled) : false,
             bgColor: m.bgColor || '#000000',
-            bgOpacity: m.bgOpacity !== undefined ? Number(m.bgOpacity) : 0.55
+            bgOpacity: m.bgOpacity !== undefined ? Number(m.bgOpacity) : 0.55,
+            fontFamily: m.fontFamily || FONT_OPTIONS[0].id,
+            fontSize: Number(m.fontSize) || 14,
+            textColor: m.textColor || '#ffffff',
+            labelBgEnabled: m.labelBgEnabled !== undefined ? Boolean(m.labelBgEnabled) : true,
+            labelBgColor: m.labelBgColor || '#120a1c',
+            labelBgOpacity: m.labelBgOpacity !== undefined ? Number(m.labelBgOpacity) : 0.88,
+            labelBorderColor: m.labelBorderColor || '#ff6600'
         }));
 
         const maxShortId = markers.reduce((max, m) => Math.max(max, m.shortId || 0), 0);
@@ -1465,10 +1605,28 @@
 
         const grid = document.getElementById('markerGrid');
         const editTypeSelect = document.getElementById('editType');
+        const defFontSelect = document.getElementById('defaultFontFamily');
+        const editFontSelect = document.getElementById('editFontFamily');
 
+        // Popola selettori Font
+        FONT_OPTIONS.forEach(f => {
+            const o1 = document.createElement('option');
+            o1.value = f.id;
+            o1.textContent = f.name;
+            o1.style.fontFamily = f.id;
+            defFontSelect.appendChild(o1);
+
+            const o2 = document.createElement('option');
+            o2.value = f.id;
+            o2.textContent = f.name;
+            o2.style.fontFamily = f.id;
+            editFontSelect.appendChild(o2);
+        });
+
+        // Popola Griglia Decorazioni
         DECORATIONS.forEach((dec, index) => {
             const div = document.createElement('div');
-            div.className = 'marker-option' + (index === 0 ? ' active' : '');
+            div.className = 'marker-option' + (dec.id === selectedDecoration.id ? ' active' : '');
             div.onclick = () => {
                 selectedDecoration = dec;
                 document.querySelectorAll('.marker-option').forEach(el => el.classList.remove('active'));
@@ -1534,82 +1692,103 @@
         }
 
         markers.forEach(m => {
-            const dec = DECORATIONS.find(d => d.id === m.typeId) || DECORATIONS[0];
+            const dec = DECORATIONS.find(d => d.id === m.typeId) || DECORATIONS[1];
+            const isTextOnly = (dec.type === 'text_only');
             const half = m.size / 2;
             const bgRadius = m.size * 0.58;
 
-            // 1. Disegna il Fondino Rotondo Semitrasparente (se attivo per questo marker)
-            if (m.bgEnabled) {
-                targetCtx.save();
-                targetCtx.beginPath();
-                targetCtx.arc(m.x, m.y, bgRadius, 0, Math.PI * 2);
-                targetCtx.fillStyle = hexToRgba(m.bgColor || '#000000', m.bgOpacity ?? 0.55);
-                targetCtx.shadowColor = 'rgba(0, 0, 0, 0.55)';
-                targetCtx.shadowBlur = 6;
-                targetCtx.fill();
-                targetCtx.lineWidth = Math.max(1.5, m.size * 0.035);
-                targetCtx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
-                targetCtx.stroke();
-                targetCtx.restore();
-            }
-
-            // 2. Cerchio verde tratteggiato se selezionato in Edit Mode
-            if (!isExport && isEditMode && m.id === selectedMarkerId) {
-                targetCtx.save();
-                targetCtx.beginPath();
-                targetCtx.arc(m.x, m.y, (m.bgEnabled ? bgRadius : half) + 7, 0, Math.PI * 2);
-                targetCtx.strokeStyle = '#39ff14';
-                targetCtx.lineWidth = 2.5;
-                targetCtx.setLineDash([6, 4]);
-                targetCtx.stroke();
-                targetCtx.fillStyle = 'rgba(57, 255, 20, 0.12)';
-                targetCtx.fill();
-                targetCtx.restore();
-            }
-
-            // 3. Disegna l'Icona del Marker
-            targetCtx.save();
-            targetCtx.shadowColor = 'rgba(0, 0, 0, 0.8)';
-            targetCtx.shadowBlur = 8;
-            targetCtx.shadowOffsetX = 2;
-            targetCtx.shadowOffsetY = 3;
-
-            if (dec.type === 'svg') {
-                const img = loadedSvgImages[dec.id];
-                if (img && img.complete) {
-                    targetCtx.drawImage(img, m.x - half, m.y - half, m.size, m.size);
+            // 1. Se NON è "Solo Testo", disegna Fondino Rotondo e Icona
+            if (!isTextOnly) {
+                if (m.bgEnabled) {
+                    targetCtx.save();
+                    targetCtx.beginPath();
+                    targetCtx.arc(m.x, m.y, bgRadius, 0, Math.PI * 2);
+                    targetCtx.fillStyle = hexToRgba(m.bgColor || '#000000', m.bgOpacity ?? 0.55);
+                    targetCtx.shadowColor = 'rgba(0, 0, 0, 0.55)';
+                    targetCtx.shadowBlur = 6;
+                    targetCtx.fill();
+                    targetCtx.lineWidth = Math.max(1.5, m.size * 0.035);
+                    targetCtx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+                    targetCtx.stroke();
+                    targetCtx.restore();
                 }
-            } else if (dec.type === 'emoji') {
-                targetCtx.font = `${m.size * 0.85}px sans-serif`;
-                targetCtx.textAlign = 'center';
-                targetCtx.textBaseline = 'middle';
-                targetCtx.fillText(dec.char, m.x, m.y);
-            }
-            targetCtx.restore();
 
-            // 4. Disegna l'Etichetta
-            if (showLabels && m.label) {
+                if (!isExport && isEditMode && m.id === selectedMarkerId) {
+                    targetCtx.save();
+                    targetCtx.beginPath();
+                    targetCtx.arc(m.x, m.y, (m.bgEnabled ? bgRadius : half) + 7, 0, Math.PI * 2);
+                    targetCtx.strokeStyle = '#39ff14';
+                    targetCtx.lineWidth = 2.5;
+                    targetCtx.setLineDash([6, 4]);
+                    targetCtx.stroke();
+                    targetCtx.fillStyle = 'rgba(57, 255, 20, 0.12)';
+                    targetCtx.fill();
+                    targetCtx.restore();
+                }
+
                 targetCtx.save();
-                targetCtx.font = 'bold 12px sans-serif';
-                const textWidth = targetCtx.measureText(m.label).width;
-                const padX = 7;
+                targetCtx.shadowColor = 'rgba(0, 0, 0, 0.8)';
+                targetCtx.shadowBlur = 8;
+                targetCtx.shadowOffsetX = 2;
+                targetCtx.shadowOffsetY = 3;
+
+                if (dec.type === 'svg') {
+                    const img = loadedSvgImages[dec.id];
+                    if (img && img.complete) {
+                        targetCtx.drawImage(img, m.x - half, m.y - half, m.size, m.size);
+                    }
+                } else if (dec.type === 'emoji') {
+                    targetCtx.font = `${m.size * 0.85}px sans-serif`;
+                    targetCtx.textAlign = 'center';
+                    targetCtx.textBaseline = 'middle';
+                    targetCtx.fillText(dec.char, m.x, m.y);
+                }
+                targetCtx.restore();
+            }
+
+            // 2. Disegna Testo / Etichetta con Font, Dimensione, Colore e Background personalizzati
+            if ((showLabels || isTextOnly) && m.label) {
+                targetCtx.save();
+                const fSize = Number(m.fontSize) || 14;
+                const fFamily = m.fontFamily || FONT_OPTIONS[0].id;
+                targetCtx.font = `bold ${fSize}px ${fFamily}`;
+
+                const textMetrics = targetCtx.measureText(m.label);
+                const textWidth = textMetrics.width;
+                const padX = Math.max(8, Math.round(fSize * 0.55));
+                const padY = Math.max(5, Math.round(fSize * 0.38));
                 const boxWidth = textWidth + padX * 2;
-                const boxHeight = 20;
+                const boxHeight = fSize + padY * 2;
+
                 const boxX = m.x - boxWidth / 2;
-                const offsetBottom = m.bgEnabled ? bgRadius : half;
-                const boxY = m.y + offsetBottom + 5;
+                const offsetBottom = isTextOnly ? (-boxHeight / 2) : ((m.bgEnabled ? bgRadius : half) + 5);
+                const boxY = m.y + offsetBottom;
 
                 const isSelected = (!isExport && isEditMode && m.id === selectedMarkerId);
 
-                targetCtx.fillStyle = 'rgba(18, 10, 28, 0.88)';
-                targetCtx.strokeStyle = isSelected ? '#39ff14' : '#ff6600';
-                targetCtx.lineWidth = isSelected ? 2 : 1.5;
-                targetCtx.beginPath();
-                targetCtx.roundRect(boxX, boxY, boxWidth, boxHeight, 5);
-                targetCtx.fill();
-                targetCtx.stroke();
+                // Sfondo del cartellino testo (se abilitato)
+                if (m.labelBgEnabled !== false) {
+                    targetCtx.fillStyle = hexToRgba(m.labelBgColor || '#120a1c', m.labelBgOpacity ?? 0.88);
+                    targetCtx.strokeStyle = isSelected ? '#39ff14' : (m.labelBorderColor || '#ff6600');
+                    targetCtx.lineWidth = isSelected ? 2.5 : 1.5;
+                    targetCtx.shadowColor = 'rgba(0, 0, 0, 0.65)';
+                    targetCtx.shadowBlur = 6;
+                    targetCtx.beginPath();
+                    targetCtx.roundRect(boxX, boxY, boxWidth, boxHeight, Math.min(10, fSize * 0.35));
+                    targetCtx.fill();
+                    targetCtx.stroke();
+                } else if (isSelected) {
+                    // Se lo sfondo del box è disattivato ma il marker è selezionato, mostra tratteggio verde attorno al testo
+                    targetCtx.strokeStyle = '#39ff14';
+                    targetCtx.lineWidth = 2;
+                    targetCtx.setLineDash([5, 3]);
+                    targetCtx.strokeRect(boxX, boxY, boxWidth, boxHeight);
+                }
 
-                targetCtx.fillStyle = '#ffffff';
+                // Disegna la scritta
+                targetCtx.shadowColor = 'rgba(0, 0, 0, 0.85)';
+                targetCtx.shadowBlur = (m.labelBgEnabled === false) ? 6 : 2;
+                targetCtx.fillStyle = m.textColor || '#ffffff';
                 targetCtx.textAlign = 'center';
                 targetCtx.textBaseline = 'middle';
                 targetCtx.fillText(m.label, m.x, boxY + boxHeight / 2);
@@ -1660,7 +1839,20 @@
             document.getElementById('editSize').value = m.size;
             document.getElementById('editSizeVal').textContent = m.size;
 
-            // Popola controlli Fondino Rotondo
+            // Popola controlli Stile Testo
+            document.getElementById('editFontFamily').value = m.fontFamily || FONT_OPTIONS[0].id;
+            const fSize = Number(m.fontSize) || 14;
+            document.getElementById('editFontSize').value = fSize;
+            document.getElementById('editFontSizeVal').textContent = fSize;
+            document.getElementById('editTextColor').value = m.textColor || '#ffffff';
+            document.getElementById('editLabelBgEnabled').checked = (m.labelBgEnabled !== false);
+            document.getElementById('editLabelBgColor').value = m.labelBgColor || '#120a1c';
+            document.getElementById('editLabelBorderColor').value = m.labelBorderColor || '#ff6600';
+            const lblOpPct = Math.round((m.labelBgOpacity ?? 0.88) * 100);
+            document.getElementById('editLabelBgOpacity').value = lblOpPct;
+            document.getElementById('editLabelBgOpacityVal').textContent = lblOpPct;
+
+            // Popola controlli Fondino Rotondo Icona
             document.getElementById('editBgEnabled').checked = Boolean(m.bgEnabled);
             document.getElementById('editBgColor').value = m.bgColor || '#000000';
             const opPct = Math.round((m.bgOpacity ?? 0.55) * 100);
@@ -1710,7 +1902,94 @@
         }
     });
 
-    // Eventi modifica Fondino Rotondo del marker selezionato
+    // Eventi modifica Stile Testo del marker selezionato
+    document.getElementById('editFontFamily').addEventListener('change', (e) => {
+        const m = markers.find(x => x.id === selectedMarkerId);
+        if (m) { m.fontFamily = e.target.value; drawCanvas(); scheduleAutoSave(); }
+    });
+
+    document.getElementById('editFontSize').addEventListener('input', (e) => {
+        const m = markers.find(x => x.id === selectedMarkerId);
+        const val = parseInt(e.target.value, 10) || 14;
+        document.getElementById('editFontSizeVal').textContent = val;
+        if (m) { m.fontSize = val; drawCanvas(); scheduleAutoSave(); }
+    });
+
+    document.getElementById('editTextColor').addEventListener('input', (e) => {
+        const m = markers.find(x => x.id === selectedMarkerId);
+        if (m) { m.textColor = e.target.value; drawCanvas(); scheduleAutoSave(); }
+    });
+
+    document.getElementById('editLabelBgEnabled').addEventListener('change', (e) => {
+        const m = markers.find(x => x.id === selectedMarkerId);
+        if (m) { m.labelBgEnabled = e.target.checked; drawCanvas(); scheduleAutoSave(); }
+    });
+
+    document.getElementById('editLabelBgColor').addEventListener('input', (e) => {
+        const m = markers.find(x => x.id === selectedMarkerId);
+        if (m) {
+            m.labelBgColor = e.target.value;
+            m.labelBgEnabled = true;
+            document.getElementById('editLabelBgEnabled').checked = true;
+            drawCanvas();
+            scheduleAutoSave();
+        }
+    });
+
+    document.getElementById('editLabelBorderColor').addEventListener('input', (e) => {
+        const m = markers.find(x => x.id === selectedMarkerId);
+        if (m) { m.labelBorderColor = e.target.value; drawCanvas(); scheduleAutoSave(); }
+    });
+
+    document.getElementById('editLabelBgOpacity').addEventListener('input', (e) => {
+        const m = markers.find(x => x.id === selectedMarkerId);
+        const pct = parseInt(e.target.value, 10);
+        document.getElementById('editLabelBgOpacityVal').textContent = pct;
+        if (m) {
+            m.labelBgOpacity = pct / 100;
+            m.labelBgEnabled = true;
+            document.getElementById('editLabelBgEnabled').checked = true;
+            drawCanvas();
+            scheduleAutoSave();
+        }
+    });
+
+    // Applica lo stile testo attuale a TUTTI i marker sulla mappa
+    document.getElementById('applyTextStyleToAllBtn').addEventListener('click', () => {
+        const fontFamily = document.getElementById('editFontFamily').value;
+        const fontSize = parseInt(document.getElementById('editFontSize').value, 10) || 14;
+        const textColor = document.getElementById('editTextColor').value;
+        const labelBgEnabled = document.getElementById('editLabelBgEnabled').checked;
+        const labelBgColor = document.getElementById('editLabelBgColor').value;
+        const labelBorderColor = document.getElementById('editLabelBorderColor').value;
+        const labelBgOpacity = (parseInt(document.getElementById('editLabelBgOpacity').value, 10) || 88) / 100;
+
+        markers.forEach(item => {
+            item.fontFamily = fontFamily;
+            item.fontSize = fontSize;
+            item.textColor = textColor;
+            item.labelBgEnabled = labelBgEnabled;
+            item.labelBgColor = labelBgColor;
+            item.labelBorderColor = labelBorderColor;
+            item.labelBgOpacity = labelBgOpacity;
+        });
+
+        // Aggiorna anche i valori predefiniti a sinistra
+        document.getElementById('defaultFontFamily').value = fontFamily;
+        document.getElementById('defaultFontSize').value = fontSize;
+        document.getElementById('defaultFontSizeVal').textContent = fontSize;
+        document.getElementById('defaultTextColor').value = textColor;
+        document.getElementById('defaultLabelBgEnabled').checked = labelBgEnabled;
+        document.getElementById('defaultLabelBgColor').value = labelBgColor;
+        document.getElementById('defaultLabelBorderColor').value = labelBorderColor;
+        document.getElementById('defaultLabelBgOpacity').value = Math.round(labelBgOpacity * 100);
+        document.getElementById('defaultLabelBgOpacityVal').textContent = Math.round(labelBgOpacity * 100);
+
+        drawCanvas();
+        scheduleAutoSave();
+    });
+
+    // Eventi modifica Fondino Rotondo Icona
     document.getElementById('editBgEnabled').addEventListener('change', (e) => {
         const m = markers.find(x => x.id === selectedMarkerId);
         if (m) {
@@ -1747,7 +2026,6 @@
         }
     });
 
-    // Applica il fondino attuale a TUTTI i marker sulla mappa
     document.getElementById('applyBgToAllBtn').addEventListener('click', () => {
         const bgEnabled = document.getElementById('editBgEnabled').checked;
         const bgColor = document.getElementById('editBgColor').value;
@@ -1759,7 +2037,6 @@
             item.bgOpacity = bgOpacity;
         });
 
-        // Aggiorna anche il predefinito a sinistra
         document.getElementById('defaultBgEnabled').checked = bgEnabled;
         document.getElementById('defaultBgColor').value = bgColor;
         document.getElementById('defaultBgOpacity').value = Math.round(bgOpacity * 100);
@@ -1793,13 +2070,24 @@
         scheduleAutoSave();
     });
 
-    // --- INTERAZIONE MOUSE (DESKTOP) ---
+    // --- INTERAZIONE MOUSE E TOUCH SULLA MAPPA ---
     function findMarkerAt(worldX, worldY) {
         for (let i = markers.length - 1; i >= 0; i--) {
             const m = markers[i];
-            const hitRadius = m.bgEnabled ? (m.size * 0.58) : (m.size / 2);
-            if (Math.hypot(m.x - worldX, m.y - worldY) <= hitRadius) {
-                return { marker: m, index: i };
+            const dec = DECORATIONS.find(d => d.id === m.typeId);
+            if (dec && dec.type === 'text_only') {
+                // Area cliccabile per i marker "Solo Testo"
+                const fSize = Number(m.fontSize) || 14;
+                const approxW = Math.max(60, (m.label || '').length * fSize * 0.65 + 24);
+                const approxH = fSize + 22;
+                if (Math.abs(worldX - m.x) <= approxW / 2 && Math.abs(worldY - m.y) <= approxH / 2) {
+                    return { marker: m, index: i };
+                }
+            } else {
+                const hitRadius = m.bgEnabled ? (m.size * 0.58) : (m.size / 2);
+                if (Math.hypot(m.x - worldX, m.y - worldY) <= hitRadius) {
+                    return { marker: m, index: i };
+                }
             }
         }
         return null;
@@ -1807,12 +2095,22 @@
 
     function createNewMarkerAt(worldX, worldY) {
         const customLabel = document.getElementById('defaultLabelInput').value.trim();
-        const autoLabel = `${selectedDecoration.name} #${markerCounter}`;
+        const autoLabel = selectedDecoration.type === 'text_only'
+            ? `Testo #${markerCounter}`
+            : `${selectedDecoration.name} #${markerCounter}`;
         const size = parseInt(document.getElementById('defaultSizeSlider').value, 10) || 50;
 
         const bgEnabled = document.getElementById('defaultBgEnabled').checked;
         const bgColor = document.getElementById('defaultBgColor').value || '#000000';
         const bgOpacity = (parseInt(document.getElementById('defaultBgOpacity').value, 10) || 55) / 100;
+
+        const fontFamily = document.getElementById('defaultFontFamily').value || FONT_OPTIONS[0].id;
+        const fontSize = parseInt(document.getElementById('defaultFontSize').value, 10) || 14;
+        const textColor = document.getElementById('defaultTextColor').value || '#ffffff';
+        const labelBgEnabled = document.getElementById('defaultLabelBgEnabled').checked;
+        const labelBgColor = document.getElementById('defaultLabelBgColor').value || '#120a1c';
+        const labelBorderColor = document.getElementById('defaultLabelBorderColor').value || '#ff6600';
+        const labelBgOpacity = (parseInt(document.getElementById('defaultLabelBgOpacity').value, 10) ?? 88) / 100;
 
         const newMarker = {
             id: Date.now() + Math.random(),
@@ -1825,7 +2123,14 @@
             size: size,
             bgEnabled: bgEnabled,
             bgColor: bgColor,
-            bgOpacity: bgOpacity
+            bgOpacity: bgOpacity,
+            fontFamily: fontFamily,
+            fontSize: fontSize,
+            textColor: textColor,
+            labelBgEnabled: labelBgEnabled,
+            labelBgColor: labelBgColor,
+            labelBorderColor: labelBorderColor,
+            labelBgOpacity: labelBgOpacity
         };
 
         markers.push(newMarker);
@@ -2094,7 +2399,7 @@
 
         listEl.innerHTML = '';
         [...filtered].reverse().forEach(m => {
-            const dec = DECORATIONS.find(d => d.id === m.typeId) || DECORATIONS[0];
+            const dec = DECORATIONS.find(d => d.id === m.typeId) || DECORATIONS[1];
             const card = document.createElement('div');
             card.className = 'marker-card' + (m.id === selectedMarkerId ? ' selected' : '');
             card.onclick = () => selectMarker(m.id);
@@ -2107,7 +2412,6 @@
                 iconHtml = `<span>${dec.char}</span>`;
             }
 
-            // Mostra anteprima del fondino anche nell'iconcina della lista!
             const iconBgStyle = m.bgEnabled
                 ? `background: ${hexToRgba(m.bgColor || '#000000', m.bgOpacity ?? 0.55)}; border-color: rgba(255,255,255,0.35);`
                 : '';
@@ -2115,9 +2419,9 @@
             card.innerHTML = `
                 <div class="marker-card-icon" style="${iconBgStyle}">${iconHtml}</div>
                 <div class="marker-card-info">
-                    <div class="marker-card-title">${escapeHtml(m.label || m.name)}</div>
+                    <div class="marker-card-title" style="color:${escapeHtml(m.textColor || '#fff')}; font-family:${escapeHtml(m.fontFamily || 'inherit')};">${escapeHtml(m.label || m.name)}</div>
                     <div class="marker-card-sub">
-                        ${escapeHtml(dec.name)} • X:${m.x} Y:${m.y} • ${m.size}px ${m.bgEnabled ? '• ⭕' : ''}
+                        ${escapeHtml(dec.name)} • Testo:${m.fontSize || 14}px • X:${m.x} Y:${m.y}
                     </div>
                 </div>
                 <div class="marker-card-actions">
@@ -2223,6 +2527,14 @@
         document.getElementById('defaultBgOpacityVal').textContent = e.target.value;
     });
 
+    document.getElementById('defaultFontSize').addEventListener('input', (e) => {
+        document.getElementById('defaultFontSizeVal').textContent = e.target.value;
+    });
+
+    document.getElementById('defaultLabelBgOpacity').addEventListener('input', (e) => {
+        document.getElementById('defaultLabelBgOpacityVal').textContent = e.target.value;
+    });
+
     document.getElementById('clearAllBtn').addEventListener('click', () => {
         if (markers.length > 0 && confirm('Vuoi davvero eliminare tutti i marker dalla mappa?')) {
             markers = [];
@@ -2250,7 +2562,7 @@
     // Scarica config.json di backup
     document.getElementById('exportJsonBtn').addEventListener('click', () => {
         const exportData = {
-            version: 6,
+            version: 7,
             backgroundImage: document.getElementById('bgUrlInput').value.trim() || "",
             mapWidth: mapWidth,
             mapHeight: mapHeight,
