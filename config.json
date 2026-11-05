@@ -1,6 +1,6 @@
 {
   "version": 6,
-  "updatedAt": "2026-11-05T13:45:51.592Z",
+  "updatedAt": "2026-11-05T13:45:59.709Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -110,19 +110,6 @@
       "bgOpacity": 0.55
     },
     {
-      "id": 1793885169052.8513,
-      "shortId": 11,
-      "typeId": "witch_broom",
-      "name": "Strega in Volo",
-      "label": "",
-      "x": 1815,
-      "y": 1693,
-      "size": 50,
-      "bgEnabled": false,
-      "bgColor": "#000000",
-      "bgOpacity": 0.55
-    },
-    {
       "id": 1793885156735.6023,
       "shortId": 10,
       "typeId": "emoji_vampire",
@@ -173,6 +160,19 @@
       "bgEnabled": true,
       "bgColor": "#4b9f1a",
       "bgOpacity": 0.48
+    },
+    {
+      "id": 1793885169052.8513,
+      "shortId": 11,
+      "typeId": "witch_broom",
+      "name": "Strega in Volo",
+      "label": "",
+      "x": 1797,
+      "y": 1667,
+      "size": 50,
+      "bgEnabled": false,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55
     }
   ]
 }
