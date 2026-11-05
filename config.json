@@ -1,6 +1,6 @@
 {
   "version": 6,
-  "updatedAt": "2026-11-05T13:48:27.129Z",
+  "updatedAt": "2026-11-05T13:48:38.046Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -182,6 +182,19 @@
       "label": "Zucca Classica #17",
       "x": 3055,
       "y": 536,
+      "size": 250,
+      "bgEnabled": true,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55
+    },
+    {
+      "id": 1793886513279.1152,
+      "shortId": 18,
+      "typeId": "ghost_classic",
+      "name": "Fantasma Classico",
+      "label": "Fantasma Classico #18",
+      "x": 2105,
+      "y": 753,
       "size": 250,
       "bgEnabled": true,
       "bgColor": "#000000",
