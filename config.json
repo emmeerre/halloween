@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-11-05T13:22:44.665Z",
+  "updatedAt": "2026-11-05T13:22:49.265Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -40,7 +40,7 @@
       "shortId": 4,
       "typeId": "bat_vampire",
       "name": "Pipistrello Viola",
-      "label": "Ca",
+      "label": "Calzola",
       "x": 2672,
       "y": 1350,
       "size": 50
