@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-11-05T13:24:38.884Z",
+  "updatedAt": "2026-11-05T13:24:43.267Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -70,7 +70,7 @@
       "shortId": 7,
       "typeId": "emoji_spider",
       "name": "Ragno",
-      "label": "Ragno #7",
+      "label": "Belati",
       "x": 1730,
       "y": 1428,
       "size": 50
