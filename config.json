@@ -1,6 +1,6 @@
 {
   "version": 6,
-  "updatedAt": "2026-11-05T13:52:09.400Z",
+  "updatedAt": "2026-11-05T13:52:51.851Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -225,6 +225,19 @@
       "bgEnabled": true,
       "bgColor": "#000000",
       "bgOpacity": 0.3
+    },
+    {
+      "id": 1793886769834.543,
+      "shortId": 24,
+      "typeId": "pumpkin_pirate",
+      "name": "Zucca Pirata",
+      "label": "Zucca Pirata #24",
+      "x": 685,
+      "y": 687,
+      "size": 50,
+      "bgEnabled": true,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55
     }
   ]
 }
