@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "updatedAt": "2026-11-05T17:58:20.612Z",
+  "updatedAt": "2026-11-05T17:58:23.462Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -406,7 +406,7 @@
       "shortId": 20,
       "typeId": "spooky_candle",
       "name": "Candela Accesa",
-      "label": "Candela Accesa #20",
+      "label": "",
       "x": 1983,
       "y": 1706,
       "size": 50,
