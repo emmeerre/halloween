@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "updatedAt": "2026-11-05T18:16:15.417Z",
+  "updatedAt": "2026-11-05T18:16:35.567Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -472,7 +472,7 @@
       "shortId": 33,
       "typeId": "emoji_eye",
       "name": "Occhio",
-      "label": "Prova di coraggio",
+      "label": "Indovinello della Sfinge",
       "x": 2128,
       "y": 1388,
       "size": 50,
