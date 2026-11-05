@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "updatedAt": "2026-11-05T18:08:54.141Z",
+  "updatedAt": "2026-11-05T18:08:57.341Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -292,28 +292,6 @@
       "labelBorderColor": "#ff6600"
     },
     {
-      "id": 1793886502729.3748,
-      "shortId": 17,
-      "typeId": "pumpkin_classic",
-      "name": "Zucca Classica",
-      "label": "",
-      "x": 3429,
-      "y": 294,
-      "size": 550,
-      "showIcon": true,
-      "showLabel": true,
-      "bgEnabled": false,
-      "bgColor": "#000000",
-      "bgOpacity": 0.55,
-      "fontFamily": "'Segoe UI', sans-serif",
-      "fontSize": 14,
-      "textColor": "#ffffff",
-      "labelBgEnabled": true,
-      "labelBgColor": "#120a1c",
-      "labelBgOpacity": 0.88,
-      "labelBorderColor": "#ff6600"
-    },
-    {
       "id": 1793886769834.543,
       "shortId": 24,
       "typeId": "pumpkin_pirate",
@@ -466,6 +444,28 @@
       "labelBgColor": "#120a1c",
       "labelBorderColor": "#ff6600",
       "labelBgOpacity": 0.88
+    },
+    {
+      "id": 1793886502729.3748,
+      "shortId": 17,
+      "typeId": "pumpkin_classic",
+      "name": "Zucca Classica",
+      "label": "",
+      "x": 3437,
+      "y": 282,
+      "size": 550,
+      "showIcon": true,
+      "showLabel": true,
+      "bgEnabled": false,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 14,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBgOpacity": 0.88,
+      "labelBorderColor": "#ff6600"
     }
   ]
 }
