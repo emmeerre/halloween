@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-11-05T13:26:11.069Z",
+  "updatedAt": "2026-11-05T13:26:57.536Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -113,6 +113,16 @@
       "label": "Strega in Volo #11",
       "x": 1815,
       "y": 1693,
+      "size": 50
+    },
+    {
+      "id": 1793885215503.865,
+      "shortId": 12,
+      "typeId": "emoji_web",
+      "name": "Ragnatela",
+      "label": "Ragnatela #12",
+      "x": 1930,
+      "y": 1694,
       "size": 50
     }
   ]
