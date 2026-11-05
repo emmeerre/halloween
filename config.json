@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-11-05T13:24:13.983Z",
+  "updatedAt": "2026-11-05T13:24:17.133Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -61,9 +61,9 @@
       "typeId": "emoji_witch",
       "name": "Strega Emoji",
       "label": "Strega Emoji #6",
-      "x": 2518,
-      "y": 1376,
-      "size": 50
+      "x": 2520,
+      "y": 1374,
+      "size": 35
     }
   ]
 }
