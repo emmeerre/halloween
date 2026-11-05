@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "updatedAt": "2026-11-05T17:58:32.979Z",
+  "updatedAt": "2026-11-05T17:58:36.646Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -409,7 +409,7 @@
       "label": "",
       "x": 261,
       "y": 1432,
-      "size": 250,
+      "size": 550,
       "showIcon": true,
       "showLabel": true,
       "bgEnabled": false,
