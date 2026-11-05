@@ -1,6 +1,6 @@
 {
   "version": 6,
-  "updatedAt": "2026-11-05T13:45:59.709Z",
+  "updatedAt": "2026-11-05T13:46:05.626Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -110,19 +110,6 @@
       "bgOpacity": 0.55
     },
     {
-      "id": 1793885156735.6023,
-      "shortId": 10,
-      "typeId": "emoji_vampire",
-      "name": "Vampiro",
-      "label": "",
-      "x": 2127,
-      "y": 1647,
-      "size": 50,
-      "bgEnabled": false,
-      "bgColor": "#000000",
-      "bgOpacity": 0.55
-    },
-    {
       "id": 1793885051966.979,
       "shortId": 6,
       "typeId": "emoji_witch",
@@ -169,6 +156,19 @@
       "label": "",
       "x": 1797,
       "y": 1667,
+      "size": 50,
+      "bgEnabled": false,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55
+    },
+    {
+      "id": 1793885156735.6023,
+      "shortId": 10,
+      "typeId": "emoji_vampire",
+      "name": "Vampiro",
+      "label": "",
+      "x": 2127,
+      "y": 1647,
       "size": 50,
       "bgEnabled": false,
       "bgColor": "#000000",
