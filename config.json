@@ -1,6 +1,6 @@
 {
-  "version": 5,
-  "updatedAt": "2026-11-05T13:28:48.455Z",
+  "version": 6,
+  "updatedAt": "2026-11-05T13:45:15.675Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -13,7 +13,10 @@
       "label": "Ricci",
       "x": 2730,
       "y": 1379,
-      "size": 50
+      "size": 50,
+      "bgEnabled": false,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55
     },
     {
       "id": 1793884943197.7808,
@@ -23,7 +26,10 @@
       "label": "Calzola",
       "x": 2672,
       "y": 1350,
-      "size": 50
+      "size": 50,
+      "bgEnabled": false,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55
     },
     {
       "id": 1793884983515.3967,
@@ -33,7 +39,10 @@
       "label": "Marcagnani",
       "x": 2687,
       "y": 1423,
-      "size": 50
+      "size": 50,
+      "bgEnabled": false,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55
     },
     {
       "id": 1793884659642.0273,
@@ -43,7 +52,10 @@
       "label": "",
       "x": 1646,
       "y": 961,
-      "size": 41
+      "size": 41,
+      "bgEnabled": false,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55
     },
     {
       "id": 1793884657175.5295,
@@ -53,7 +65,10 @@
       "label": "Piancini",
       "x": 1699,
       "y": 1017,
-      "size": 41
+      "size": 41,
+      "bgEnabled": false,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55
     },
     {
       "id": 1793885076883.0203,
@@ -63,7 +78,10 @@
       "label": "Belati",
       "x": 1730,
       "y": 1428,
-      "size": 34
+      "size": 34,
+      "bgEnabled": false,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55
     },
     {
       "id": 1793885091917.627,
@@ -73,7 +91,10 @@
       "label": "Sargenti",
       "x": 1763,
       "y": 1373,
-      "size": 36
+      "size": 36,
+      "bgEnabled": false,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55
     },
     {
       "id": 1793885142368.4028,
@@ -83,7 +104,10 @@
       "label": "Baiocco",
       "x": 1571,
       "y": 771,
-      "size": 50
+      "size": 50,
+      "bgEnabled": false,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55
     },
     {
       "id": 1793885169052.8513,
@@ -93,17 +117,10 @@
       "label": "",
       "x": 1815,
       "y": 1693,
-      "size": 50
-    },
-    {
-      "id": 1793885215503.865,
-      "shortId": 12,
-      "typeId": "emoji_web",
-      "name": "Ragnatela",
-      "label": "",
-      "x": 1938,
-      "y": 1711,
-      "size": 50
+      "size": 50,
+      "bgEnabled": false,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55
     },
     {
       "id": 1793885156735.6023,
@@ -113,7 +130,10 @@
       "label": "",
       "x": 2127,
       "y": 1647,
-      "size": 50
+      "size": 50,
+      "bgEnabled": false,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55
     },
     {
       "id": 1793885051966.979,
@@ -123,7 +143,10 @@
       "label": "Dina",
       "x": 2520,
       "y": 1374,
-      "size": 29
+      "size": 29,
+      "bgEnabled": false,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55
     },
     {
       "id": 1793885299538.9116,
@@ -133,7 +156,23 @@
       "label": "Cena",
       "x": 2691,
       "y": 1654,
-      "size": 50
+      "size": 50,
+      "bgEnabled": false,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55
+    },
+    {
+      "id": 1793885215503.865,
+      "shortId": 12,
+      "typeId": "emoji_web",
+      "name": "Ragnatela",
+      "label": "",
+      "x": 1938,
+      "y": 1711,
+      "size": 50,
+      "bgEnabled": false,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55
     }
   ]
 }
