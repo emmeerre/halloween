@@ -1,6 +1,6 @@
 {
   "version": 6,
-  "updatedAt": "2026-11-05T13:53:10.751Z",
+  "updatedAt": "2026-11-05T13:53:47.902Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -236,6 +236,19 @@
       "y": 687,
       "size": 50,
       "bgEnabled": false,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55
+    },
+    {
+      "id": 1793886825885.0464,
+      "shortId": 25,
+      "typeId": "pumpkin_cyclops",
+      "name": "Zucca Ciclope",
+      "label": "Zucca Ciclope #25",
+      "x": 1468,
+      "y": 1281,
+      "size": 50,
+      "bgEnabled": true,
       "bgColor": "#000000",
       "bgOpacity": 0.55
     }
