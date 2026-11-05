@@ -2,8 +2,8 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halloween Map 🎃</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Halloween Map 🎃 - emmeerre</title>
     <style>
         :root {
             --bg-dark: #0f0a14;
@@ -23,6 +23,8 @@
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             user-select: none;
+            -webkit-user-select: none;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -30,17 +32,22 @@
             color: var(--text);
             display: flex;
             height: 100vh;
+            height: 100dvh;
+            width: 100vw;
             overflow: hidden;
+            position: fixed;
+            inset: 0;
         }
 
         /* In modalità sola visualizzazione nasconde le barre di editing */
         body.view-only .sidebar-left,
         body.view-only .sidebar-right,
-        body.view-only .edit-only-ui {
+        body.view-only .edit-only-ui,
+        body.view-only .mobile-edit-nav {
             display: none !important;
         }
 
-        /* Sidebars (Left & Right) */
+        /* Sidebars (Left & Right) su Desktop */
         .sidebar-left {
             width: 340px;
             background-color: var(--panel-bg);
@@ -48,8 +55,9 @@
             display: flex;
             flex-direction: column;
             height: 100%;
-            z-index: 20;
+            z-index: 30;
             flex-shrink: 0;
+            transition: transform 0.28s ease;
         }
 
         .sidebar-right {
@@ -59,21 +67,36 @@
             display: flex;
             flex-direction: column;
             height: 100%;
-            z-index: 20;
+            z-index: 30;
             flex-shrink: 0;
+            transition: transform 0.28s ease;
         }
 
         .sidebar-header {
             padding: 12px 15px;
             background-color: var(--panel-header);
             border-bottom: 2px solid var(--accent);
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .sidebar-header h1 {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: var(--accent);
             letter-spacing: 0.5px;
+        }
+
+        .close-drawer-btn {
+            display: none;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid var(--border);
+            color: #fff;
+            border-radius: 6px;
+            padding: 4px 10px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            cursor: pointer;
         }
 
         .sidebar-content {
@@ -83,6 +106,7 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
+            -webkit-overflow-scrolling: touch;
         }
 
         .section {
@@ -115,14 +139,26 @@
 
         input[type="text"], input[type="password"], input[type="number"], select {
             width: 100%;
-            padding: 6px 8px;
+            padding: 7px 9px;
             background: var(--bg-dark);
             border: 1px solid var(--border);
             color: var(--text);
             border-radius: 4px;
             margin-bottom: 7px;
-            font-size: 0.82rem;
+            font-size: 0.85rem;
             user-select: text;
+            -webkit-user-select: text;
+        }
+
+        input[type="color"] {
+            width: 100%;
+            height: 32px;
+            padding: 2px;
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 6px;
         }
 
         input:focus, select:focus {
@@ -143,11 +179,20 @@
             gap: 7px;
         }
 
+        .sub-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px dashed var(--border);
+            padding: 8px;
+            border-radius: 6px;
+            margin-top: 4px;
+            margin-bottom: 6px;
+        }
+
         /* Buttons */
         .btn {
             display: inline-block;
             width: 100%;
-            padding: 8px;
+            padding: 9px;
             background-color: var(--accent);
             color: #fff;
             border: none;
@@ -168,6 +213,8 @@
         .btn-danger:hover { background-color: #a61e1e; }
         .btn-green { background-color: #2b8a3e; }
         .btn-green:hover { background-color: #237032; }
+        .btn-dark { background-color: #2b1f38; border: 1px solid var(--border); }
+        .btn-dark:hover { background-color: #3a2a4d; }
 
         .file-upload-btn {
             position: relative;
@@ -200,7 +247,7 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 5px;
-            max-height: 200px;
+            max-height: 185px;
             overflow-y: auto;
             padding-right: 4px;
             margin-bottom: 8px;
@@ -217,7 +264,7 @@
             align-items: center;
             justify-content: center;
             transition: all 0.15s;
-            height: 58px;
+            height: 56px;
         }
 
         .marker-option img, .marker-option span.emoji-icon {
@@ -262,34 +309,38 @@
 
         .zoom-toolbar {
             position: absolute;
-            top: 14px;
+            top: 10px;
             left: 50%;
             transform: translateX(-50%);
             background: rgba(22, 15, 30, 0.92);
             border: 1px solid var(--border);
-            padding: 6px 10px;
+            padding: 6px 8px;
             border-radius: 10px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 5px;
             z-index: 15;
             box-shadow: 0 6px 20px rgba(0,0,0,0.7);
             backdrop-filter: blur(6px);
+            max-width: 96vw;
         }
 
         .tool-btn {
             background: #2a1f38;
             border: 1px solid var(--border);
             color: var(--text);
-            padding: 6px 11px;
+            padding: 6px 10px;
             border-radius: 6px;
             cursor: pointer;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 4px;
             transition: all 0.15s;
+            white-space: nowrap;
         }
 
         .tool-btn:hover {
@@ -306,36 +357,37 @@
 
         .toolbar-divider {
             width: 1px;
-            height: 22px;
+            height: 20px;
             background: var(--border);
-            margin: 0 4px;
+            margin: 0 2px;
         }
 
         .zoom-badge {
-            min-width: 58px;
+            min-width: 52px;
             text-align: center;
-            font-size: 0.82rem;
+            font-size: 0.78rem;
             font-weight: bold;
             color: var(--accent);
             background: rgba(0,0,0,0.4);
-            padding: 5px 8px;
+            padding: 5px 6px;
             border-radius: 5px;
             border: 1px solid var(--border);
         }
 
-        /* Floating Live Sync Indicator on Top Right of Map */
+        /* Floating Live Sync Indicator */
         .cloud-indicator {
             position: absolute;
-            top: 14px;
-            right: 16px;
+            top: 62px;
+            right: 12px;
             background: rgba(22, 15, 30, 0.9);
             border: 1px solid var(--border);
-            padding: 6px 12px;
+            padding: 5px 10px;
             border-radius: 20px;
-            font-size: 0.76rem;
+            font-size: 0.72rem;
             font-weight: bold;
-            z-index: 15;
+            z-index: 14;
             box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+            pointer-events: none;
         }
 
         canvas {
@@ -343,6 +395,7 @@
             height: 100%;
             display: block;
             cursor: grab;
+            touch-action: none;
         }
 
         .instructions-overlay {
@@ -350,21 +403,50 @@
             bottom: 12px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(15, 10, 20, 0.9);
+            background: rgba(15, 10, 20, 0.88);
             border: 1px solid var(--border);
-            padding: 7px 15px;
-            border-radius: 20px;
-            font-size: 0.75rem;
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 0.72rem;
             color: #ccc;
             pointer-events: none;
-            white-space: nowrap;
+            text-align: center;
+            max-width: 92vw;
             box-shadow: 0 4px 12px rgba(0,0,0,0.6);
-            z-index: 15;
+            z-index: 14;
+            line-height: 1.3;
         }
 
         .instructions-overlay span {
             color: var(--accent);
             font-weight: bold;
+        }
+
+        /* Pulsanti Flottanti su Mobile per aprire i pannelli in Edit Mode */
+        .mobile-edit-nav {
+            display: none;
+            position: absolute;
+            bottom: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 25;
+            gap: 8px;
+            width: 92vw;
+            max-width: 400px;
+        }
+
+        .mobile-nav-btn {
+            flex: 1;
+            background: rgba(27, 19, 36, 0.95);
+            border: 2px solid var(--accent);
+            color: #fff;
+            padding: 10px 12px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.8);
+            cursor: pointer;
+            text-align: center;
         }
 
         /* Right Sidebar: Editor & Marker List */
@@ -395,7 +477,7 @@
             flex-direction: column;
             gap: 6px;
             padding-right: 4px;
-            max-height: 380px;
+            max-height: 360px;
         }
 
         .marker-card {
@@ -430,8 +512,9 @@
             font-size: 20px;
             flex-shrink: 0;
             background: rgba(0,0,0,0.4);
-            border-radius: 6px;
+            border-radius: 50%;
             padding: 3px;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
         .marker-card-icon img {
@@ -471,14 +554,14 @@
             background: rgba(255,255,255,0.08);
             border: none;
             color: #ddd;
-            width: 25px;
-            height: 25px;
+            width: 28px;
+            height: 28px;
             border-radius: 4px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.78rem;
+            font-size: 0.82rem;
         }
 
         .icon-btn:hover { background: rgba(255,255,255,0.22); }
@@ -491,17 +574,74 @@
             cursor: pointer;
             font-size: 0.78rem;
             color: var(--text);
-            margin-top: 3px;
+            margin-top: 2px;
+            margin-bottom: 4px;
         }
-        .checkbox-label input { width: auto; margin: 0; }
+        .checkbox-label input { width: auto; margin: 0; accent-color: var(--accent); }
+
+        /* --- RESPONSIVE PER SMARTPHONE E TABLET --- */
+        @media (max-width: 900px) {
+            .sidebar-left,
+            .sidebar-right {
+                position: fixed;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                top: auto;
+                width: 100%;
+                height: 80dvh;
+                border: none;
+                border-top: 2px solid var(--accent);
+                border-radius: 18px 18px 0 0;
+                box-shadow: 0 -10px 30px rgba(0,0,0,0.9);
+                transform: translateY(105%);
+            }
+
+            .sidebar-left.mobile-open,
+            .sidebar-right.mobile-open {
+                transform: translateY(0);
+            }
+
+            .close-drawer-btn {
+                display: inline-block;
+            }
+
+            .mobile-edit-nav {
+                display: flex;
+            }
+
+            body:not(.view-only) .instructions-overlay {
+                display: none;
+            }
+
+            .zoom-toolbar {
+                top: 8px;
+                padding: 5px 6px;
+                gap: 4px;
+            }
+
+            .tool-btn {
+                padding: 6px 8px;
+                font-size: 0.74rem;
+            }
+
+            .btn-text-desktop {
+                display: none;
+            }
+
+            .toolbar-divider {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body class="view-only">
 
     <!-- SIDEBAR SINISTRA: VISIBILE SOLO IN MODALITÀ ?edit=true -->
-    <div class="sidebar-left">
+    <div class="sidebar-left" id="leftDrawer">
         <div class="sidebar-header">
             <h1>🎃 Halloween Editor</h1>
+            <button class="close-drawer-btn" onclick="closeMobileDrawers()">✖ Chiudi</button>
         </div>
         
         <div class="sidebar-content">
@@ -512,8 +652,8 @@
                     ⏳ Verifica configurazione...
                 </div>
 
-                <label for="ghRepoInput">Repository (username/nome-repo):</label>
-                <input type="text" id="ghRepoInput" placeholder="es. mariorossi/mappa-halloween">
+                <label for="ghRepoInput">Repository GitHub:</label>
+                <input type="text" id="ghRepoInput" value="emmeerre/halloween">
 
                 <div class="row-2col">
                     <div>
@@ -536,7 +676,7 @@
                 </label>
             </div>
 
-            <!-- 2. Pennello Nuovo Marker -->
+            <!-- 2. Pennello Nuovo Marker + Fondino Predefinito -->
             <div class="section">
                 <h3>2. Aggiungi Nuovo Marker</h3>
                 <label>Scegli Disegno (24 disponibili):</label>
@@ -547,6 +687,23 @@
 
                 <label for="defaultSizeSlider">Dimensione: <span id="defaultSizeVal">50</span>px</label>
                 <input type="range" id="defaultSizeSlider" min="15" max="250" value="50">
+
+                <!-- Impostazioni Fondino Rotondo per i prossimi marker -->
+                <div class="sub-box">
+                    <label class="checkbox-label" style="font-weight:bold; color:var(--accent);">
+                        <input type="checkbox" id="defaultBgEnabled" checked> ⭕ Metti fondino rotondo sotto
+                    </label>
+                    <div class="row-2col" style="margin-top:4px; align-items:center;">
+                        <div>
+                            <label for="defaultBgColor">Colore Fondino:</label>
+                            <input type="color" id="defaultBgColor" value="#000000" style="margin-bottom:0;">
+                        </div>
+                        <div>
+                            <label for="defaultBgOpacity">Opacità: <span id="defaultBgOpacityVal">55</span>%</label>
+                            <input type="range" id="defaultBgOpacity" min="5" max="100" value="55" style="margin-bottom:0;">
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- 3. Immagine Mappa & Backup Manuale -->
@@ -556,7 +713,7 @@
                 <input type="text" id="bgUrlInput" placeholder="Es. mappa.jpg">
 
                 <div class="btn file-upload-btn" style="padding:6px; font-size:0.78rem;">
-                    📁 Prova Immagine Locale dal PC
+                    📁 Prova Immagine Locale
                     <input type="file" id="bgImageInput" accept="image/*">
                 </div>
 
@@ -575,11 +732,11 @@
     <div class="main-area" id="viewportArea">
         
         <div class="zoom-toolbar">
-            <button class="tool-btn active edit-only-ui" id="modeMarkerBtn" title="Clic Sinistro: Piazza o Sposta Marker">
-                📍 Piazza / Modifica
+            <button class="tool-btn active edit-only-ui" id="modeMarkerBtn" title="Tocca/Clicca: Piazza o Sposta Marker">
+                📍 <span class="btn-text-desktop">Piazza /</span> Modifica
             </button>
-            <button class="tool-btn edit-only-ui" id="modePanBtn" title="Clic Sinistro: Trascina la Mappa">
-                ✋ Muovi Mappa
+            <button class="tool-btn edit-only-ui" id="modePanBtn" title="Trascina la Mappa">
+                ✋ Muovi
             </button>
 
             <div class="toolbar-divider edit-only-ui"></div>
@@ -595,26 +752,31 @@
 
             <div class="toolbar-divider"></div>
 
-            <button class="tool-btn" id="toggleLabelsBtn" title="Mostra/Nascondi Etichette">🏷️ Etichette</button>
-            <button class="tool-btn" id="exportImageBtn" title="Scarica la mappa completa come immagine PNG" style="background:var(--accent); border-color:var(--accent); color:#fff;">🖼️ Scarica PNG</button>
+            <button class="tool-btn" id="toggleLabelsBtn" title="Mostra/Nascondi Etichette">🏷️ <span class="btn-text-desktop">Etichette</span></button>
+            <button class="tool-btn" id="exportImageBtn" title="Scarica la mappa completa come immagine PNG" style="background:var(--accent); border-color:var(--accent); color:#fff;">🖼️ PNG</button>
         </div>
 
-        <!-- Indicatore stato salvataggio in alto a destra (solo in Edit Mode) -->
+        <!-- Indicatore stato salvataggio (solo in Edit Mode) -->
         <div class="cloud-indicator edit-only-ui" id="cloudIndicator">
-            🔓 Modalità Modifica Attiva
+            🔓 Modalità Modifica
         </div>
 
         <canvas id="mapCanvas"></canvas>
 
-        <div class="instructions-overlay" id="instructionsOverlay">
-            <!-- Popolato in base alla modalità -->
+        <div class="instructions-overlay" id="instructionsOverlay"></div>
+
+        <!-- Barra inferiore su Smartphone per aprire i pannelli in modalità Edit -->
+        <div class="mobile-edit-nav">
+            <button class="mobile-nav-btn" onclick="toggleMobileDrawer('left')">🎃 Pennello & GitHub</button>
+            <button class="mobile-nav-btn" onclick="toggleMobileDrawer('right')">🛠️ Modifica & Lista (<span id="mobileMarkerCount">0</span>)</button>
         </div>
     </div>
 
     <!-- SIDEBAR DESTRA: VISIBILE SOLO IN MODALITÀ ?edit=true -->
-    <div class="sidebar-right">
+    <div class="sidebar-right" id="rightDrawer">
         <div class="sidebar-header">
             <h1>🛠️ Gestione & Modifica Marker</h1>
+            <button class="close-drawer-btn" onclick="closeMobileDrawers()">✖ Chiudi</button>
         </div>
 
         <div class="sidebar-content">
@@ -626,7 +788,7 @@
                 </h3>
                 
                 <div id="editorEmptyState" class="editor-empty">
-                    Clicca su un marker sulla mappa o nella lista qui sotto per modificarne etichetta, posizione, disegno e dimensione.
+                    Tocca o clicca su un marker sulla mappa o nella lista qui sotto per modificarne etichetta, fondino rotondo, posizione e dimensione.
                 </div>
 
                 <div id="editorControls" style="display: none;">
@@ -650,9 +812,29 @@
                     <label for="editSize">Zoom / Dimensione Marker: <span id="editSizeVal" style="color:var(--accent); font-weight:bold;">50</span>px</label>
                     <input type="range" id="editSize" min="15" max="250" value="50">
 
+                    <!-- Controlli Fondino Rotondo del Marker Selezionato -->
+                    <div class="sub-box">
+                        <label class="checkbox-label" style="font-weight:bold; color:var(--accent);">
+                            <input type="checkbox" id="editBgEnabled"> ⭕ Fondino rotondo sotto il marker
+                        </label>
+                        <div class="row-2col" style="margin-top:4px; align-items:center;">
+                            <div>
+                                <label for="editBgColor">Colore Fondino:</label>
+                                <input type="color" id="editBgColor" value="#000000" style="margin-bottom:0;">
+                            </div>
+                            <div>
+                                <label for="editBgOpacity">Opacità: <span id="editBgOpacityVal">55</span>%</label>
+                                <input type="range" id="editBgOpacity" min="5" max="100" value="55" style="margin-bottom:0;">
+                            </div>
+                        </div>
+                        <button class="btn btn-dark" id="applyBgToAllBtn" style="margin-top:7px; margin-bottom:0; padding:5px; font-size:0.73rem;">
+                            🎨 Applica questo fondino a TUTTI i marker
+                        </button>
+                    </div>
+
                     <div class="row-2col" style="margin-top: 6px;">
-                        <button class="btn btn-purple" id="duplicateMarkerBtn" style="margin-bottom:0; padding:7px;">📑 Duplica</button>
-                        <button class="btn btn-danger" id="deleteSelectedBtn" style="margin-bottom:0; padding:7px;">🗑️ Elimina</button>
+                        <button class="btn btn-purple" id="duplicateMarkerBtn" style="margin-bottom:0; padding:8px;">📑 Duplica</button>
+                        <button class="btn btn-danger" id="deleteSelectedBtn" style="margin-bottom:0; padding:8px;">🗑️ Elimina</button>
                     </div>
                 </div>
             </div>
@@ -672,6 +854,8 @@
     </div>
 
 <script>
+    const DEFAULT_GITHUB_REPO = 'emmeerre/halloween';
+    const DEFAULT_GITHUB_BRANCH = 'main';
     const CONFIG_FILE_PATH = 'config.json';
 
     // --- 24 DISEGNI DI HALLOWEEN (16 SVG Custom + 8 Emoji) ---
@@ -846,14 +1030,18 @@
     let viewZoom = 1;
     let viewPanX = 0;
     let viewPanY = 0;
-    const MIN_ZOOM = 0.15;
+    const MIN_ZOOM = 0.1;
     const MAX_ZOOM = 6.0;
 
-    let interactionMode = 'pan'; // 'pan' di default per visitatori, 'marker' per editor
+    let interactionMode = 'pan';
     let isSpacePressed = false;
     let isPanning = false;
     let panStartX = 0;
     let panStartY = 0;
+
+    // Stato Touch Mobile
+    let isTouchActive = false;
+    let lastPinchDist = 0;
 
     // Stato Marker
     let markers = [];
@@ -883,6 +1071,36 @@
         }
     });
 
+    // Helper: converte colore HEX (#rrggbb) + opacità (0-1) in stringa rgba()
+    function hexToRgba(hex, alpha) {
+        let c = (hex || '#000000').replace('#', '');
+        if (c.length === 3) c = c[0]+c[0]+c[1]+c[1]+c[2]+c[2];
+        const num = parseInt(c, 16);
+        const r = (num >> 16) & 255;
+        const g = (num >> 8) & 255;
+        const b = num & 255;
+        const a = Math.max(0, Math.min(1, Number(alpha) ?? 0.55));
+        return `rgba(${r}, ${g}, ${b}, ${a})`;
+    }
+
+    // --- FUNZIONI MENU MOBILE A SCOMPARSA ---
+    window.toggleMobileDrawer = function(side) {
+        const left = document.getElementById('leftDrawer');
+        const right = document.getElementById('rightDrawer');
+        if (side === 'left') {
+            right.classList.remove('mobile-open');
+            left.classList.toggle('mobile-open');
+        } else {
+            left.classList.remove('mobile-open');
+            right.classList.toggle('mobile-open');
+        }
+    };
+
+    window.closeMobileDrawers = function() {
+        document.getElementById('leftDrawer').classList.remove('mobile-open');
+        document.getElementById('rightDrawer').classList.remove('mobile-open');
+    };
+
     // --- CONTROLLO PARAMETRI URL E MODALITÀ EDIT / VIEW ---
     function checkUrlParamsAndSetupMode() {
         const params = new URLSearchParams(window.location.search);
@@ -891,23 +1109,15 @@
         const repoParam = params.get('repo');
         const branchParam = params.get('branch');
 
-        // Se nel link c'è una chiave (?key=...), salvala nel browser dell'amico e pulisci l'URL!
-        if (keyParam) {
-            localStorage.setItem('hw_gh_token', keyParam.trim());
-        }
-        if (repoParam) {
-            localStorage.setItem('hw_gh_repo', repoParam.trim());
-        }
-        if (branchParam) {
-            localStorage.setItem('hw_gh_branch', branchParam.trim());
-        }
+        if (keyParam) localStorage.setItem('hw_gh_token', keyParam.trim());
+        if (repoParam) localStorage.setItem('hw_gh_repo', repoParam.trim());
+        if (branchParam) localStorage.setItem('hw_gh_branch', branchParam.trim());
 
         if (editParam !== null || keyParam !== null) {
             isEditMode = true;
             document.body.classList.remove('view-only');
             interactionMode = 'marker';
 
-            // Se c'era la chiave in chiaro nell'URL, la nascondiamo subito dalla barra degli indirizzi
             if (keyParam) {
                 const cleanUrl = window.location.pathname + '?edit=true';
                 window.history.replaceState({}, document.title, cleanUrl);
@@ -918,30 +1128,25 @@
             interactionMode = 'pan';
         }
 
-        // Rileva automaticamente username/repo se siamo su github.io
-        let savedRepo = localStorage.getItem('hw_gh_repo') || '';
-        if (!savedRepo && window.location.hostname.endsWith('.github.io')) {
-            const owner = window.location.hostname.split('.')[0];
-            const pathParts = window.location.pathname.split('/').filter(Boolean);
-            if (owner && pathParts.length > 0) {
-                savedRepo = `${owner}/${pathParts[0]}`;
-                localStorage.setItem('hw_gh_repo', savedRepo);
-            }
-        }
+        const savedRepo = localStorage.getItem('hw_gh_repo') || DEFAULT_GITHUB_REPO;
+        const savedBranch = localStorage.getItem('hw_gh_branch') || DEFAULT_GITHUB_BRANCH;
 
         document.getElementById('ghRepoInput').value = savedRepo;
-        document.getElementById('ghBranchInput').value = localStorage.getItem('hw_gh_branch') || 'main';
+        document.getElementById('ghBranchInput').value = savedBranch;
         document.getElementById('ghTokenInput').value = localStorage.getItem('hw_gh_token') || '';
 
         const instr = document.getElementById('instructionsOverlay');
+        const isMobileScreen = window.innerWidth <= 900;
         if (isEditMode) {
-            instr.innerHTML = `<span>Clic Sinistro:</span> Piazza / Sposta Marker &nbsp;|&nbsp; <span>Rotellina:</span> Zoom Mappa &nbsp;|&nbsp; <span>Spazio + Trascina:</span> Muovi Mappa &nbsp;|&nbsp; <span>Clic Destro:</span> Elimina`;
+            instr.innerHTML = `<span>Clic Sinistro:</span> Piazza / Sposta &nbsp;|&nbsp; <span>Rotellina / 2 Dita:</span> Zoom &nbsp;|&nbsp; <span>Clic Destro:</span> Elimina`;
         } else {
-            instr.innerHTML = `<span>Trascina con il Mouse:</span> Muovi la Mappa &nbsp;|&nbsp; <span>Rotellina:</span> Zoom Avanti / Indietro`;
+            instr.innerHTML = isMobileScreen
+                ? `<span>1 Dito:</span> Muovi la Mappa &nbsp;|&nbsp; <span>2 Dita (Pinch):</span> Zoom Avanti / Indietro`
+                : `<span>Trascina:</span> Muovi la Mappa &nbsp;|&nbsp; <span>Rotellina / 2 Dita:</span> Zoom Avanti / Indietro`;
         }
     }
 
-    // --- GITHUB API: LETTURA E AUTO-SAVE ---
+    // --- GITHUB API: LETTURA E AUTO-SAVE SU emmeerre/halloween ---
     function setStatus(type, htmlText, indicatorText) {
         const statusEl = document.getElementById('githubStatus');
         if (statusEl) {
@@ -954,7 +1159,6 @@
         }
     }
 
-    // Codifica/Decodifica Base64 compatibile con Emoji e caratteri UTF-8 per GitHub API
     function utf8ToBase64(str) {
         return btoa(unescape(encodeURIComponent(str)));
     }
@@ -963,14 +1167,13 @@
     }
 
     async function loadInitialConfig() {
-        const repo = document.getElementById('ghRepoInput').value.trim();
-        const branch = document.getElementById('ghBranchInput').value.trim() || 'main';
+        const repo = document.getElementById('ghRepoInput').value.trim() || DEFAULT_GITHUB_REPO;
+        const branch = document.getElementById('ghBranchInput').value.trim() || DEFAULT_GITHUB_BRANCH;
         const token = document.getElementById('ghTokenInput').value.trim();
 
-        // 1. Se siamo in Edit Mode e abbiamo Repo + Token, leggiamo direttamente dall'API GitHub (zero ritardo cache!)
         if (isEditMode && repo && token) {
             try {
-                setStatus('saving', '⏳ Lettura in tempo reale da GitHub API...', '⏳ Caricamento...');
+                setStatus('saving', `⏳ Lettura live da <b>${repo}</b>...`, '⏳ Caricamento...');
                 const apiUrl = `https://api.github.com/repos/${repo}/contents/${CONFIG_FILE_PATH}?ref=${encodeURIComponent(branch)}`;
                 const res = await fetch(apiUrl, {
                     headers: {
@@ -984,7 +1187,7 @@
                     const jsonStr = base64ToUtf8(fileObj.content);
                     const data = JSON.parse(jsonStr);
                     applyConfigurationData(data);
-                    setStatus('ok', `✅ Connesso a <b>${repo}</b>! Auto-Save attivo.`, '✅ Pronto (Auto-Save ON)');
+                    setStatus('ok', `✅ Connesso a <b>${repo}</b>! Auto-Save attivo.`, '✅ Auto-Save ON');
                     return;
                 }
             } catch (e) {
@@ -992,35 +1195,32 @@
             }
         }
 
-        // 2. Lettura standard pubblica da ./config.json (per tutti i visitatori normali)
         try {
             const response = await fetch(`./${CONFIG_FILE_PATH}?t=${Date.now()}`, { cache: 'no-store' });
             if (!response.ok) throw new Error(`HTTP ${response.status}`);
             const data = await response.json();
             applyConfigurationData(data);
             if (isEditMode) {
-                if (token && repo) {
+                if (token) {
                     setStatus('ok', `✅ Mappa caricata. Pronto a salvare su <b>${repo}</b>.`, '✅ Auto-Save Pronto');
                 } else {
-                    setStatus('warn', `⚠️ Inserisci <b>Repository</b> e <b>Token</b> qui sotto per attivare il salvataggio automatico.`, '⚠️ Token Mancante');
+                    setStatus('warn', `⚠️ Inserisci il tuo <b>Token Temporaneo</b> qui sotto per attivare il salvataggio automatico.`, '⚠️ Token Mancante');
                 }
             }
         } catch (err) {
             if (isEditMode) {
-                setStatus('warn', `ℹ️ Nessun <b>config.json</b> trovato. Piazza il primo marker e clicca "Salva Ora" per crearlo automaticamente!`, 'ℹ️ Nuovo Config');
+                setStatus('warn', `ℹ️ Nessun <b>config.json</b> trovato. Piazza il primo marker e verrà creato da solo!`, 'ℹ️ Nuovo Config');
             }
         }
     }
 
-    // Pianifica il salvataggio automatico (attende 2 secondi dall'ultima modifica)
     function scheduleAutoSave() {
         if (!isEditMode) return;
         if (!document.getElementById('autoSaveCheck').checked) return;
 
-        const repo = document.getElementById('ghRepoInput').value.trim();
         const token = document.getElementById('ghTokenInput').value.trim();
-        if (!repo || !token) {
-            setStatus('warn', '⚠️ Modifica effettuata, ma mancano Repo o Token per salvare in automatico.', '⚠️ Non salvato (Manca Token)');
+        if (!token) {
+            setStatus('warn', '⚠️ Modifica effettuata, ma manca il Token per salvare su GitHub.', '⚠️ Manca Token');
             return;
         }
 
@@ -1033,20 +1233,20 @@
 
     async function saveConfigToGitHub() {
         if (isSavingToGitHub) return;
-        const repo = document.getElementById('ghRepoInput').value.trim();
-        const branch = document.getElementById('ghBranchInput').value.trim() || 'main';
+        const repo = document.getElementById('ghRepoInput').value.trim() || DEFAULT_GITHUB_REPO;
+        const branch = document.getElementById('ghBranchInput').value.trim() || DEFAULT_GITHUB_BRANCH;
         const token = document.getElementById('ghTokenInput').value.trim();
 
-        if (!repo || !token) {
-            alert('Inserisci sia il nome del Repository (es. tuonome/mappa) sia il Token di GitHub!');
+        if (!token) {
+            alert('Inserisci il Token Temporaneo di GitHub per poter salvare!');
             return;
         }
 
         isSavingToGitHub = true;
-        setStatus('saving', `☁️ Salvataggio su GitHub (<b>${repo}</b>) in corso...`, '☁️ Salvataggio in corso...');
+        setStatus('saving', `☁️ Salvataggio su <b>${repo}</b> in corso...`, '☁️ Salvataggio...');
 
         const exportData = {
-            version: 5,
+            version: 6,
             updatedAt: new Date().toISOString(),
             backgroundImage: document.getElementById('bgUrlInput').value.trim() || "",
             mapWidth: mapWidth,
@@ -1058,7 +1258,6 @@
         const apiUrl = `https://api.github.com/repos/${repo}/contents/${CONFIG_FILE_PATH}`;
 
         try {
-            // 1. Recupera lo SHA attuale del file config.json (richiesto da GitHub per sovrascrivere)
             let currentSha = null;
             const getRes = await fetch(`${apiUrl}?ref=${encodeURIComponent(branch)}`, {
                 headers: {
@@ -1076,7 +1275,6 @@
                 throw new Error(errJson.message || `Errore lettura SHA (${getRes.status})`);
             }
 
-            // 2. Invia il nuovo config.json tramite PUT
             const bodyPayload = {
                 message: `🎃 Aggiornamento mappa (${markers.length} marker)`,
                 content: contentBase64,
@@ -1100,7 +1298,7 @@
             }
 
             const timeStr = new Date().toLocaleTimeString('it-IT');
-            setStatus('ok', `✅ Salvato automaticamente su GitHub alle <b>${timeStr}</b>!`, `✅ Salvato (${timeStr})`);
+            setStatus('ok', `✅ Salvato su <b>${repo}</b> alle <b>${timeStr}</b>!`, `✅ Salvato (${timeStr})`);
         } catch (err) {
             console.error(err);
             setStatus('err', `❌ Errore salvataggio: ${escapeHtml(err.message)}`, '❌ Errore Salvataggio');
@@ -1123,7 +1321,10 @@
             label: m.label !== undefined ? m.label : (m.name || `Marker #${idx + 1}`),
             x: Number(m.x) || 0,
             y: Number(m.y) || 0,
-            size: Number(m.size) || 50
+            size: Number(m.size) || 50,
+            bgEnabled: m.bgEnabled !== undefined ? Boolean(m.bgEnabled) : false,
+            bgColor: m.bgColor || '#000000',
+            bgOpacity: m.bgOpacity !== undefined ? Number(m.bgOpacity) : 0.55
         }));
 
         const maxShortId = markers.reduce((max, m) => Math.max(max, m.shortId || 0), 0);
@@ -1161,22 +1362,31 @@
         img.src = url;
     }
 
-    // --- GESTIONE VIEWPORT, ZOOM E PAN ---
+    // --- GESTIONE VIEWPORT, ZOOM E PAN (DESKTOP + MOBILE) ---
     function resizeViewport() {
         canvas.width = viewportArea.clientWidth;
         canvas.height = viewportArea.clientHeight;
         drawCanvas();
     }
 
-    window.addEventListener('resize', resizeViewport);
+    window.addEventListener('resize', () => {
+        resizeViewport();
+        fitMapToScreen();
+    });
 
     function fitMapToScreen() {
-        const pad = 70;
-        const availW = Math.max(100, canvas.width - pad * 2);
-        const availH = Math.max(100, canvas.height - pad * 2);
-        viewZoom = Math.min(availW / mapWidth, availH / mapHeight, 1.5);
+        const isMobile = window.innerWidth <= 900;
+        const padX = isMobile ? 16 : 60;
+        const padTop = isMobile ? 65 : 75;
+        const padBottom = isMobile ? (isEditMode ? 70 : 45) : 55;
+
+        const availW = Math.max(80, canvas.width - padX * 2);
+        const availH = Math.max(80, canvas.height - padTop - padBottom);
+
+        viewZoom = Math.min(availW / mapWidth, availH / mapHeight, 2.0);
         viewPanX = (canvas.width - mapWidth * viewZoom) / 2;
-        viewPanY = (canvas.height - mapHeight * viewZoom) / 2;
+        viewPanY = padTop + (availH - mapHeight * viewZoom) / 2;
+
         updateZoomUI();
         drawCanvas();
     }
@@ -1313,7 +1523,7 @@
                 targetCtx.fillStyle = 'rgba(255, 102, 0, 0.6)';
                 targetCtx.font = 'bold 24px sans-serif';
                 targetCtx.textAlign = 'center';
-                targetCtx.fillText(isEditMode ? 'Clicca qui per piazzare il primo marker!' : 'Mappa di Halloween in caricamento...', mapWidth / 2, mapHeight / 2);
+                targetCtx.fillText(isEditMode ? 'Tocca o clicca qui per piazzare il primo marker!' : 'Mappa di Halloween (emmeerre/halloween)', mapWidth / 2, mapHeight / 2);
             }
         }
 
@@ -1326,20 +1536,38 @@
         markers.forEach(m => {
             const dec = DECORATIONS.find(d => d.id === m.typeId) || DECORATIONS[0];
             const half = m.size / 2;
+            const bgRadius = m.size * 0.58;
 
+            // 1. Disegna il Fondino Rotondo Semitrasparente (se attivo per questo marker)
+            if (m.bgEnabled) {
+                targetCtx.save();
+                targetCtx.beginPath();
+                targetCtx.arc(m.x, m.y, bgRadius, 0, Math.PI * 2);
+                targetCtx.fillStyle = hexToRgba(m.bgColor || '#000000', m.bgOpacity ?? 0.55);
+                targetCtx.shadowColor = 'rgba(0, 0, 0, 0.55)';
+                targetCtx.shadowBlur = 6;
+                targetCtx.fill();
+                targetCtx.lineWidth = Math.max(1.5, m.size * 0.035);
+                targetCtx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+                targetCtx.stroke();
+                targetCtx.restore();
+            }
+
+            // 2. Cerchio verde tratteggiato se selezionato in Edit Mode
             if (!isExport && isEditMode && m.id === selectedMarkerId) {
                 targetCtx.save();
                 targetCtx.beginPath();
-                targetCtx.arc(m.x, m.y, half + 8, 0, Math.PI * 2);
+                targetCtx.arc(m.x, m.y, (m.bgEnabled ? bgRadius : half) + 7, 0, Math.PI * 2);
                 targetCtx.strokeStyle = '#39ff14';
                 targetCtx.lineWidth = 2.5;
                 targetCtx.setLineDash([6, 4]);
                 targetCtx.stroke();
-                targetCtx.fillStyle = 'rgba(57, 255, 20, 0.14)';
+                targetCtx.fillStyle = 'rgba(57, 255, 20, 0.12)';
                 targetCtx.fill();
                 targetCtx.restore();
             }
 
+            // 3. Disegna l'Icona del Marker
             targetCtx.save();
             targetCtx.shadowColor = 'rgba(0, 0, 0, 0.8)';
             targetCtx.shadowBlur = 8;
@@ -1359,6 +1587,7 @@
             }
             targetCtx.restore();
 
+            // 4. Disegna l'Etichetta
             if (showLabels && m.label) {
                 targetCtx.save();
                 targetCtx.font = 'bold 12px sans-serif';
@@ -1367,7 +1596,8 @@
                 const boxWidth = textWidth + padX * 2;
                 const boxHeight = 20;
                 const boxX = m.x - boxWidth / 2;
-                const boxY = m.y + half + 5;
+                const offsetBottom = m.bgEnabled ? bgRadius : half;
+                const boxY = m.y + offsetBottom + 5;
 
                 const isSelected = (!isExport && isEditMode && m.id === selectedMarkerId);
 
@@ -1429,6 +1659,13 @@
             document.getElementById('editY').value = Math.round(m.y);
             document.getElementById('editSize').value = m.size;
             document.getElementById('editSizeVal').textContent = m.size;
+
+            // Popola controlli Fondino Rotondo
+            document.getElementById('editBgEnabled').checked = Boolean(m.bgEnabled);
+            document.getElementById('editBgColor').value = m.bgColor || '#000000';
+            const opPct = Math.round((m.bgOpacity ?? 0.55) * 100);
+            document.getElementById('editBgOpacity').value = opPct;
+            document.getElementById('editBgOpacityVal').textContent = opPct;
         }
 
         updateMarkerListUI();
@@ -1473,6 +1710,66 @@
         }
     });
 
+    // Eventi modifica Fondino Rotondo del marker selezionato
+    document.getElementById('editBgEnabled').addEventListener('change', (e) => {
+        const m = markers.find(x => x.id === selectedMarkerId);
+        if (m) {
+            m.bgEnabled = e.target.checked;
+            updateMarkerListUI();
+            drawCanvas();
+            scheduleAutoSave();
+        }
+    });
+
+    document.getElementById('editBgColor').addEventListener('input', (e) => {
+        const m = markers.find(x => x.id === selectedMarkerId);
+        if (m) {
+            m.bgColor = e.target.value;
+            m.bgEnabled = true;
+            document.getElementById('editBgEnabled').checked = true;
+            updateMarkerListUI();
+            drawCanvas();
+            scheduleAutoSave();
+        }
+    });
+
+    document.getElementById('editBgOpacity').addEventListener('input', (e) => {
+        const m = markers.find(x => x.id === selectedMarkerId);
+        const pct = parseInt(e.target.value, 10) || 55;
+        document.getElementById('editBgOpacityVal').textContent = pct;
+        if (m) {
+            m.bgOpacity = pct / 100;
+            m.bgEnabled = true;
+            document.getElementById('editBgEnabled').checked = true;
+            updateMarkerListUI();
+            drawCanvas();
+            scheduleAutoSave();
+        }
+    });
+
+    // Applica il fondino attuale a TUTTI i marker sulla mappa
+    document.getElementById('applyBgToAllBtn').addEventListener('click', () => {
+        const bgEnabled = document.getElementById('editBgEnabled').checked;
+        const bgColor = document.getElementById('editBgColor').value;
+        const bgOpacity = (parseInt(document.getElementById('editBgOpacity').value, 10) || 55) / 100;
+
+        markers.forEach(item => {
+            item.bgEnabled = bgEnabled;
+            item.bgColor = bgColor;
+            item.bgOpacity = bgOpacity;
+        });
+
+        // Aggiorna anche il predefinito a sinistra
+        document.getElementById('defaultBgEnabled').checked = bgEnabled;
+        document.getElementById('defaultBgColor').value = bgColor;
+        document.getElementById('defaultBgOpacity').value = Math.round(bgOpacity * 100);
+        document.getElementById('defaultBgOpacityVal').textContent = Math.round(bgOpacity * 100);
+
+        updateMarkerListUI();
+        drawCanvas();
+        scheduleAutoSave();
+    });
+
     document.getElementById('duplicateMarkerBtn').addEventListener('click', () => {
         const m = markers.find(x => x.id === selectedMarkerId);
         if (!m) return;
@@ -1496,15 +1793,44 @@
         scheduleAutoSave();
     });
 
-    // --- INTERAZIONE MOUSE E TASTIERA SULLA MAPPA ---
+    // --- INTERAZIONE MOUSE (DESKTOP) ---
     function findMarkerAt(worldX, worldY) {
         for (let i = markers.length - 1; i >= 0; i--) {
             const m = markers[i];
-            if (Math.hypot(m.x - worldX, m.y - worldY) <= m.size / 2) {
+            const hitRadius = m.bgEnabled ? (m.size * 0.58) : (m.size / 2);
+            if (Math.hypot(m.x - worldX, m.y - worldY) <= hitRadius) {
                 return { marker: m, index: i };
             }
         }
         return null;
+    }
+
+    function createNewMarkerAt(worldX, worldY) {
+        const customLabel = document.getElementById('defaultLabelInput').value.trim();
+        const autoLabel = `${selectedDecoration.name} #${markerCounter}`;
+        const size = parseInt(document.getElementById('defaultSizeSlider').value, 10) || 50;
+
+        const bgEnabled = document.getElementById('defaultBgEnabled').checked;
+        const bgColor = document.getElementById('defaultBgColor').value || '#000000';
+        const bgOpacity = (parseInt(document.getElementById('defaultBgOpacity').value, 10) || 55) / 100;
+
+        const newMarker = {
+            id: Date.now() + Math.random(),
+            shortId: markerCounter++,
+            typeId: selectedDecoration.id,
+            name: selectedDecoration.name,
+            label: customLabel || autoLabel,
+            x: Math.round(worldX),
+            y: Math.round(worldY),
+            size: size,
+            bgEnabled: bgEnabled,
+            bgColor: bgColor,
+            bgOpacity: bgOpacity
+        };
+
+        markers.push(newMarker);
+        selectMarker(newMarker.id);
+        scheduleAutoSave();
     }
 
     window.addEventListener('keydown', (e) => {
@@ -1525,10 +1851,10 @@
     });
 
     canvas.addEventListener('mousedown', (e) => {
+        if (isTouchActive) return;
         const screenPos = getScreenPos(e);
         const worldPos = screenToWorld(screenPos.x, screenPos.y);
 
-        // In modalità sola visualizzazione (oppure Pan / Spazio / Tasto centrale) il mouse muove sempre la mappa
         if (!isEditMode || e.button === 1 || (e.button === 0 && (interactionMode === 'pan' || isSpacePressed))) {
             e.preventDefault();
             isPanning = true;
@@ -1540,7 +1866,6 @@
 
         const found = findMarkerAt(worldPos.x, worldPos.y);
 
-        // Clic Destro in Edit Mode -> Elimina
         if (e.button === 2) {
             if (found) {
                 const delId = found.marker.id;
@@ -1552,7 +1877,6 @@
             return;
         }
 
-        // Clic Sinistro in Edit Mode -> Sposta o Crea
         if (e.button === 0 && interactionMode === 'marker') {
             if (found) {
                 isDraggingMarker = true;
@@ -1563,29 +1887,13 @@
                 markers.push(draggedMarker);
                 selectMarker(draggedMarker.id);
             } else {
-                const customLabel = document.getElementById('defaultLabelInput').value.trim();
-                const autoLabel = `${selectedDecoration.name} #${markerCounter}`;
-                const size = parseInt(document.getElementById('defaultSizeSlider').value, 10) || 50;
-
-                const newMarker = {
-                    id: Date.now() + Math.random(),
-                    shortId: markerCounter++,
-                    typeId: selectedDecoration.id,
-                    name: selectedDecoration.name,
-                    label: customLabel || autoLabel,
-                    x: Math.round(worldPos.x),
-                    y: Math.round(worldPos.y),
-                    size: size
-                };
-
-                markers.push(newMarker);
-                selectMarker(newMarker.id);
-                scheduleAutoSave();
+                createNewMarkerAt(worldPos.x, worldPos.y);
             }
         }
     });
 
     canvas.addEventListener('mousemove', (e) => {
+        if (isTouchActive) return;
         const screenPos = getScreenPos(e);
 
         if (isPanning) {
@@ -1646,6 +1954,108 @@
         zoomAtPoint(zoomFactor, screenPos.x, screenPos.y);
     }, { passive: false });
 
+    // --- GESTIONE TOUCH MOBILE (1 DITO PAN/EDIT + 2 DITA PINCH-TO-ZOOM) ---
+    canvas.addEventListener('touchstart', (e) => {
+        isTouchActive = true;
+        closeMobileDrawers();
+
+        if (e.touches.length === 2) {
+            e.preventDefault();
+            isPanning = false;
+            isDraggingMarker = false;
+            draggedMarker = null;
+
+            const dx = e.touches[0].clientX - e.touches[1].clientX;
+            const dy = e.touches[0].clientY - e.touches[1].clientY;
+            lastPinchDist = Math.hypot(dx, dy);
+            return;
+        }
+
+        if (e.touches.length === 1) {
+            e.preventDefault();
+            const pos = getScreenPos(e.touches[0]);
+            const worldPos = screenToWorld(pos.x, pos.y);
+
+            if (!isEditMode || interactionMode === 'pan') {
+                isPanning = true;
+                panStartX = pos.x - viewPanX;
+                panStartY = pos.y - viewPanY;
+                return;
+            }
+
+            const found = findMarkerAt(worldPos.x, worldPos.y);
+            if (found) {
+                isDraggingMarker = true;
+                draggedMarker = found.marker;
+                dragOffsetX = worldPos.x - draggedMarker.x;
+                dragOffsetY = worldPos.y - draggedMarker.y;
+                markers.splice(found.index, 1);
+                markers.push(draggedMarker);
+                selectMarker(draggedMarker.id);
+            } else {
+                createNewMarkerAt(worldPos.x, worldPos.y);
+            }
+        }
+    }, { passive: false });
+
+    canvas.addEventListener('touchmove', (e) => {
+        if (e.touches.length === 2) {
+            e.preventDefault();
+            const dx = e.touches[0].clientX - e.touches[1].clientX;
+            const dy = e.touches[0].clientY - e.touches[1].clientY;
+            const dist = Math.hypot(dx, dy);
+
+            if (lastPinchDist > 0) {
+                const rect = canvas.getBoundingClientRect();
+                const centerX = ((e.touches[0].clientX + e.touches[1].clientX) / 2) - rect.left;
+                const centerY = ((e.touches[0].clientY + e.touches[1].clientY) / 2) - rect.top;
+                const factor = dist / lastPinchDist;
+                zoomAtPoint(factor, centerX, centerY);
+            }
+            lastPinchDist = dist;
+            return;
+        }
+
+        if (e.touches.length === 1) {
+            e.preventDefault();
+            const pos = getScreenPos(e.touches[0]);
+
+            if (isPanning) {
+                viewPanX = pos.x - panStartX;
+                viewPanY = pos.y - panStartY;
+                drawCanvas();
+                return;
+            }
+
+            if (isDraggingMarker && draggedMarker) {
+                const worldPos = screenToWorld(pos.x, pos.y);
+                draggedMarker.x = Math.round(worldPos.x - dragOffsetX);
+                draggedMarker.y = Math.round(worldPos.y - dragOffsetY);
+                if (selectedMarkerId === draggedMarker.id) {
+                    document.getElementById('editX').value = draggedMarker.x;
+                    document.getElementById('editY').value = draggedMarker.y;
+                }
+                drawCanvas();
+            }
+        }
+    }, { passive: false });
+
+    canvas.addEventListener('touchend', (e) => {
+        if (e.touches.length < 2) {
+            lastPinchDist = 0;
+        }
+        if (e.touches.length === 0) {
+            isPanning = false;
+            if (isDraggingMarker) {
+                isDraggingMarker = false;
+                draggedMarker = null;
+                updateMarkerListUI();
+                scheduleAutoSave();
+            }
+            setTimeout(() => { isTouchActive = false; }, 300);
+        }
+    });
+
     canvas.addEventListener('contextmenu', e => e.preventDefault());
 
     // Pulsanti Barra Strumenti Zoom & Pan
@@ -1665,9 +2075,11 @@
         if (!isEditMode) return;
         const listEl = document.getElementById('markerList');
         const countEl = document.getElementById('markerCount');
+        const mobileCountEl = document.getElementById('mobileMarkerCount');
         const filterText = document.getElementById('searchFilterInput').value.toLowerCase().trim();
 
         countEl.textContent = markers.length;
+        if (mobileCountEl) mobileCountEl.textContent = markers.length;
 
         const filtered = markers.filter(m => {
             if (!filterText) return true;
@@ -1695,12 +2107,17 @@
                 iconHtml = `<span>${dec.char}</span>`;
             }
 
+            // Mostra anteprima del fondino anche nell'iconcina della lista!
+            const iconBgStyle = m.bgEnabled
+                ? `background: ${hexToRgba(m.bgColor || '#000000', m.bgOpacity ?? 0.55)}; border-color: rgba(255,255,255,0.35);`
+                : '';
+
             card.innerHTML = `
-                <div class="marker-card-icon">${iconHtml}</div>
+                <div class="marker-card-icon" style="${iconBgStyle}">${iconHtml}</div>
                 <div class="marker-card-info">
                     <div class="marker-card-title">${escapeHtml(m.label || m.name)}</div>
                     <div class="marker-card-sub">
-                        ${escapeHtml(dec.name)} • X:${m.x} Y:${m.y} • Dim:${m.size}px
+                        ${escapeHtml(dec.name)} • X:${m.x} Y:${m.y} • ${m.size}px ${m.bgEnabled ? '• ⭕' : ''}
                     </div>
                 </div>
                 <div class="marker-card-actions">
@@ -1713,6 +2130,7 @@
                 ev.stopPropagation();
                 selectMarker(m.id);
                 centerOnMarker(m);
+                closeMobileDrawers();
             };
 
             card.querySelector('.del').onclick = (ev) => {
@@ -1735,10 +2153,10 @@
 
     // --- CONTROLLI SIDEBAR SINISTRA & SALVATAGGIO CREDENZIALI ---
     document.getElementById('ghRepoInput').addEventListener('change', (e) => {
-        localStorage.setItem('hw_gh_repo', e.target.value.trim());
+        localStorage.setItem('hw_gh_repo', e.target.value.trim() || DEFAULT_GITHUB_REPO);
     });
     document.getElementById('ghBranchInput').addEventListener('change', (e) => {
-        localStorage.setItem('hw_gh_branch', e.target.value.trim() || 'main');
+        localStorage.setItem('hw_gh_branch', e.target.value.trim() || DEFAULT_GITHUB_BRANCH);
     });
     document.getElementById('ghTokenInput').addEventListener('change', (e) => {
         localStorage.setItem('hw_gh_token', e.target.value.trim());
@@ -1750,14 +2168,13 @@
         saveConfigToGitHub();
     });
 
-    // Genera e copia il Link Magico per gli amici
     document.getElementById('copyMagicLinkBtn').addEventListener('click', () => {
-        const repo = document.getElementById('ghRepoInput').value.trim();
-        const branch = document.getElementById('ghBranchInput').value.trim() || 'main';
+        const repo = document.getElementById('ghRepoInput').value.trim() || DEFAULT_GITHUB_REPO;
+        const branch = document.getElementById('ghBranchInput').value.trim() || DEFAULT_GITHUB_BRANCH;
         const token = document.getElementById('ghTokenInput').value.trim();
 
-        if (!repo || !token) {
-            alert('Inserisci prima il Repository e il Token Temporaneo per poter generare il Link Magico per i tuoi amici!');
+        if (!token) {
+            alert('Inserisci prima il tuo Token Temporaneo nella casella per poter generare il Link Magico per i tuoi amici!');
             return;
         }
 
@@ -1765,7 +2182,7 @@
         const magicUrl = `${baseUrl}?edit=true&repo=${encodeURIComponent(repo)}&branch=${encodeURIComponent(branch)}&key=${encodeURIComponent(token)}`;
 
         navigator.clipboard.writeText(magicUrl).then(() => {
-            alert('🔗 Link Magico copiato negli appunti!\n\nMandalo in privato su WhatsApp/Telegram ai tuoi amici: appena ci cliccheranno entreranno in modalità modifica con il salvataggio automatico già attivo!');
+            alert('🔗 Link Magico copiato negli appunti!\n\nMandalo in privato su WhatsApp/Telegram ai tuoi amici: appena ci cliccheranno (anche da cellulare!) entreranno in modalità modifica con il salvataggio automatico già attivo!');
         }).catch(() => {
             prompt('Copia questo Link Magico e mandalo ai tuoi amici:', magicUrl);
         });
@@ -1802,6 +2219,10 @@
         document.getElementById('defaultSizeVal').textContent = e.target.value;
     });
 
+    document.getElementById('defaultBgOpacity').addEventListener('input', (e) => {
+        document.getElementById('defaultBgOpacityVal').textContent = e.target.value;
+    });
+
     document.getElementById('clearAllBtn').addEventListener('click', () => {
         if (markers.length > 0 && confirm('Vuoi davvero eliminare tutti i marker dalla mappa?')) {
             markers = [];
@@ -1829,7 +2250,7 @@
     // Scarica config.json di backup
     document.getElementById('exportJsonBtn').addEventListener('click', () => {
         const exportData = {
-            version: 5,
+            version: 6,
             backgroundImage: document.getElementById('bgUrlInput').value.trim() || "",
             mapWidth: mapWidth,
             mapHeight: mapHeight,
