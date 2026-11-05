@@ -1,6 +1,6 @@
 {
   "version": 6,
-  "updatedAt": "2026-11-05T13:49:09.413Z",
+  "updatedAt": "2026-11-05T13:50:00.781Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -123,19 +123,6 @@
       "bgOpacity": 0.55
     },
     {
-      "id": 1793885215503.865,
-      "shortId": 12,
-      "typeId": "emoji_web",
-      "name": "Ragnatela",
-      "label": "",
-      "x": 1938,
-      "y": 1711,
-      "size": 50,
-      "bgEnabled": true,
-      "bgColor": "#4b9f1a",
-      "bgOpacity": 0.48
-    },
-    {
       "id": 1793885169052.8513,
       "shortId": 11,
       "typeId": "witch_broom",
@@ -199,6 +186,32 @@
       "bgEnabled": true,
       "bgColor": "#11f411",
       "bgOpacity": 0.88
+    },
+    {
+      "id": 1793886598747.8774,
+      "shortId": 20,
+      "typeId": "spooky_candle",
+      "name": "Candela Accesa",
+      "label": "Candela Accesa #20",
+      "x": 1983,
+      "y": 1706,
+      "size": 50,
+      "bgEnabled": true,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55
+    },
+    {
+      "id": 1793885215503.865,
+      "shortId": 12,
+      "typeId": "emoji_web",
+      "name": "Ragnatela",
+      "label": "",
+      "x": 1947,
+      "y": 1733,
+      "size": 50,
+      "bgEnabled": true,
+      "bgColor": "#4b9f1a",
+      "bgOpacity": 0.48
     }
   ]
 }
