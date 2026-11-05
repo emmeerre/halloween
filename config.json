@@ -1,6 +1,6 @@
 {
   "version": 6,
-  "updatedAt": "2026-11-05T13:49:02.013Z",
+  "updatedAt": "2026-11-05T13:49:05.146Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -199,6 +199,19 @@
       "bgEnabled": true,
       "bgColor": "#11f411",
       "bgOpacity": 0.88
+    },
+    {
+      "id": 1793886543129.9988,
+      "shortId": 19,
+      "typeId": "ghost_classic",
+      "name": "Fantasma Classico",
+      "label": "Fantasma Classico #19",
+      "x": 1452,
+      "y": 879,
+      "size": 50,
+      "bgEnabled": true,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55
     }
   ]
 }
