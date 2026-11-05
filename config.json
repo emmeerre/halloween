@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-11-05T13:28:24.388Z",
+  "updatedAt": "2026-11-05T13:28:28.088Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -131,8 +131,8 @@
       "typeId": "emoji_candy",
       "name": "Caramella",
       "label": "Cena",
-      "x": 2684,
-      "y": 1643,
+      "x": 2691,
+      "y": 1654,
       "size": 50
     }
   ]
