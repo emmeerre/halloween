@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "updatedAt": "2026-11-05T18:02:50.001Z",
+  "updatedAt": "2026-11-05T18:03:00.168Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -450,7 +450,7 @@
       "shortId": 27,
       "typeId": "text_only",
       "name": "Solo Testo",
-      "label": "Dalle 18:00 comincia: Dolcetto o scherzetto\nLa cena comincia alle 20:00",
+      "label": "Dalle 18:00 comincia: Dolcetto o scherzetto\nCena comincia alle 20:00",
       "x": 2756,
       "y": 682,
       "size": 363,
