@@ -1,0 +1,39 @@
+{
+  "version": 5,
+  "updatedAt": "2026-11-05T13:19:53.044Z",
+  "backgroundImage": "mappa.png",
+  "mapWidth": 3800,
+  "mapHeight": 2160,
+  "markers": [
+    {
+      "id": 1793884657175.5295,
+      "shortId": 1,
+      "typeId": "pumpkin_classic",
+      "name": "Zucca Classica",
+      "label": "Zucca Classica #1",
+      "x": 1690,
+      "y": 1013,
+      "size": 50
+    },
+    {
+      "id": 1793884659642.0273,
+      "shortId": 2,
+      "typeId": "pumpkin_classic",
+      "name": "Zucca Classica",
+      "label": "Zucca Classica #2",
+      "x": 1636,
+      "y": 971,
+      "size": 34
+    },
+    {
+      "id": 1793884678926.1533,
+      "shortId": 3,
+      "typeId": "cauldron",
+      "name": "Calderone Magico",
+      "label": "Calderone Magico #3",
+      "x": 2730,
+      "y": 1379,
+      "size": 50
+    }
+  ]
+}
