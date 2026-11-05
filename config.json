@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "updatedAt": "2026-11-05T17:59:36.230Z",
+  "updatedAt": "2026-11-05T17:59:39.697Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -437,7 +437,7 @@
       "bgEnabled": true,
       "bgColor": "#000000",
       "bgOpacity": 0.55,
-      "fontFamily": "'Nosifer', cursive",
+      "fontFamily": "'Butcherman', cursive",
       "fontSize": 184,
       "textColor": "#ffffff",
       "labelBgEnabled": true,
