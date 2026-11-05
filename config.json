@@ -1,6 +1,6 @@
 {
   "version": 6,
-  "updatedAt": "2026-11-05T13:45:15.675Z",
+  "updatedAt": "2026-11-05T13:45:21.642Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -170,7 +170,7 @@
       "x": 1938,
       "y": 1711,
       "size": 50,
-      "bgEnabled": false,
+      "bgEnabled": true,
       "bgColor": "#000000",
       "bgOpacity": 0.55
     }
