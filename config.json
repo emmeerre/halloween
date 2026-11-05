@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-11-05T13:27:06.136Z",
+  "updatedAt": "2026-11-05T13:27:12.053Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -96,16 +96,6 @@
       "size": 50
     },
     {
-      "id": 1793885156735.6023,
-      "shortId": 10,
-      "typeId": "emoji_vampire",
-      "name": "Vampiro",
-      "label": "Vampiro #10",
-      "x": 2127,
-      "y": 1647,
-      "size": 50
-    },
-    {
       "id": 1793885169052.8513,
       "shortId": 11,
       "typeId": "witch_broom",
@@ -121,8 +111,18 @@
       "typeId": "emoji_web",
       "name": "Ragnatela",
       "label": "",
-      "x": 1930,
-      "y": 1730,
+      "x": 1938,
+      "y": 1711,
+      "size": 50
+    },
+    {
+      "id": 1793885156735.6023,
+      "shortId": 10,
+      "typeId": "emoji_vampire",
+      "name": "Vampiro",
+      "label": "",
+      "x": 2127,
+      "y": 1647,
       "size": 50
     }
   ]
