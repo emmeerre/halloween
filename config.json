@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "updatedAt": "2026-11-05T17:59:54.247Z",
+  "updatedAt": "2026-11-05T17:59:58.731Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -429,8 +429,8 @@
       "typeId": "pumpkin_classic",
       "name": "Zucca Classica",
       "label": "Badiola ",
-      "x": 2815,
-      "y": 434,
+      "x": 2826,
+      "y": 308,
       "size": 50,
       "showIcon": false,
       "showLabel": true,
