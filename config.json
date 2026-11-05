@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "updatedAt": "2026-11-05T18:08:33.374Z",
+  "updatedAt": "2026-11-05T18:08:35.874Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -453,7 +453,7 @@
       "label": "Halloween a Badiola ",
       "x": 2672,
       "y": 357,
-      "size": 50,
+      "size": 53,
       "showIcon": false,
       "showLabel": true,
       "bgEnabled": true,
