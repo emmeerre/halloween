@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "updatedAt": "2026-11-05T18:15:38.199Z",
+  "updatedAt": "2026-11-05T18:16:07.983Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -466,6 +466,28 @@
       "labelBgColor": "#120a1c",
       "labelBgOpacity": 0.88,
       "labelBorderColor": "#e75618"
+    },
+    {
+      "id": 1793902565950.7344,
+      "shortId": 33,
+      "typeId": "emoji_eye",
+      "name": "Occhio",
+      "label": "Occhio #33",
+      "x": 2128,
+      "y": 1388,
+      "size": 50,
+      "showIcon": true,
+      "showLabel": true,
+      "bgEnabled": true,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 23,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBorderColor": "#ff6600",
+      "labelBgOpacity": 0.88
     }
   ]
 }
