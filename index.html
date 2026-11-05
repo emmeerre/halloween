@@ -254,7 +254,7 @@
                             </div>
                             <div>
                                 <label for="editFontSize">Dim. Testo: <span id="editFontSizeVal" style="color:var(--accent); font-weight:bold;">14</span>px</label>
-                                <input type="range" id="editFontSize" min="8" max="72" value="14" style="margin-top:5px;">
+                                <input type="range" id="editFontSize" min="8" max="300" value="14" style="margin-top:5px;">
                             </div>
                         </div>
 
@@ -1527,7 +1527,7 @@
                 const found = findMarkerAt(worldPos.x, worldPos.y);
                 if (found) {
                     const delta = e.deltaY < 0 ? 5 : -5;
-                    found.marker.size = Math.min(250, Math.max(15, found.marker.size + delta));
+                    found.marker.size = Math.min(550, Math.max(15, found.marker.size + delta));
                     selectMarker(found.marker.id);
                     scheduleAutoSave();
                     return;
