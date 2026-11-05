@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-11-05T13:27:12.053Z",
+  "updatedAt": "2026-11-05T13:28:04.771Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -54,16 +54,6 @@
       "x": 1699,
       "y": 1017,
       "size": 41
-    },
-    {
-      "id": 1793885051966.979,
-      "shortId": 6,
-      "typeId": "emoji_witch",
-      "name": "Strega Emoji",
-      "label": "",
-      "x": 2520,
-      "y": 1374,
-      "size": 29
     },
     {
       "id": 1793885076883.0203,
@@ -124,6 +114,16 @@
       "x": 2127,
       "y": 1647,
       "size": 50
+    },
+    {
+      "id": 1793885051966.979,
+      "shortId": 6,
+      "typeId": "emoji_witch",
+      "name": "Strega Emoji",
+      "label": "",
+      "x": 2520,
+      "y": 1374,
+      "size": 29
     }
   ]
 }
