@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "updatedAt": "2026-11-05T18:01:25.666Z",
+  "updatedAt": "2026-11-05T18:01:30.382Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -424,28 +424,6 @@
       "labelBorderColor": "#ff6600"
     },
     {
-      "id": 1793901532513.663,
-      "shortId": 26,
-      "typeId": "pumpkin_classic",
-      "name": "Zucca Classica",
-      "label": "Badiola ",
-      "x": 2826,
-      "y": 308,
-      "size": 50,
-      "showIcon": false,
-      "showLabel": true,
-      "bgEnabled": true,
-      "bgColor": "#000000",
-      "bgOpacity": 0.55,
-      "fontFamily": "'Eater', cursive",
-      "fontSize": 156,
-      "textColor": "#ffffff",
-      "labelBgEnabled": true,
-      "labelBgColor": "#120a1c",
-      "labelBorderColor": "#ff6600",
-      "labelBgOpacity": 1
-    },
-    {
       "id": 1793901629931.117,
       "shortId": 27,
       "typeId": "text_only",
@@ -466,6 +444,28 @@
       "labelBgColor": "#120a1c",
       "labelBorderColor": "#ff6600",
       "labelBgOpacity": 0.88
+    },
+    {
+      "id": 1793901532513.663,
+      "shortId": 26,
+      "typeId": "pumpkin_classic",
+      "name": "Zucca Classica",
+      "label": "Badiola ",
+      "x": 2826,
+      "y": 308,
+      "size": 50,
+      "showIcon": false,
+      "showLabel": true,
+      "bgEnabled": true,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55,
+      "fontFamily": "'Eater', cursive",
+      "fontSize": 156,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBorderColor": "#ff6600",
+      "labelBgOpacity": 1
     }
   ]
 }
