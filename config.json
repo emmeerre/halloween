@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "updatedAt": "2026-11-05T18:01:30.382Z",
+  "updatedAt": "2026-11-05T18:01:38.616Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -424,28 +424,6 @@
       "labelBorderColor": "#ff6600"
     },
     {
-      "id": 1793901629931.117,
-      "shortId": 27,
-      "typeId": "text_only",
-      "name": "Solo Testo",
-      "label": "Dalle 18 00 comincia Dolcetto o scherzetto",
-      "x": 2728,
-      "y": 665,
-      "size": 363,
-      "showIcon": false,
-      "showLabel": true,
-      "bgEnabled": true,
-      "bgColor": "#000000",
-      "bgOpacity": 0.55,
-      "fontFamily": "'Segoe UI', sans-serif",
-      "fontSize": 23,
-      "textColor": "#ffffff",
-      "labelBgEnabled": true,
-      "labelBgColor": "#120a1c",
-      "labelBorderColor": "#ff6600",
-      "labelBgOpacity": 0.88
-    },
-    {
       "id": 1793901532513.663,
       "shortId": 26,
       "typeId": "pumpkin_classic",
@@ -466,6 +444,28 @@
       "labelBgColor": "#120a1c",
       "labelBorderColor": "#ff6600",
       "labelBgOpacity": 1
+    },
+    {
+      "id": 1793901629931.117,
+      "shortId": 27,
+      "typeId": "text_only",
+      "name": "Solo Testo",
+      "label": "Dalle 18 00 comincia Dolcetto o scherzetto",
+      "x": 2728,
+      "y": 665,
+      "size": 363,
+      "showIcon": false,
+      "showLabel": true,
+      "bgEnabled": true,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 75,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBorderColor": "#ff6600",
+      "labelBgOpacity": 0.88
     }
   ]
 }
