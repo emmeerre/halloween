@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "updatedAt": "2026-11-05T18:01:22.299Z",
+  "updatedAt": "2026-11-05T18:01:25.666Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -453,7 +453,7 @@
       "label": "Dalle 18 00 comincia Dolcetto o scherzetto",
       "x": 2728,
       "y": 665,
-      "size": 274,
+      "size": 363,
       "showIcon": false,
       "showLabel": true,
       "bgEnabled": true,
