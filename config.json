@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "updatedAt": "2026-11-05T17:27:40.775Z",
+  "updatedAt": "2026-11-05T17:29:03.210Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -314,28 +314,6 @@
       "labelBorderColor": "#ff6600"
     },
     {
-      "id": 1793886513279.1152,
-      "shortId": 18,
-      "typeId": "ghost_classic",
-      "name": "Fantasma Classico",
-      "label": "",
-      "x": 2105,
-      "y": 753,
-      "size": 250,
-      "showIcon": true,
-      "showLabel": true,
-      "bgEnabled": true,
-      "bgColor": "#000000",
-      "bgOpacity": 0.55,
-      "fontFamily": "'Segoe UI', sans-serif",
-      "fontSize": 14,
-      "textColor": "#ffffff",
-      "labelBgEnabled": true,
-      "labelBgColor": "#120a1c",
-      "labelBgOpacity": 0.88,
-      "labelBorderColor": "#ff6600"
-    },
-    {
       "id": 1793886502729.3748,
       "shortId": 17,
       "typeId": "pumpkin_classic",
@@ -422,6 +400,28 @@
       "labelBgColor": "#120a1c",
       "labelBgOpacity": 0.88,
       "labelBorderColor": "#e75618"
+    },
+    {
+      "id": 1793886513279.1152,
+      "shortId": 18,
+      "typeId": "ghost_classic",
+      "name": "Fantasma Classico",
+      "label": "",
+      "x": 2105,
+      "y": 753,
+      "size": 250,
+      "showIcon": true,
+      "showLabel": true,
+      "bgEnabled": true,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 14,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBgOpacity": 0.88,
+      "labelBorderColor": "#ff6600"
     }
   ]
 }
