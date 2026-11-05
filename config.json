@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-11-05T13:24:43.267Z",
+  "updatedAt": "2026-11-05T13:24:47.684Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -73,7 +73,7 @@
       "label": "Belati",
       "x": 1730,
       "y": 1428,
-      "size": 50
+      "size": 34
     }
   ]
 }
