@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "updatedAt": "2026-11-05T18:04:11.069Z",
+  "updatedAt": "2026-11-05T18:04:49.303Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -292,28 +292,6 @@
       "labelBorderColor": "#ff6600"
     },
     {
-      "id": 1793886769834.543,
-      "shortId": 24,
-      "typeId": "pumpkin_pirate",
-      "name": "Zucca Pirata",
-      "label": "Zucca Pirata #24",
-      "x": 685,
-      "y": 687,
-      "size": 50,
-      "showIcon": true,
-      "showLabel": true,
-      "bgEnabled": false,
-      "bgColor": "#000000",
-      "bgOpacity": 0.55,
-      "fontFamily": "'Segoe UI', sans-serif",
-      "fontSize": 14,
-      "textColor": "#ffffff",
-      "labelBgEnabled": true,
-      "labelBgColor": "#120a1c",
-      "labelBgOpacity": 0.88,
-      "labelBorderColor": "#ff6600"
-    },
-    {
       "id": 1793886825885.0464,
       "shortId": 25,
       "typeId": "pumpkin_cyclops",
@@ -466,6 +444,28 @@
       "labelBgColor": "#120a1c",
       "labelBorderColor": "#ff6600",
       "labelBgOpacity": 0.88
+    },
+    {
+      "id": 1793886769834.543,
+      "shortId": 24,
+      "typeId": "pumpkin_pirate",
+      "name": "Zucca Pirata",
+      "label": "Zucca Pirata #24",
+      "x": 685,
+      "y": 687,
+      "size": 50,
+      "showIcon": true,
+      "showLabel": true,
+      "bgEnabled": false,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 14,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBgOpacity": 0.88,
+      "labelBorderColor": "#ff6600"
     }
   ]
 }
