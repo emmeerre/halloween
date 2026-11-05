@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-11-05T13:28:07.571Z",
+  "updatedAt": "2026-11-05T13:28:21.571Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -124,6 +124,16 @@
       "x": 2520,
       "y": 1374,
       "size": 29
+    },
+    {
+      "id": 1793885299538.9116,
+      "shortId": 13,
+      "typeId": "emoji_candy",
+      "name": "Caramella",
+      "label": "Caramella #13",
+      "x": 2684,
+      "y": 1643,
+      "size": 50
     }
   ]
 }
