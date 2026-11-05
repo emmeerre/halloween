@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "updatedAt": "2026-11-05T17:29:03.210Z",
+  "updatedAt": "2026-11-05T17:29:07.094Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -412,7 +412,7 @@
       "size": 250,
       "showIcon": true,
       "showLabel": true,
-      "bgEnabled": true,
+      "bgEnabled": false,
       "bgColor": "#000000",
       "bgOpacity": 0.55,
       "fontFamily": "'Segoe UI', sans-serif",
