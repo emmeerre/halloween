@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "updatedAt": "2026-11-05T17:58:29.645Z",
+  "updatedAt": "2026-11-05T17:58:32.979Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -406,7 +406,7 @@
       "shortId": 22,
       "typeId": "tombstone",
       "name": "Lapide RIP",
-      "label": "Lapide RIP #22",
+      "label": "",
       "x": 261,
       "y": 1432,
       "size": 250,
