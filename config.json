@@ -1,6 +1,6 @@
 {
   "version": 6,
-  "updatedAt": "2026-11-05T13:48:38.046Z",
+  "updatedAt": "2026-11-05T13:48:45.996Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -97,19 +97,6 @@
       "bgOpacity": 0.55
     },
     {
-      "id": 1793885142368.4028,
-      "shortId": 9,
-      "typeId": "emoji_zombie",
-      "name": "Zombie",
-      "label": "Baiocco",
-      "x": 1571,
-      "y": 771,
-      "size": 50,
-      "bgEnabled": false,
-      "bgColor": "#000000",
-      "bgOpacity": 0.55
-    },
-    {
       "id": 1793885051966.979,
       "shortId": 6,
       "typeId": "emoji_witch",
@@ -197,6 +184,19 @@
       "y": 753,
       "size": 250,
       "bgEnabled": true,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55
+    },
+    {
+      "id": 1793885142368.4028,
+      "shortId": 9,
+      "typeId": "emoji_zombie",
+      "name": "Zombie",
+      "label": "Baiocco",
+      "x": 1571,
+      "y": 771,
+      "size": 50,
+      "bgEnabled": false,
       "bgColor": "#000000",
       "bgOpacity": 0.55
     }
