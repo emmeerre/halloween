@@ -1,6 +1,6 @@
 {
   "version": 6,
-  "updatedAt": "2026-11-05T13:50:28.915Z",
+  "updatedAt": "2026-11-05T13:51:32.116Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -162,19 +162,6 @@
       "bgOpacity": 0.55
     },
     {
-      "id": 1793886513279.1152,
-      "shortId": 18,
-      "typeId": "ghost_classic",
-      "name": "Fantasma Classico",
-      "label": "Fantasma Classico #18",
-      "x": 2105,
-      "y": 753,
-      "size": 250,
-      "bgEnabled": true,
-      "bgColor": "#000000",
-      "bgOpacity": 0.55
-    },
-    {
       "id": 1793885142368.4028,
       "shortId": 9,
       "typeId": "emoji_zombie",
@@ -212,6 +199,19 @@
       "bgEnabled": true,
       "bgColor": "#4b9f1a",
       "bgOpacity": 0.48
+    },
+    {
+      "id": 1793886513279.1152,
+      "shortId": 18,
+      "typeId": "ghost_classic",
+      "name": "Fantasma Classico",
+      "label": "Fantasma Classico #18",
+      "x": 2105,
+      "y": 753,
+      "size": 250,
+      "bgEnabled": true,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55
     }
   ]
 }
