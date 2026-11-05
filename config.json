@@ -1,6 +1,6 @@
 {
   "version": 6,
-  "updatedAt": "2026-11-05T13:50:00.781Z",
+  "updatedAt": "2026-11-05T13:50:03.631Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -206,7 +206,7 @@
       "typeId": "emoji_web",
       "name": "Ragnatela",
       "label": "",
-      "x": 1947,
+      "x": 2049,
       "y": 1733,
       "size": 50,
       "bgEnabled": true,
