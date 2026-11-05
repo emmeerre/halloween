@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "updatedAt": "2026-11-05T18:08:50.358Z",
+  "updatedAt": "2026-11-05T18:08:54.141Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -314,28 +314,6 @@
       "labelBorderColor": "#ff6600"
     },
     {
-      "id": 1793901629931.117,
-      "shortId": 27,
-      "typeId": "text_only",
-      "name": "Solo Testo",
-      "label": "17:30 Racconti dell'orrore in piattaforma\nDalle 18:00 comincia: Dolcetto o scherzetto\nCena alle 20:00",
-      "x": 2756,
-      "y": 682,
-      "size": 363,
-      "showIcon": false,
-      "showLabel": true,
-      "bgEnabled": true,
-      "bgColor": "#000000",
-      "bgOpacity": 0.55,
-      "fontFamily": "'Segoe UI', sans-serif",
-      "fontSize": 75,
-      "textColor": "#ffffff",
-      "labelBgEnabled": true,
-      "labelBgColor": "#120a1c",
-      "labelBorderColor": "#ff6600",
-      "labelBgOpacity": 0.88
-    },
-    {
       "id": 1793886769834.543,
       "shortId": 24,
       "typeId": "pumpkin_pirate",
@@ -451,8 +429,8 @@
       "typeId": "pumpkin_classic",
       "name": "Zucca Classica",
       "label": "Halloween a Badiola ",
-      "x": 2668,
-      "y": 330,
+      "x": 2664,
+      "y": 353,
       "size": 53,
       "showIcon": false,
       "showLabel": true,
@@ -466,6 +444,28 @@
       "labelBgColor": "#120a1c",
       "labelBorderColor": "#ff6600",
       "labelBgOpacity": 1
+    },
+    {
+      "id": 1793901629931.117,
+      "shortId": 27,
+      "typeId": "text_only",
+      "name": "Solo Testo",
+      "label": "17:30 Racconti dell'orrore in piattaforma\nDalle 18:00 comincia: Dolcetto o scherzetto\nCena alle 20:00",
+      "x": 2706,
+      "y": 713,
+      "size": 363,
+      "showIcon": false,
+      "showLabel": true,
+      "bgEnabled": true,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 75,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBorderColor": "#ff6600",
+      "labelBgOpacity": 0.88
     }
   ]
 }
