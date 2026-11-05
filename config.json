@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "updatedAt": "2026-11-05T17:27:07.375Z",
+  "updatedAt": "2026-11-05T17:27:17.041Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -406,7 +406,7 @@
       "shortId": 25,
       "typeId": "pumpkin_cyclops",
       "name": "Zucca Ciclope",
-      "label": "Prova di Coraggio",
+      "label": "Prova di Coraggi",
       "x": 1468,
       "y": 1281,
       "size": 250,
