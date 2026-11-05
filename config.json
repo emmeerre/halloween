@@ -1,6 +1,6 @@
 {
   "version": 6,
-  "updatedAt": "2026-11-05T13:51:35.283Z",
+  "updatedAt": "2026-11-05T13:51:42.666Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -149,19 +149,6 @@
       "bgOpacity": 0.72
     },
     {
-      "id": 1793886502729.3748,
-      "shortId": 17,
-      "typeId": "pumpkin_classic",
-      "name": "Zucca Classica",
-      "label": "Zucca Classica #17",
-      "x": 3055,
-      "y": 536,
-      "size": 250,
-      "bgEnabled": true,
-      "bgColor": "#000000",
-      "bgOpacity": 0.55
-    },
-    {
       "id": 1793885142368.4028,
       "shortId": 9,
       "typeId": "emoji_zombie",
@@ -208,6 +195,19 @@
       "label": "",
       "x": 2105,
       "y": 753,
+      "size": 250,
+      "bgEnabled": true,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55
+    },
+    {
+      "id": 1793886502729.3748,
+      "shortId": 17,
+      "typeId": "pumpkin_classic",
+      "name": "Zucca Classica",
+      "label": "",
+      "x": 3055,
+      "y": 536,
       "size": 250,
       "bgEnabled": true,
       "bgColor": "#000000",
