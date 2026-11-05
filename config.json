@@ -1,6 +1,6 @@
 {
   "version": 6,
-  "updatedAt": "2026-11-05T13:46:11.576Z",
+  "updatedAt": "2026-11-05T13:46:18.610Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -167,12 +167,12 @@
       "typeId": "emoji_vampire",
       "name": "Vampiro",
       "label": "",
-      "x": 2127,
-      "y": 1647,
+      "x": 2101,
+      "y": 1644,
       "size": 50,
       "bgEnabled": true,
       "bgColor": "#f72655",
-      "bgOpacity": 0.55
+      "bgOpacity": 0.72
     }
   ]
 }
