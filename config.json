@@ -1,6 +1,6 @@
 {
   "version": 5,
-  "updatedAt": "2026-11-05T13:22:49.265Z",
+  "updatedAt": "2026-11-05T13:22:56.715Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -30,7 +30,7 @@
       "shortId": 3,
       "typeId": "cauldron",
       "name": "Calderone Magico",
-      "label": "Calderone Magico #3",
+      "label": "Ricci",
       "x": 2730,
       "y": 1379,
       "size": 50
