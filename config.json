@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "updatedAt": "2026-11-05T18:08:40.358Z",
+  "updatedAt": "2026-11-05T18:08:47.758Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 3800,
   "mapHeight": 2160,
@@ -292,28 +292,6 @@
       "labelBorderColor": "#ff6600"
     },
     {
-      "id": 1793886513279.1152,
-      "shortId": 18,
-      "typeId": "ghost_classic",
-      "name": "Fantasma Classico",
-      "label": "",
-      "x": 2011,
-      "y": 308,
-      "size": 550,
-      "showIcon": true,
-      "showLabel": true,
-      "bgEnabled": false,
-      "bgColor": "#000000",
-      "bgOpacity": 0.55,
-      "fontFamily": "'Segoe UI', sans-serif",
-      "fontSize": 72,
-      "textColor": "#ffffff",
-      "labelBgEnabled": true,
-      "labelBgColor": "#120a1c",
-      "labelBgOpacity": 0.88,
-      "labelBorderColor": "#ff6600"
-    },
-    {
       "id": 1793886502729.3748,
       "shortId": 17,
       "typeId": "pumpkin_classic",
@@ -451,8 +429,8 @@
       "typeId": "pumpkin_classic",
       "name": "Zucca Classica",
       "label": "Halloween a Badiola ",
-      "x": 2672,
-      "y": 357,
+      "x": 2695,
+      "y": 276,
       "size": 53,
       "showIcon": false,
       "showLabel": true,
@@ -466,6 +444,28 @@
       "labelBgColor": "#120a1c",
       "labelBorderColor": "#ff6600",
       "labelBgOpacity": 1
+    },
+    {
+      "id": 1793886513279.1152,
+      "shortId": 18,
+      "typeId": "ghost_classic",
+      "name": "Fantasma Classico",
+      "label": "",
+      "x": 1953,
+      "y": 281,
+      "size": 550,
+      "showIcon": true,
+      "showLabel": true,
+      "bgEnabled": false,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 72,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBgOpacity": 0.88,
+      "labelBorderColor": "#ff6600"
     }
   ]
 }
