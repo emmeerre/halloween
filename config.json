@@ -1,6 +1,6 @@
 {
   "version": 9,
-  "updatedAt": "2026-11-11T10:42:25.840Z",
+  "updatedAt": "2026-11-11T10:42:30.223Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 7333,
   "mapHeight": 4142,
@@ -593,7 +593,7 @@
       "showIcon": true,
       "showLabel": true,
       "flickerEnabled": true,
-      "flickerColor": "#ff6600",
+      "flickerColor": "#000000",
       "bgEnabled": true,
       "bgColor": "#4b9f1a",
       "bgOpacity": 0.48,
