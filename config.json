@@ -1,6 +1,6 @@
 {
   "version": 9,
-  "updatedAt": "2026-11-11T11:59:37.221Z",
+  "updatedAt": "2026-11-11T11:59:45.734Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 7333,
   "mapHeight": 4142,
@@ -610,7 +610,7 @@
       "shortId": 41,
       "typeId": "text_only",
       "name": "Solo Testo",
-      "label": "Controllate la mappa\nOgni Casa Segnata  Da un simbolo \nAvrà delle caramelle spaventose \nCHE VI ASPETTANO",
+      "label": "Controllate la mappa\nOgni Casa Segnata  Da un simbolo \nAvrà delle caramelle spaventose \n",
       "x": 759,
       "y": 2611,
       "size": 50,
