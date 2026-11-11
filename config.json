@@ -1,6 +1,6 @@
 {
   "version": 9,
-  "updatedAt": "2026-11-11T11:09:00.972Z",
+  "updatedAt": "2026-11-11T11:09:08.455Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 7333,
   "mapHeight": 4142,
@@ -563,7 +563,7 @@
       "typeId": "pumpkin_classic",
       "name": "Zucca Classica",
       "label": "Halloween a \nBadiola ",
-      "x": 5608,
+      "x": 5617,
       "y": 711,
       "size": 53,
       "showIcon": false,
