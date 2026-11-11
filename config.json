@@ -1,6 +1,6 @@
 {
   "version": 9,
-  "updatedAt": "2026-11-11T14:01:41.326Z",
+  "updatedAt": "2026-11-11T14:01:43.642Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 7333,
   "mapHeight": 4142,
@@ -635,8 +635,8 @@
       "typeId": "text_only",
       "name": "Solo Testo",
       "label": "17:30 Racconti dell'orrore in piattaforma\nda dopo il tramonto comincia Dolcetto o scherzetto\nogni gruppetto sceglierà il proprio percorso\nCena alle 20:00 Sotto lo Stand",
-      "x": 5505,
-      "y": 1382,
+      "x": 5504,
+      "y": 1381,
       "size": 363,
       "showIcon": false,
       "showLabel": true,
