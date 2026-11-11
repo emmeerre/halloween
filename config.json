@@ -1,9 +1,9 @@
 {
   "version": 8,
-  "updatedAt": "2026-11-05T18:20:03.488Z",
+  "updatedAt": "2026-11-11T10:20:16.413Z",
   "backgroundImage": "mappa.png",
-  "mapWidth": 3800,
-  "mapHeight": 2160,
+  "mapWidth": 7333,
+  "mapHeight": 4142,
   "markers": [
     {
       "id": 1793884678926.1533,
@@ -102,28 +102,6 @@
       "x": 2520,
       "y": 1374,
       "size": 29,
-      "showIcon": true,
-      "showLabel": true,
-      "bgEnabled": false,
-      "bgColor": "#000000",
-      "bgOpacity": 0.55,
-      "fontFamily": "'Segoe UI', sans-serif",
-      "fontSize": 14,
-      "textColor": "#ffffff",
-      "labelBgEnabled": true,
-      "labelBgColor": "#120a1c",
-      "labelBgOpacity": 0.88,
-      "labelBorderColor": "#ff6600"
-    },
-    {
-      "id": 1793885299538.9116,
-      "shortId": 13,
-      "typeId": "emoji_candy",
-      "name": "Caramella",
-      "label": "Cena",
-      "x": 2691,
-      "y": 1654,
-      "size": 50,
       "showIcon": true,
       "showLabel": true,
       "bgEnabled": false,
@@ -398,8 +376,8 @@
       "textColor": "#ffffff",
       "labelBgEnabled": true,
       "labelBgColor": "#120a1c",
-      "labelBorderColor": "#ff6600",
-      "labelBgOpacity": 0.88
+      "labelBgOpacity": 0.88,
+      "labelBorderColor": "#ff6600"
     },
     {
       "id": 1793901532513.663,
@@ -420,8 +398,8 @@
       "textColor": "#ffffff",
       "labelBgEnabled": true,
       "labelBgColor": "#120a1c",
-      "labelBorderColor": "#ff6600",
-      "labelBgOpacity": 1
+      "labelBgOpacity": 1,
+      "labelBorderColor": "#ff6600"
     },
     {
       "id": 1793886825885.0464,
@@ -464,8 +442,8 @@
       "textColor": "#ffffff",
       "labelBgEnabled": true,
       "labelBgColor": "#120a1c",
-      "labelBorderColor": "#ff6600",
-      "labelBgOpacity": 0.88
+      "labelBgOpacity": 0.88,
+      "labelBorderColor": "#ff6600"
     },
     {
       "id": 1793884657175.5295,
@@ -508,8 +486,8 @@
       "textColor": "#ffffff",
       "labelBgEnabled": true,
       "labelBgColor": "#120a1c",
-      "labelBorderColor": "#ff6600",
-      "labelBgOpacity": 0.88
+      "labelBgOpacity": 0.88,
+      "labelBorderColor": "#ff6600"
     },
     {
       "id": 1793902743287.4465,
@@ -530,8 +508,30 @@
       "textColor": "#ffffff",
       "labelBgEnabled": true,
       "labelBgColor": "#120a1c",
-      "labelBorderColor": "#ff6600",
-      "labelBgOpacity": 0.88
+      "labelBgOpacity": 0.88,
+      "labelBorderColor": "#ff6600"
+    },
+    {
+      "id": 1793885299538.9116,
+      "shortId": 13,
+      "typeId": "emoji_candy",
+      "name": "Caramella",
+      "label": "Cena",
+      "x": 3245,
+      "y": 2140,
+      "size": 50,
+      "showIcon": true,
+      "showLabel": true,
+      "bgEnabled": false,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 14,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBgOpacity": 0.88,
+      "labelBorderColor": "#ff6600"
     }
   ]
 }
