@@ -1,6 +1,6 @@
 {
   "version": 9,
-  "updatedAt": "2026-11-11T11:58:46.060Z",
+  "updatedAt": "2026-11-11T11:58:58.826Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 7333,
   "mapHeight": 4142,
@@ -582,30 +582,6 @@
       "labelBorderColor": "#ff6600"
     },
     {
-      "id": 1794398207431.202,
-      "shortId": 41,
-      "typeId": "text_only",
-      "name": "Solo Testo",
-      "label": "Ogni Casa Segnata \nAvrà delle caramelle spaventose \nche vi aspettano",
-      "x": 759,
-      "y": 2611,
-      "size": 50,
-      "showIcon": false,
-      "showLabel": true,
-      "flickerEnabled": true,
-      "flickerColor": "#ff6600",
-      "bgEnabled": true,
-      "bgColor": "#000000",
-      "bgOpacity": 0.55,
-      "fontFamily": "'Segoe UI', sans-serif",
-      "fontSize": 79,
-      "textColor": "#ffffff",
-      "labelBgEnabled": true,
-      "labelBgColor": "#120a1c",
-      "labelBorderColor": "#ff6600",
-      "labelBgOpacity": 0.88
-    },
-    {
       "id": 1793901629931.117,
       "shortId": 27,
       "typeId": "text_only",
@@ -628,6 +604,30 @@
       "labelBgColor": "#800080",
       "labelBgOpacity": 0.88,
       "labelBorderColor": "#ff6600"
+    },
+    {
+      "id": 1794398207431.202,
+      "shortId": 41,
+      "typeId": "text_only",
+      "name": "Solo Testo",
+      "label": "Ogni Casa Segnata \nAvrà delle caramelle spaventose \nche vi aspettano",
+      "x": 759,
+      "y": 2611,
+      "size": 50,
+      "showIcon": false,
+      "showLabel": true,
+      "flickerEnabled": true,
+      "flickerColor": "#ff6600",
+      "bgEnabled": true,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 79,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBorderColor": "#ff6600",
+      "labelBgOpacity": 0.88
     }
   ]
 }
