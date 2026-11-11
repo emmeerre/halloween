@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "updatedAt": "2026-11-11T10:20:28.630Z",
+  "updatedAt": "2026-11-11T10:20:35.114Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 7333,
   "mapHeight": 4142,
@@ -517,8 +517,8 @@
       "typeId": "emoji_web",
       "name": "Ragnatela",
       "label": "Storie dell'orrore",
-      "x": 5305,
-      "y": 3125,
+      "x": 4332,
+      "y": 2793,
       "size": 40,
       "showIcon": true,
       "showLabel": true,
