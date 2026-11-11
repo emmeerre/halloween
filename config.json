@@ -1,6 +1,6 @@
 {
   "version": 9,
-  "updatedAt": "2026-11-11T12:12:13.580Z",
+  "updatedAt": "2026-11-11T12:12:23.296Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 7333,
   "mapHeight": 4142,
@@ -634,7 +634,7 @@
       "shortId": 5,
       "typeId": "black_cat",
       "name": "Gatto Nero",
-      "label": "Mirco E",
+      "label": "Mirco ed Eleonora",
       "x": 5332,
       "y": 3055,
       "size": 50,
