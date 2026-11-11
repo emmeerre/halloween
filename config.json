@@ -1,6 +1,6 @@
 {
   "version": 9,
-  "updatedAt": "2026-11-11T12:00:24.564Z",
+  "updatedAt": "2026-11-11T12:00:29.010Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 7333,
   "mapHeight": 4142,
@@ -611,8 +611,8 @@
       "typeId": "text_only",
       "name": "Solo Testo",
       "label": "Controllate la mappa\nOgni Casa Segnata da un simbolo \nAvrà delle caramelle spaventose  per voi\n",
-      "x": 951,
-      "y": 2782,
+      "x": 941,
+      "y": 2647,
       "size": 50,
       "showIcon": false,
       "showLabel": true,
