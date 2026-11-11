@@ -1,6 +1,6 @@
 {
   "version": 9,
-  "updatedAt": "2026-11-11T11:10:34.057Z",
+  "updatedAt": "2026-11-11T11:10:39.824Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 7333,
   "mapHeight": 4142,
@@ -589,7 +589,7 @@
       "label": "Ragno #39",
       "x": 1021,
       "y": 3303,
-      "size": 50,
+      "size": 800,
       "showIcon": true,
       "showLabel": true,
       "flickerEnabled": true,
