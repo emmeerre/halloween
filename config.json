@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "updatedAt": "2026-11-11T10:22:36.216Z",
+  "updatedAt": "2026-11-11T10:22:39.316Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 7333,
   "mapHeight": 4142,
@@ -517,8 +517,8 @@
       "typeId": "witch_broom",
       "name": "Strega in Volo",
       "label": "",
-      "x": 3531,
-      "y": 3181,
+      "x": 3601,
+      "y": 3549,
       "size": 50,
       "showIcon": true,
       "showLabel": true,
