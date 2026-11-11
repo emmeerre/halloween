@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "updatedAt": "2026-11-11T10:21:46.499Z",
+  "updatedAt": "2026-11-11T10:21:52.515Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 7333,
   "mapHeight": 4142,
@@ -517,8 +517,8 @@
       "typeId": "emoji_eye",
       "name": "Occhio",
       "label": "Indovinello della Sfinge",
-      "x": 3142,
-      "y": 2138,
+      "x": 4223,
+      "y": 2886,
       "size": 50,
       "showIcon": true,
       "showLabel": true,
