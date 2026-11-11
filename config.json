@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "updatedAt": "2026-11-11T10:26:07.370Z",
+  "updatedAt": "2026-11-11T10:26:12.904Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 7333,
   "mapHeight": 4142,
@@ -539,8 +539,8 @@
       "typeId": "emoji_skull",
       "name": "Teschio",
       "label": "Marcantonini",
-      "x": 3639,
-      "y": 2439,
+      "x": 3517,
+      "y": 2288,
       "size": 41,
       "showIcon": true,
       "showLabel": true,
