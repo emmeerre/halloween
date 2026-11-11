@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "updatedAt": "2026-11-11T10:22:00.049Z",
+  "updatedAt": "2026-11-11T10:22:09.882Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 7333,
   "mapHeight": 4142,
@@ -517,8 +517,8 @@
       "typeId": "emoji_skull",
       "name": "Teschio",
       "label": "Sargenti",
-      "x": 3358,
-      "y": 2475,
+      "x": 3453,
+      "y": 2841,
       "size": 36,
       "showIcon": true,
       "showLabel": true,
