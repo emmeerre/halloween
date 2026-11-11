@@ -1,6 +1,6 @@
 {
   "version": 9,
-  "updatedAt": "2026-11-11T11:57:14.588Z",
+  "updatedAt": "2026-11-11T11:57:40.573Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 7333,
   "mapHeight": 4142,
@@ -610,7 +610,7 @@
       "shortId": 41,
       "typeId": "text_only",
       "name": "Solo Testo",
-      "label": "Ogni Casa Segnata ",
+      "label": "Ogni Casa Segnata Avrà delle caramelle che vi aspettano",
       "x": 717,
       "y": 2692,
       "size": 50,
