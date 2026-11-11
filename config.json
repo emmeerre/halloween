@@ -1,6 +1,6 @@
 {
   "version": 9,
-  "updatedAt": "2026-11-11T12:01:11.294Z",
+  "updatedAt": "2026-11-11T12:01:27.128Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 7333,
   "mapHeight": 4142,
@@ -611,8 +611,8 @@
       "typeId": "text_only",
       "name": "Solo Testo",
       "label": "Controllate la mappa\nOgni Casa Segnata da un simbolo \nAvrà delle caramelle spaventose  per voi\nmi raccomando Urlate \nDolcetto o Scherzetto ",
-      "x": 941,
-      "y": 2647,
+      "x": 972,
+      "y": 2699,
       "size": 50,
       "showIcon": false,
       "showLabel": true,
