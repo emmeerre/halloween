@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "updatedAt": "2026-11-11T10:23:42.684Z",
+  "updatedAt": "2026-11-11T10:23:46.534Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 7333,
   "mapHeight": 4142,
@@ -180,28 +180,6 @@
       "labelBgColor": "#120a1c",
       "labelBgOpacity": 1,
       "labelBorderColor": "#ff6600"
-    },
-    {
-      "id": 1793886825885.0464,
-      "shortId": 25,
-      "typeId": "pumpkin_cyclops",
-      "name": "Zucca Ciclope",
-      "label": "Prova di Coraggio",
-      "x": 1517,
-      "y": 1042,
-      "size": 84,
-      "showIcon": true,
-      "showLabel": true,
-      "bgEnabled": true,
-      "bgColor": "#000000",
-      "bgOpacity": 0.55,
-      "fontFamily": "'Segoe UI', sans-serif",
-      "fontSize": 17,
-      "textColor": "#ffffff",
-      "labelBgEnabled": true,
-      "labelBgColor": "#120a1c",
-      "labelBgOpacity": 0.88,
-      "labelBorderColor": "#e75618"
     },
     {
       "id": 1793902743287.4465,
@@ -532,6 +510,28 @@
       "labelBgColor": "#120a1c",
       "labelBgOpacity": 0.88,
       "labelBorderColor": "#ff6600"
+    },
+    {
+      "id": 1793886825885.0464,
+      "shortId": 25,
+      "typeId": "pumpkin_cyclops",
+      "name": "Zucca Ciclope",
+      "label": "Prova di Coraggio",
+      "x": 2849,
+      "y": 2613,
+      "size": 84,
+      "showIcon": true,
+      "showLabel": true,
+      "bgEnabled": true,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 17,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBgOpacity": 0.88,
+      "labelBorderColor": "#e75618"
     }
   ]
 }
