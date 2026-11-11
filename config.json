@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "updatedAt": "2026-11-11T10:25:42.253Z",
+  "updatedAt": "2026-11-11T10:26:07.370Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 7333,
   "mapHeight": 4142,
@@ -270,28 +270,6 @@
       "labelBorderColor": "#ff6600"
     },
     {
-      "id": 1793902704586.581,
-      "shortId": 34,
-      "typeId": "emoji_skull",
-      "name": "Teschio",
-      "label": "Marcantonini",
-      "x": 3781,
-      "y": 2547,
-      "size": 41,
-      "showIcon": true,
-      "showLabel": true,
-      "bgEnabled": true,
-      "bgColor": "#000000",
-      "bgOpacity": 0.55,
-      "fontFamily": "'Segoe UI', sans-serif",
-      "fontSize": 11,
-      "textColor": "#ffffff",
-      "labelBgEnabled": true,
-      "labelBgColor": "#120a1c",
-      "labelBgOpacity": 0.88,
-      "labelBorderColor": "#ff6600"
-    },
-    {
       "id": 1793884657175.5295,
       "shortId": 1,
       "typeId": "pumpkin_classic",
@@ -554,6 +532,28 @@
       "labelBgColor": "#120a1c",
       "labelBorderColor": "#ff6600",
       "labelBgOpacity": 0.88
+    },
+    {
+      "id": 1793902704586.581,
+      "shortId": 34,
+      "typeId": "emoji_skull",
+      "name": "Teschio",
+      "label": "Marcantonini",
+      "x": 3639,
+      "y": 2439,
+      "size": 41,
+      "showIcon": true,
+      "showLabel": true,
+      "bgEnabled": true,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 11,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBgOpacity": 0.88,
+      "labelBorderColor": "#ff6600"
     }
   ]
 }
