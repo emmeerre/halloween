@@ -1,6 +1,6 @@
 {
   "version": 9,
-  "updatedAt": "2026-11-11T11:08:45.572Z",
+  "updatedAt": "2026-11-11T11:08:56.838Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 7333,
   "mapHeight": 4142,
@@ -571,7 +571,7 @@
       "flickerEnabled": true,
       "flickerColor": "#ff6600",
       "bgEnabled": true,
-      "bgColor": "#000000",
+      "bgColor": "#585858",
       "bgOpacity": 0.55,
       "fontFamily": "'Eater', cursive",
       "fontSize": 164,
