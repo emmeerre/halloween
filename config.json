@@ -1,6 +1,6 @@
 {
   "version": 9,
-  "updatedAt": "2026-11-11T11:57:52.950Z",
+  "updatedAt": "2026-11-11T11:57:59.135Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 7333,
   "mapHeight": 4142,
@@ -622,7 +622,7 @@
       "bgColor": "#000000",
       "bgOpacity": 0.55,
       "fontFamily": "'Segoe UI', sans-serif",
-      "fontSize": 152,
+      "fontSize": 79,
       "textColor": "#ffffff",
       "labelBgEnabled": true,
       "labelBgColor": "#120a1c",
