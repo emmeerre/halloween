@@ -1,6 +1,6 @@
 {
   "version": 9,
-  "updatedAt": "2026-11-11T12:13:27.641Z",
+  "updatedAt": "2026-11-11T12:13:31.916Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 7333,
   "mapHeight": 4142,
@@ -634,7 +634,7 @@
       "shortId": 1,
       "typeId": "pumpkin_classic",
       "name": "Zucca Classica",
-      "label": "Piancini",
+      "label": "Valentina",
       "x": 3301,
       "y": 2184,
       "size": 64,
