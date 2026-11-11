@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "updatedAt": "2026-11-11T10:24:33.085Z",
+  "updatedAt": "2026-11-11T10:24:37.385Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 7333,
   "mapHeight": 4142,
@@ -517,8 +517,8 @@
       "typeId": "pumpkin_pirate",
       "name": "Zucca Pirata",
       "label": "Rita",
-      "x": 1422,
-      "y": 1455,
+      "x": 1336,
+      "y": 1498,
       "size": 50,
       "showIcon": true,
       "showLabel": true,
