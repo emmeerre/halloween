@@ -1,6 +1,6 @@
 {
   "version": 9,
-  "updatedAt": "2026-11-11T13:57:05.455Z",
+  "updatedAt": "2026-11-11T13:57:13.853Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 7333,
   "mapHeight": 4142,
@@ -634,7 +634,7 @@
       "shortId": 42,
       "typeId": "pumpkin_purple",
       "name": "Zucca Stregata",
-      "label": "",
+      "label": "Lucio",
       "x": 1001,
       "y": 526,
       "size": 50,
