@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "updatedAt": "2026-11-11T10:21:32.932Z",
+  "updatedAt": "2026-11-11T10:21:39.615Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 7333,
   "mapHeight": 4142,
@@ -517,8 +517,8 @@
       "typeId": "emoji_witch",
       "name": "Strega Emoji",
       "label": "Dina",
-      "x": 3199,
-      "y": 1911,
+      "x": 5022,
+      "y": 2878,
       "size": 29,
       "showIcon": true,
       "showLabel": true,
