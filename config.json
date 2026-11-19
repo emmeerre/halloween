@@ -1,6 +1,6 @@
 {
   "version": 9,
-  "updatedAt": "2026-11-19T11:21:40.499Z",
+  "updatedAt": "2026-11-19T11:23:02.966Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 7333,
   "mapHeight": 4142,
@@ -676,6 +676,30 @@
       "labelBgColor": "#418b4a",
       "labelBorderColor": "#ff6600",
       "labelBgOpacity": 0.66
+    },
+    {
+      "id": 1795087380925.6343,
+      "shortId": 44,
+      "typeId": "spooky_candle",
+      "name": "Candela Accesa",
+      "label": "Candela Accesa #44",
+      "x": 5260,
+      "y": 3398,
+      "size": 50,
+      "showIcon": true,
+      "showLabel": true,
+      "flickerEnabled": true,
+      "flickerColor": "#ff6600",
+      "bgEnabled": true,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 14,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBorderColor": "#ff6600",
+      "labelBgOpacity": 0.88
     }
   ]
 }
