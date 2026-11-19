@@ -1,6 +1,6 @@
 {
   "version": 9,
-  "updatedAt": "2026-11-19T11:17:03.413Z",
+  "updatedAt": "2026-11-19T11:17:09.832Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 7333,
   "mapHeight": 4142,
@@ -658,7 +658,7 @@
       "shortId": 43,
       "typeId": "text_only",
       "name": "Solo Testo",
-      "label": "Laboratorio Intaglia la tua Zucca e Crea la tua Maschera",
+      "label": "Laboratorio Intaglia la tua Zucca \ne Crea la tua Maschera",
       "x": 1931,
       "y": 516,
       "size": 50,
