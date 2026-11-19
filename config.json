@@ -1,6 +1,6 @@
 {
   "version": 9,
-  "updatedAt": "2026-11-19T11:20:59.416Z",
+  "updatedAt": "2026-11-19T11:21:01.947Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 7333,
   "mapHeight": 4142,
@@ -510,30 +510,6 @@
       "labelBorderColor": "#ff6600"
     },
     {
-      "id": 1795086992237.802,
-      "shortId": 43,
-      "typeId": "text_only",
-      "name": "Solo Testo",
-      "label": "Venerdì Pomeriggio Laboratorio Creativo :\n Intaglia la tua Zucca & Crea la tua Maschera",
-      "x": 2440,
-      "y": 315,
-      "size": 50,
-      "showIcon": false,
-      "showLabel": true,
-      "flickerEnabled": true,
-      "flickerColor": "#ff6600",
-      "bgEnabled": true,
-      "bgColor": "#000000",
-      "bgOpacity": 0.55,
-      "fontFamily": "'Segoe UI', sans-serif",
-      "fontSize": 103,
-      "textColor": "#ffffff",
-      "labelBgEnabled": true,
-      "labelBgColor": "#418b4a",
-      "labelBorderColor": "#ff6600",
-      "labelBgOpacity": 0.66
-    },
-    {
       "id": 1794395432007.2659,
       "shortId": 39,
       "typeId": "emoji_spider",
@@ -676,6 +652,30 @@
       "labelBgColor": "#800080",
       "labelBgOpacity": 0.88,
       "labelBorderColor": "#ff6600"
+    },
+    {
+      "id": 1795086992237.802,
+      "shortId": 43,
+      "typeId": "text_only",
+      "name": "Solo Testo",
+      "label": "Venerdì Pomeriggio Laboratorio Creativo :\n Intaglia la tua Zucca & Crea la tua Maschera",
+      "x": 2631,
+      "y": 357,
+      "size": 50,
+      "showIcon": false,
+      "showLabel": true,
+      "flickerEnabled": true,
+      "flickerColor": "#ff6600",
+      "bgEnabled": true,
+      "bgColor": "#000000",
+      "bgOpacity": 0.55,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 103,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#418b4a",
+      "labelBorderColor": "#ff6600",
+      "labelBgOpacity": 0.66
     }
   ]
 }
