@@ -1,6 +1,6 @@
 {
   "version": 9,
-  "updatedAt": "2026-11-19T11:23:22.836Z",
+  "updatedAt": "2026-11-19T11:23:33.763Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 7333,
   "mapHeight": 4142,
@@ -534,30 +534,6 @@
       "labelBorderColor": "#ff6600"
     },
     {
-      "id": 1794398207431.202,
-      "shortId": 41,
-      "typeId": "text_only",
-      "name": "Solo Testo",
-      "label": "Controllate la mappa\nOgni Casa Segnata da un simbolo \nAvrà delle caramelle spaventose  per voi\nmi raccomando Urlate \nDolcetto o Scherzetto ",
-      "x": 1206,
-      "y": 2805,
-      "size": 50,
-      "showIcon": false,
-      "showLabel": true,
-      "flickerEnabled": true,
-      "flickerColor": "#ff6600",
-      "bgEnabled": true,
-      "bgColor": "#29943a",
-      "bgOpacity": 0.31,
-      "fontFamily": "'Segoe UI', sans-serif",
-      "fontSize": 119,
-      "textColor": "#ffffff",
-      "labelBgEnabled": true,
-      "labelBgColor": "#120a1c",
-      "labelBgOpacity": 0.88,
-      "labelBorderColor": "#ff6600"
-    },
-    {
       "id": 1793886502729.3748,
       "shortId": 17,
       "typeId": "pumpkin_classic",
@@ -700,6 +676,30 @@
       "labelBgColor": "#120a1c",
       "labelBorderColor": "#ff6600",
       "labelBgOpacity": 0.88
+    },
+    {
+      "id": 1794398207431.202,
+      "shortId": 41,
+      "typeId": "text_only",
+      "name": "Solo Testo",
+      "label": "Controllate la mappa\nOgni Casa Segnata da un simbolo \nAvrà delle caramelle spaventose  per voi\nmi raccomando Urlate \nDolcetto o Scherzetto ",
+      "x": 1206,
+      "y": 2805,
+      "size": 50,
+      "showIcon": false,
+      "showLabel": true,
+      "flickerEnabled": true,
+      "flickerColor": "#ff6600",
+      "bgEnabled": true,
+      "bgColor": "#29943a",
+      "bgOpacity": 0.31,
+      "fontFamily": "'Segoe UI', sans-serif",
+      "fontSize": 119,
+      "textColor": "#ffffff",
+      "labelBgEnabled": true,
+      "labelBgColor": "#120a1c",
+      "labelBgOpacity": 0.88,
+      "labelBorderColor": "#ff6600"
     }
   ]
 }
