@@ -1,6 +1,6 @@
 {
   "version": 9,
-  "updatedAt": "2026-11-19T11:23:16.925Z",
+  "updatedAt": "2026-11-19T11:23:22.836Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 7333,
   "mapHeight": 4142,
@@ -683,8 +683,8 @@
       "typeId": "spooky_candle",
       "name": "Candela Accesa",
       "label": "Venerdi\nLaboratorio",
-      "x": 5260,
-      "y": 3398,
+      "x": 5246,
+      "y": 3390,
       "size": 50,
       "showIcon": true,
       "showLabel": true,
