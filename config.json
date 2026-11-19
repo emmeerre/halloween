@@ -1,6 +1,6 @@
 {
   "version": 9,
-  "updatedAt": "2026-11-19T11:19:06.186Z",
+  "updatedAt": "2026-11-19T11:19:09.979Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 7333,
   "mapHeight": 4142,
@@ -659,8 +659,8 @@
       "typeId": "text_only",
       "name": "Solo Testo",
       "label": "Venerdì Pomeriggio Laboratorio Creativo :\n Intaglia la tua Zucca & Crea la tua Maschera",
-      "x": 1751,
-      "y": 3965,
+      "x": 1591,
+      "y": 3498,
       "size": 50,
       "showIcon": false,
       "showLabel": true,
