@@ -1,6 +1,6 @@
 {
   "version": 9,
-  "updatedAt": "2026-11-19T11:19:20.698Z",
+  "updatedAt": "2026-11-19T11:19:38.815Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 7333,
   "mapHeight": 4142,
@@ -659,8 +659,8 @@
       "typeId": "text_only",
       "name": "Solo Testo",
       "label": "Venerdì Pomeriggio Laboratorio Creativo :\n Intaglia la tua Zucca & Crea la tua Maschera",
-      "x": 1591,
-      "y": 3498,
+      "x": 2355,
+      "y": 304,
       "size": 50,
       "showIcon": false,
       "showLabel": true,
@@ -670,12 +670,12 @@
       "bgColor": "#000000",
       "bgOpacity": 0.55,
       "fontFamily": "'Segoe UI', sans-serif",
-      "fontSize": 129,
+      "fontSize": 103,
       "textColor": "#ffffff",
       "labelBgEnabled": true,
       "labelBgColor": "#418b4a",
       "labelBorderColor": "#ff6600",
-      "labelBgOpacity": 0.88
+      "labelBgOpacity": 0.66
     }
   ]
 }
