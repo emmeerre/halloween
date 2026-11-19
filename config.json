@@ -1,6 +1,6 @@
 {
   "version": 9,
-  "updatedAt": "2026-11-19T11:21:16.604Z",
+  "updatedAt": "2026-11-19T11:21:22.157Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 7333,
   "mapHeight": 4142,
@@ -658,7 +658,7 @@
       "shortId": 43,
       "typeId": "text_only",
       "name": "Solo Testo",
-      "label": "Venerdì Pomeriggio ore Laboratorio Creativo :\n Intaglia la tua Zucca & Crea la tua Maschera",
+      "label": "Venerdì Pomeriggio ore 15:00 Laboratorio Creativo :\n Intaglia la tua Zucca & Crea la tua Maschera",
       "x": 2610,
       "y": 294,
       "size": 50,
