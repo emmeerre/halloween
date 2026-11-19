@@ -1,6 +1,6 @@
 {
   "version": 9,
-  "updatedAt": "2026-11-19T11:24:03.759Z",
+  "updatedAt": "2026-11-19T11:24:14.625Z",
   "backgroundImage": "mappa.png",
   "mapWidth": 7333,
   "mapHeight": 4142,
@@ -683,8 +683,8 @@
       "typeId": "emoji_spider",
       "name": "Ragno",
       "label": "Ragno #39",
-      "x": 2256,
-      "y": 2364,
+      "x": 346,
+      "y": 2867,
       "size": 475,
       "showIcon": true,
       "showLabel": true,
